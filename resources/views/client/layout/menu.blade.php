@@ -6,31 +6,31 @@
                 <li><a class="home_link" title="خانه" href="index.html"><span>خانه</span></a></li>
                 <li class="mega-menu dropdown"><a>دسته ها</a>
                     <div class="dropdown-menu">
-                            <div class="column col-lg-2 col-md-3"><a href="category.html"></a>
+                        @foreach($categories as $category)
+                            <div class="column col-lg-2 col-md-3"><a href="category.html">{{$category->title}}</a>
                                 <div>
                                     <ul>
-                                            <li><a href="category.html"> <span>&rsaquo;</span> </a>
-
-                                                <div class="dropdown-menu">
-                                                    <ul>
-                                                            <li><a href="category.html"></a></li>
-                                                    </ul>
-                                                </div>
-                                        </li>
+                                        @foreach($category->children as $childCategory)
+                                            <li><a href="category.html">{{$childCategory->title}} @if($childCategory->children->count() > 0) <span>&rsaquo;</span> @endif</a>
+                                                @if($childCategory->children->count() > 0)
+                                                    <div class="dropdown-menu">
+                                                        <ul>
+                                                            @foreach($childCategory->children as $subCategory)
+                                                                <li><a href="category.html">{{$subCategory->title}}</a></li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                @endif
+                                                @endforeach
+                                            </li>
 
                                     </ul>
                                 </div>
                             </div>
-
+                        @endforeach
                     </div>
                 </li>
-                <li class="menu_brands dropdown"><a href="#">برند ها</a>
-                    <div class="dropdown-menu">
 
-                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-6"><a href="#"><img src="" title="" width="50" alt="" /></a><a href="#"></a></div>
-
-                    </div>
-                </li>
                 <li class="custom-link"><a href="#">لینک های دلخواه</a></li>
                 <li class="dropdown wrap_custom_block hidden-sm hidden-xs"><a>بلاک سفارشی</a>
                     <div class="dropdown-menu custom_block">
