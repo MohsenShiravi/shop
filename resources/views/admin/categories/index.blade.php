@@ -26,7 +26,7 @@
                             <tbody>
                                 @foreach($categories as $category)
                                     <tr>
-                                        <td>{{$category->id}}</td>
+                                        <td>{{$loop->iteration}}</td>
                                         <td>{{$category->title}}</td>
                                         <td>{{optional($category->parent)->title}}</td>
                                         <td>
@@ -36,7 +36,7 @@
                                             <form action="{{route('categories.destroy', $category)}}" method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <input type="submit" class="btn btn-sm btn-danger" value="حذف" onclick="return confirm('آیا مطمئن هستید؟')">
+                                                <input type="submit" class="btn btn-sm btn-danger" value="حذف" onclick="return confirm('آیا از حذف این دسته بندی مطمئن هستید؟')">
                                             </form>
                                         </td>
                                     </tr>

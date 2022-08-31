@@ -4,10 +4,13 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
                 <li><a class="home_link" title="خانه" href="index.html"><span>خانه</span></a></li>
+
                 <li class="mega-menu dropdown"><a>دسته ها</a>
+
                     <div class="dropdown-menu">
                         @foreach($categories as $category)
                             <div class="column col-lg-2 col-md-3"><a href="category.html">{{$category->title}}</a>
+
                                 <div>
                                     <ul>
                                         @foreach($category->children as $childCategory)
@@ -21,16 +24,19 @@
                                                         </ul>
                                                     </div>
                                                 @endif
-                                                @endforeach
                                             </li>
-
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
                         @endforeach
                     </div>
                 </li>
+                <li class="menu_brands dropdown"><a href="#">برند ها</a>
+                    <div class="dropdown-menu">
 
+                    </div>
+                </li>
                 <li class="custom-link"><a href="#">لینک های دلخواه</a></li>
                 <li class="dropdown wrap_custom_block hidden-sm hidden-xs"><a>بلاک سفارشی</a>
                     <div class="dropdown-menu custom_block">
