@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $categories=Category::query()->where('category_id','NULL')->get();
+        $categories=Category::query()->where('category_id','0')->get();
         return view('client.home',['categories'=>$categories]);
     }
 }

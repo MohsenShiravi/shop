@@ -1,692 +1,1140 @@
 @extends('client.layout.master')
-
-
 @section('content')
+<!-- Start Navbar Area -->
+<div class="navbar-area">
+    <!-- Menu For Mobile Device -->
+    <div class="mobile-nav">
+        <a href="index-2.html" class="logo">
+            <img src="client/images/logos/logo-1.png" alt="Logo">
+        </a>
+    </div>
 
-    <div class="container">
-        <div class="row">
-            <!-- Left Part Start-->
-            <aside id="column-left" class="col-sm-3 hidden-xs">
-                <h3 class="subtitle">دسته ها</h3>
-                <div class="box-category">
-                    <ul id="cat_accordion">
-                            <li>
-                                <a href="category.html"></a>
-                                    <span class="down"></span>
-                                    <ul>
-                                            <li><a href="category.html"></a> <span class="down"></span></li>
+    <!-- Menu For Desktop Device -->
+    <div class="main-nav">
+        <div class="container">
+            <nav class="navbar navbar-expand-md navbar-light ">
+                <a class="navbar-brand" href="index-2.html">
+                    <img src="client/images/logos/logo-1.png" alt="Logo">
+                </a>
+
+                <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+                    <ul class="navbar-nav m-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                دسته ها
+                                <i class='bx bx-chevron-down'></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                @foreach($categories as $category)
+                                    <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        {{$category->title}}
+                                        @if($category->children->count() > 0) <i class='bx bx-chevron-down'></i> @endif
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        @foreach($category->children as $childCategory)
+                                            <li class="nav-item">
+                                            <a href="shop-details.html" class="nav-link">
+                                                {{$childCategory->title}}
+                                                @if($childCategory->children->count() > 0) <i class='bx bx-chevron-down'></i> @endif
+                                            </a>
+                                                <ul class="dropdown-menu">
+                                                    @foreach($childCategory->children as $subchildCategory)
+                                                        <li class="nav-item">
+                                                            <a href="shop-details.html" class="nav-link">
+                                                                {{$subchildCategory->title}}
+                                                            </a>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                        </li>
+                                        @endforeach
                                     </ul>
-                            </li>
+                                </li>
+                                @endforeach
+                            </ul>
+                        </li>
 
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                فروشگاه
+                                <i class='bx bx-chevron-down'></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item">
+                                    <a href="shop-left-sidebar.html" class="nav-link">
+                                        فروشگاه با سایدبار راست
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="shop-right-sidebar.html" class="nav-link">
+                                        فروشگاه با سایدبار چپ
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="shop-grid.html" class="nav-link">
+                                        فروشگاه با گرید
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="shop-full-width-sidebar.html" class="nav-link">
+                                        فروشگاه با عرض کامل سایدبار     </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                دسته‌بندی
+                                <i class='bx bx-chevron-down'></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item">
+                                    <a href="categories-1.html" class="nav-link">
+                                        دسته‌بندی(2 در صف)
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="categories-2.html" class="nav-link">
+                                        دسته‌بندی (3 در صف)
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="categories-full-width.html" class="nav-link">
+                                        دسته‌بندی تمام عرض
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                بلاگ
+                                <i class='bx bx-chevron-down'></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item">
+                                    <a href="blog-1.html" class="nav-link">
+                                        بلاگ استایل یک
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="blog-2.html" class="nav-link">
+                                        بلاگ استایل دو
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="blog-details.html" class="nav-link">
+                                        بلاگ جزییات
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="contact.html" class="nav-link">
+                                ارتباط با ما
+                            </a>
+                        </li>
+
+                        <li class="nav-item-btn ">
+                            <a href="log-in.html" class="default-btn border-radius-5 btn-bg-one">وارد شوید</a>
+                        </li>
                     </ul>
-                </div>
-                <h3 class="subtitle">پرفروش ها</h3>
-                <div class="side-item">
-                    <div class="product-thumb clearfix">
-                        <div class="image"><a href="product.html"><img src="/client/image/product/apple_cinema_30-50x50.jpg" alt="تی شرت کتان مردانه" title="تی شرت کتان مردانه" class="img-responsive" /></a></div>
-                        <div class="caption">
-                            <h4><a href="product.html">تی شرت کتان مردانه</a></h4>
-                            <p class="price"><span class="price-new">110000 تومان</span> <span class="price-old">122000 تومان</span> <span class="saving">-10%</span></p>
-                        </div>
-                    </div>
-                    <div class="product-thumb clearfix">
-                        <div class="image"><a href="product.html"><img src="/client/image/product/iphone_1-50x50.jpg" alt="آیفون 7" title="آیفون 7" class="img-responsive" /></a></div>
-                        <div class="caption">
-                            <h4><a href="product.html">آیفون 7</a></h4>
-                            <p class="price"> 2200000 تومان </p>
-                            <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span></div>
-                        </div>
-                    </div>
-                    <div class="product-thumb clearfix">
-                        <div class="image"><a href="product.html"><img src="/client/image/product/macbook_1-50x50.jpg" alt="آیدیا پد یوگا" title="آیدیا پد یوگا" class="img-responsive" /></a></div>
-                        <div class="caption">
-                            <h4><a href="product.html">آیدیا پد یوگا</a></h4>
-                            <p class="price"> 900000 تومان </p>
-                            <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                        </div>
-                    </div>
-                    <div class="product-thumb clearfix">
-                        <div class="image"><a href="product.html"><img src="/client/image/product/sony_vaio_1-50x50.jpg" alt="کفش راحتی مردانه" title="کفش راحتی مردانه" class="img-responsive" /></a></div>
-                        <div class="caption">
-                            <h4><a href="product.html">کفش راحتی مردانه</a></h4>
-                            <p class="price"> <span class="price-new">32000 تومان</span> <span class="price-old">12 میلیون تومان</span> <span class="saving">-25%</span> </p>
-                            <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                        </div>
-                    </div>
-                    <div class="product-thumb clearfix">
-                        <div class="image"><a href="product.html"><img src="/client/image/product/FinePix-Long-Zoom-Camera-50x50.jpg" alt="دوربین فاین پیکس" title="دوربین فاین پیکس" class="img-responsive" /></a></div>
-                        <div class="caption">
-                            <h4><a href="product.html">دوربین فاین پیکس</a></h4>
-                            <p class="price">122000 تومان</p>
-                        </div>
-                    </div>
-                </div>
-                <h3 class="subtitle">ویژه</h3>
-                <div class="side-item">
-                    <div class="product-thumb clearfix">
-                        <div class="image"><a href="product.html"><img src="/client/image/product/macbook_pro_1-50x50.jpg" alt=" کتاب آموزش باغبانی " title=" کتاب آموزش باغبانی " class="img-responsive" /></a></div>
-                        <div class="caption">
-                            <h4><a href="product.html">کتاب آموزش باغبانی</a></h4>
-                            <p class="price"> <span class="price-new">98000 تومان</span> <span class="price-old">120000 تومان</span> <span class="saving">-26%</span> </p>
-                        </div>
-                    </div>
-                    <div class="product-thumb clearfix">
-                        <div class="image"><a href="product.html"><img src="/client/image/product/samsung_tab_1-50x50.jpg" alt="تبلت ایسر" title="تبلت ایسر" class="img-responsive" /></a></div>
-                        <div class="caption">
-                            <h4><a href="product.html">تبلت ایسر</a></h4>
-                            <p class="price"> <span class="price-new">98000 تومان</span> <span class="price-old">240000 تومان</span> <span class="saving">-5%</span> </p>
-                            <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                        </div>
-                    </div>
-                    <div class="product-thumb clearfix">
-                        <div class="image"><a href="product.html"><img src="/client/image/product/apple_cinema_30-50x50.jpg" alt="تی شرت کتان مردانه" title="تی شرت کتان مردانه" class="img-responsive" /></a></div>
-                        <div class="caption">
-                            <h4><a href="http://demo.harnishdesign.net/opencart/marketshop/v1/index.php?route=product/product&amp;product_id=42">تی شرت کتان مردانه</a></h4>
-                            <p class="price"> <span class="price-new">110000 تومان</span> <span class="price-old">122000 تومان</span> <span class="saving">-10%</span> </p>
-                        </div>
-                    </div>
-                    <div class="product-thumb clearfix">
-                        <div class="image"><a href="product.html"><img src="/client/image/product/nikon_d300_1-50x50.jpg" alt="دوربین دیجیتال حرفه ای" title="دوربین دیجیتال حرفه ای" class="img-responsive" /></a></div>
-                        <div class="caption">
-                            <h4><a href="product.html">دوربین دیجیتال حرفه ای</a></h4>
-                            <p class="price"> <span class="price-new">92000 تومان</span> <span class="price-old">98000 تومان</span> <span class="saving">-6%</span> </p>
-                        </div>
-                    </div>
-                    <div class="product-thumb clearfix">
-                        <div class="image"><a href="product.html"><img src="/client/image/product/nikon_d300_5-50x50.jpg" alt="محصولات مراقبت از مو" title="محصولات مراقبت از مو" class="img-responsive" /></a></div>
-                        <div class="caption">
-                            <h4><a href="product.html">محصولات مراقبت از مو</a></h4>
-                            <p class="price"> <span class="price-new">66000 تومان</span> <span class="price-old">90000 تومان</span> <span class="saving">-27%</span> </p>
-                            <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                        </div>
-                    </div>
-                    <div class="product-thumb clearfix">
-                        <div class="image"><a href="product.html"><img src="/client/image/product/macbook_air_1-50x50.jpg" alt="لپ تاپ ایلین ور" title="لپ تاپ ایلین ور" class="img-responsive" /></a></div>
-                        <div class="caption">
-                            <h4><a href="product.html">لپ تاپ ایلین ور</a></h4>
-                            <p class="price"> <span class="price-new">10 میلیون تومان</span> <span class="price-old">12 میلیون تومان</span> <span class="saving">-5%</span> </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="list-group">
-                    <h3 class="subtitle">محتوای سفارشی</h3>
-                    <p>این یک بلاک محتواست. هر نوع محتوایی شامل html، نوشته یا تصویر را میتوانید در آن قرار دهید. </p>
-                    <p> در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد. </p>
-                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
-                </div>
-                <div class="banner owl-carousel">
-                    <div class="item"> <a href="#"><img src="/client/image/banner/small-banner1-265x350.jpg" alt="small banner" class="img-responsive" /></a> </div>
-                    <div class="item"> <a href="#"><img src="/client/image/banner/small-banner-265x350.jpg" alt="small banner1" class="img-responsive" /></a> </div>
-                </div>
-                <h3 class="subtitle">جدیدترین</h3>
-                <div class="side-item">
-                    <div class="product-thumb clearfix">
-                        <div class="image"><a href="product.html"><img src="/client/image/product/iphone_6-50x50.jpg" alt="کرم مو آقایان" title="کرم مو آقایان" class="img-responsive" /></a></div>
-                        <div class="caption">
-                            <h4><a href="product.html">کرم مو آقایان</a></h4>
-                            <p class="price"> 42300 تومان </p>
-                            <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                        </div>
-                    </div>
-                    <div class="product-thumb clearfix">
-                        <div class="image"><a href="product.html"><img src="/client/image/product/nikon_d300_5-50x50.jpg" alt="محصولات مراقبت از مو" title="محصولات مراقبت از مو" class="img-responsive" /></a></div>
-                        <div class="caption">
-                            <h4><a href="product.html">محصولات مراقبت از مو</a></h4>
-                            <p class="price"> <span class="price-new">66000 تومان</span> <span class="price-old">90000 تومان</span> <span class="saving">-27%</span> </p>
-                            <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                        </div>
-                    </div>
-                    <div class="product-thumb clearfix">
-                        <div class="image"><a href="product.html"><img src="/client/image/product/nikon_d300_4-50x50.jpg" alt="کرم لخت کننده مو" title="کرم لخت کننده مو" class="img-responsive" /></a></div>
-                        <div class="caption">
-                            <h4><a href="product.html">کرم لخت کننده مو</a></h4>
-                            <p class="price"> 88000 تومان </p>
-                        </div>
-                    </div>
-                    <div class="product-thumb clearfix">
-                        <div class="image"><a href="product.html"><img src="/client/image/product/macbook_5-50x50.jpg" alt="ژل حمام بانوان" title="ژل حمام بانوان" class="img-responsive" /></a></div>
-                        <div class="caption">
-                            <h4><a href="product.html">ژل حمام بانوان</a></h4>
-                            <p class="price"> <span class="price-new">19500 تومان</span> <span class="price-old">21900 تومان</span> <span class="saving">-4%</span> </p>
-                        </div>
-                    </div>
-                    <div class="product-thumb clearfix">
-                        <div class="image"><a href="product.html"><img src="/client/image/product/macbook_4-50x50.jpg" alt="عطر گوچی" title="عطر گوچی" class="img-responsive" /></a></div>
-                        <div class="caption">
-                            <h4><a href="product.html">عطر گوچی</a></h4>
-                            <p class="price"> 85000 تومان </p>
-                            <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                        </div>
-                    </div>
-                    <div class="product-thumb clearfix">
-                        <div class="image"><a href="product.html"><img src="/client/image/product/macbook_3-50x50.jpg" alt="رژ لب گارنیر" title="رژ لب گارنیر" class="img-responsive" /></a></div>
-                        <div class="caption">
-                            <h4><a href="product.html">رژ لب گارنیر</a></h4>
-                            <p class="price"> 123000 تومان </p>
-                        </div>
-                    </div>
-                    <div class="product-thumb clearfix">
-                        <div class="image">
-                            <a href="product.html">
-                                <img src="/client/image/product/macbook_2-50x50.jpg" alt="عطر نینا ریچی" title="عطر نینا ریچی" class="img-responsive" />
-                            </a>
-                        </div>
-                        <div class="caption">
-                            <h4><a href="product.html">عطر نینا ریچی</a></h4>
-                            <p class="price"> 110000 تومان </p>
-                        </div>
-                    </div>
-                </div>
-            </aside>
-            <!-- Left Part End-->
-            <!--Middle Part Start-->
-            <div id="content" class="col-sm-9">
-                <!-- Slideshow Start-->
-                <div class="slideshow single-slider owl-carousel">
-                        <div class="item">
-                            <a href="">
-                                <img class="img-responsive" src="#" alt="banner 1" />
-                            </a>
-                        </div>
-                </div>
-                <!-- Slideshow End-->
-                <!-- Featured محصولات Start-->
-                <h3 class="subtitle">ویژه</h3>
-                <div class="owl-carousel product_carousel">
-                    <div class="product-thumb clearfix">
-                        <div class="image"><a href="product.html"><img src="/client/image/product/apple_cinema_30-200x200.jpg" alt="تی شرت کتان مردانه" title="تی شرت کتان مردانه" class="img-responsive" /></a></div>
-                        <div class="caption">
-                            <h4><a href="product.html">تی شرت کتان مردانه</a></h4>
-                            <p class="price"><span class="price-new">110000 تومان</span><span class="price-old">122000 تومان</span><span class="saving">-10%</span></p>
-                        </div>
-                        <div class="button-group">
-                            <button class="btn-primary" type="button" onClick="cart.add('42');"><span>افزودن به سبد</span></button>
-                            <div class="add-to-links">
-                                <button type="button" data-toggle="tooltip" title="Add to Wish List" onClick=""><i class="fa fa-heart"></i></button>
-                                <button type="button" data-toggle="tooltip" title="مقایسه this محصولات" onClick=""><i class="fa fa-exchange"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-thumb clearfix">
-                        <div class="image"><a href="product.html"><img src="/client/image/product/samsung_tab_1-200x200.jpg" alt="تبلت ایسر" title="تبلت ایسر" class="img-responsive" /></a></div>
-                        <div class="caption">
-                            <h4><a href="product.html">تبلت ایسر</a></h4>
-                            <p class="price"> <span class="price-new">98000 تومان</span> <span class="price-old">240000 تومان</span> <span class="saving">-5%</span> </p>
-                            <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                        </div>
-                        <div class="button-group">
-                            <button class="btn-primary" type="button" onClick="cart.add('49');"><span>افزودن به سبد</span></button>
-                            <div class="add-to-links">
-                                <button type="button" data-toggle="tooltip" title="Add to Wish List" onClick=""><i class="fa fa-heart"></i></button>
-                                <button type="button" data-toggle="tooltip" title="مقایسه this محصولات" onClick=""><i class="fa fa-exchange"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-thumb clearfix">
-                        <div class="image"><a href="product.html"><img src="/client/image/product/sony_vaio_1-200x200.jpg" alt="کفش راحتی مردانه" title="کفش راحتی مردانه" class="img-responsive" /></a></div>
-                        <div class="caption">
-                            <h4><a href="product.html">کفش راحتی مردانه</a></h4>
-                            <p class="price"> <span class="price-new">32000 تومان</span> <span class="price-old">12 میلیون تومان</span> <span class="saving">-25%</span> </p>
-                            <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                        </div>
-                        <div class="button-group">
-                            <button class="btn-primary" type="button" onClick="cart.add('46');"><span>افزودن به سبد</span></button>
-                            <div class="add-to-links">
-                                <button type="button" data-toggle="tooltip" title="Add to Wish List" onClick=""><i class="fa fa-heart"></i></button>
-                                <button type="button" data-toggle="tooltip" title="مقایسه this محصولات" onClick=""><i class="fa fa-exchange"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-thumb clearfix">
-                        <div class="image"><a href="product.html"><img src="/client/image/product/macbook_1-200x200.jpg" alt="آیدیا پد یوگا" title="آیدیا پد یوگا" class="img-responsive" /></a></div>
-                        <div class="caption">
-                            <h4><a href="product.html">آیدیا پد یوگا</a></h4>
-                            <p class="price"> 900000 تومان </p>
-                            <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                        </div>
-                        <div class="button-group">
-                            <button class="btn-primary" type="button" onClick="cart.add('43');"><span>افزودن به سبد</span></button>
-                            <div class="add-to-links">
-                                <button type="button" data-toggle="tooltip" title="Add to Wish List" onClick=""><i class="fa fa-heart"></i></button>
-                                <button type="button" data-toggle="tooltip" title="مقایسه this محصولات" onClick=""><i class="fa fa-exchange"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-thumb clearfix">
-                        <div class="image"><a href="product.html"><img src="/client/image/product/iphone_1-200x200.jpg" alt="آیفون 7" title="آیفون 7" class="img-responsive" /></a></div>
-                        <div class="caption">
-                            <h4><a href="product.html">آیفون 7</a></h4>
-                            <p class="price"> 2200000 تومان </p>
-                            <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                        </div>
-                        <div class="button-group">
-                            <button class="btn-primary" type="button" onClick=""><span>افزودن به سبد</span></button>
-                            <div class="add-to-links">
-                                <button type="button" data-toggle="tooltip" title="Add to Wish List" onClick=""><i class="fa fa-heart"></i></button>
-                                <button type="button" data-toggle="tooltip" title="مقایسه this محصولات" onClick=""><i class="fa fa-exchange"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-thumb clearfix">
-                        <div class="image"><a href="product.html"><img src="/client/image/product/canon_eos_5d_1-200x200.jpg" alt="تیشرت آستین بلند مردانه" title="تیشرت آستین بلند مردانه" class="img-responsive" /></a></div>
-                        <div class="caption">
-                            <h4><a href="product.html">تیشرت آستین بلند مردانه</a></h4>
-                            <p class="price"> <span class="price-new">98000 تومان</span> <span class="price-old">122000 تومان</span> <span class="saving">-20%</span> </p>
-                        </div>
-                        <div class="button-group">
-                            <button class="btn-primary" type="button" onClick=""><span>افزودن به سبد</span></button>
-                            <div class="add-to-links">
-                                <button type="button" data-toggle="tooltip" title="Add to Wish List" onClick=""><i class="fa fa-heart"></i></button>
-                                <button type="button" data-toggle="tooltip" title="مقایسه this محصولات" onClick=""><i class="fa fa-exchange"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Featured محصولات End-->
-                <!-- Banner Start-->
-                <div class="marketshop-banner">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"><a href="#"><img src="/client/image/banner/sample-banner-3-400x200.jpg" alt="بنر نمونه 3" title="بنر نمونه 3" /></a></div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"><a href="#"><img src="/client/image/banner/sample-banner-1-400x200.jpg" alt="بنر نمونه" title="بنر نمونه" /></a></div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"><a href="#"><img src="/client/image/banner/sample-banner-2-400x200.jpg" alt="بنر نمونه 2" title="بنر نمونه 2" /></a></div>
-                    </div>
-                </div>
-                <!-- Banner End-->
-                    <!-- دسته ها محصولات Slider Start-->
-                        <div class="category-module" id="latest_category">
-                            <h3 class="subtitle"> - <a class="viewall" href="category.tpl">نمایش همه</a></h3>
-                            <div class="category-module-content">
-                                <ul id="sub-cat" class="tabs">
-                                        <li><a href="#tab-cat"></a></li>
 
-                                </ul>
-                                    <div id="tab-cat" class="tab_content">
-                                        <div class="owl-carousel latest_category_tabs">
-                                                <div class="product-thumb">
-                                                    <div class="image">
-                                                        <a href="">
-                                                            <img src="" alt="تبلت ایسر" title="تبلت ایسر" class="img-responsive" />
-                                                        </a>
-                                                    </div>
-                                                    <div class="caption">
-                                                        <h4><a href=""></a></h4>
-                                                        <p class="price">
-                                                            <span class="price-new"> تومان</span>
-
-                                                                <span class="price-old"> تومان</span> <span class="saving">-%</span>
-
-                                                        </p>
-                                                        <div class="rating">
-                                                    <span class="fa fa-stack">
-                                                        <i class="fa fa-star fa-stack-2x"></i>
-                                                        <i class="fa fa-star-o fa-stack-2x"></i>
-                                                    </span>
-                                                            <span class="fa fa-stack">
-                                                        <i class="fa fa-star fa-stack-2x"></i>
-                                                        <i class="fa fa-star-o fa-stack-2x"></i>
-                                                    </span>
-                                                            <span class="fa fa-stack">
-                                                        <i class="fa fa-star fa-stack-2x"></i>
-                                                        <i class="fa fa-star-o fa-stack-2x"></i>
-                                                    </span>
-                                                            <span class="fa fa-stack">
-                                                        <i class="fa fa-star fa-stack-2x"></i>
-                                                        <i class="fa fa-star-o fa-stack-2x"></i>
-                                                    </span>
-                                                            <span class="fa fa-stack">
-                                                        <i class="fa fa-star-o fa-stack-2x"></i>
-                                                    </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="button-group">
-                                                        <button class="btn-primary" type="button" onClick="addToCart();"><span>افزودن به سبد</span></button>
-                                                        <div class="add-to-links">
-                                                            <button type="button" class="wishlist" id="like" onClick="like();">
-                                                                <i class="fa fa-heart like "></i>
-                                                            </button>
-                                                            <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick=""><i class="fa fa-exchange"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                        </div>
-                                    </div>
-                                <div id="tab-cat2" class="tab_content">
-                                    <div class="owl-carousel latest_category_tabs">
-                                        <div class="product-thumb">
-                                            <div class="image"><a href="product.html"><img src="/client/image/product/ipod_shuffle_1-200x200.jpg" alt="لپ تاپ hp پاویلیون" title="لپ تاپ hp پاویلیون" class="img-responsive" /></a></div>
-                                            <div class="caption">
-                                                <h4><a href="product.html">لپ تاپ hp پاویلیون</a></h4>
-                                                <p class="price"> 122000 تومان </p>
-                                            </div>
-                                            <div class="button-group">
-                                                <button class="btn-primary" type="button" onClick=""><span>افزودن به سبد</span></button>
-                                                <div class="add-to-links">
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی" onClick=""><i class="fa fa-heart"></i></button>
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick=""><i class="fa fa-exchange"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="tab-cat3" class="tab_content">
-                                    <div class="owl-carousel latest_category_tabs">
-                                        <div class="product-thumb">
-                                            <div class="image"><a href="product.html"><img src="/client/image/product/FinePix-Long-Zoom-Camera-200x200.jpg" alt="دوربین فاین پیکس" title="دوربین فاین پیکس" class="img-responsive" /></a></div>
-                                            <div class="caption">
-                                                <h4><a href="product.html">دوربین فاین پیکس</a></h4>
-                                                <p class="price"> 122000 تومان </p>
-                                            </div>
-                                            <div class="button-group">
-                                                <button class="btn-primary" type="button" onClick=""><span>افزودن به سبد</span></button>
-                                                <div class="add-to-links">
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی" onClick=""><i class="fa fa-heart"></i></button>
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick=""><i class="fa fa-exchange"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-thumb">
-                                            <div class="image"><a href="product.html"><img src="/client/image/product/nikon_d300_1-200x200.jpg" alt="دوربین دیجیتال حرفه ای" title="دوربین دیجیتال حرفه ای" class="img-responsive" /></a></div>
-                                            <div class="caption">
-                                                <h4><a href="product.html">دوربین دیجیتال حرفه ای</a></h4>
-                                                <p class="price"> <span class="price-new">92000 تومان</span> <span class="price-old">98000 تومان</span> <span class="saving">-6%</span> </p>
-                                            </div>
-                                            <div class="button-group">
-                                                <button class="btn-primary" type="button" onClick=""><span>افزودن به سبد</span></button>
-                                                <div class="add-to-links">
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی" onClick=""><i class="fa fa-heart"></i></button>
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick=""><i class="fa fa-exchange"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="tab-cat4" class="tab_content">
-                                    <div class="owl-carousel latest_category_tabs">
-                                        <div class="product-thumb">
-                                            <div class="image"><a href="product.html"><img src="/client/image/product/samsung_tab_1-200x200.jpg" alt="تبلت ایسر" title="تبلت ایسر" class="img-responsive" /></a></div>
-                                            <div class="caption">
-                                                <h4><a href="product.html">تبلت ایسر</a></h4>
-                                                <p class="price"> <span class="price-new">98000 تومان</span> <span class="price-old">240000 تومان</span> <span class="saving">-5%</span> </p>
-                                                <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                                            </div>
-                                            <div class="button-group">
-                                                <button class="btn-primary" type="button" onClick=""><span>افزودن به سبد</span></button>
-                                                <div class="add-to-links">
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی" onClick=""><i class="fa fa-heart"></i></button>
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick=""><i class="fa fa-exchange"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-thumb">
-                                            <div class="image"><a href="product.html"><img src="/client/image/product/iphone_1-200x200.jpg" alt="آیفون 7" title="آیفون 7" class="img-responsive" /></a></div>
-                                            <div class="caption">
-                                                <h4><a href="product.html">آیفون 7</a></h4>
-                                                <p class="price"> 2200000 تومان </p>
-                                                <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                                            </div>
-                                            <div class="button-group">
-                                                <button class="btn-primary" type="button" onClick=""><span>افزودن به سبد</span></button>
-                                                <div class="add-to-links">
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی" onClick=""><i class="fa fa-heart"></i></button>
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick=""><i class="fa fa-exchange"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-thumb">
-                                            <div class="image"><a href="product.html"><img src="/client/image/product/ipod_touch_1-200x200.jpg" alt="سامسونگ گلکسی s7" title="سامسونگ گلکسی s7" class="img-responsive" /></a></div>
-                                            <div class="caption">
-                                                <h4><a href="product.html">سامسونگ گلکسی s7</a></h4>
-                                                <p class="price"> <span class="price-new">62000 تومان</span> <span class="price-old">122000 تومان</span> <span class="saving">-50%</span> </p>
-                                            </div>
-                                            <div class="button-group">
-                                                <button class="btn-primary" type="button" onClick=""><span>افزودن به سبد</span></button>
-                                                <div class="add-to-links">
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی" onClick=""><i class="fa fa-heart"></i></button>
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick=""><i class="fa fa-exchange"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-thumb">
-                                            <div class="image"><a href="product.html"><img src="/client/image/product/palm_treo_pro_1-200x200.jpg" alt="موبایل HTC M7" title="موبایل HTC M7" class="img-responsive" /></a></div>
-                                            <div class="caption">
-                                                <h4><a href="product.html">موبایل HTC M7</a></h4>
-                                                <p class="price"> 377000 تومان </p>
-                                            </div>
-                                            <div class="button-group">
-                                                <button class="btn-primary" type="button" onClick=""><span>افزودن به سبد</span></button>
-                                                <div class="add-to-links">
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی" onClick=""><i class="fa fa-heart"></i></button>
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick=""><i class="fa fa-exchange"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="tab-cat5" class="tab_content">
-                                    <div class="owl-carousel latest_category_tabs">
-                                        <div class="product-thumb">
-                                            <div class="image"><a href="product.html"><img src="" alt="تبلت ایسر" title="تبلت ایسر" class="img-responsive" /></a></div>
-                                            <div class="caption">
-                                                <h4><a href="product.html">تبلت ایسر</a></h4>
-                                                <p class="price"> <span class="price-new">98000 تومان</span> <span class="price-old">240000 تومان</span> <span class="saving">-5%</span> </p>
-                                                <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                                            </div>
-                                            <div class="button-group">
-                                                <button class="btn-primary" type="button" onClick=""><span>افزودن به سبد</span></button>
-                                                <div class="add-to-links">
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی" onClick=""><i class="fa fa-heart"></i></button>
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick=""><i class="fa fa-exchange"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-thumb">
-                                            <div class="image"><a href="product.html"><img src="/client/image/product/ipod_classic_1-200x200.jpg" alt="آیپاد نسل 5" title="آیپاد نسل 5" class="img-responsive" /></a></div>
-                                            <div class="caption">
-                                                <h4><a href="product.html">آیپاد نسل 5</a></h4>
-                                                <p class="price"> 122000 تومان </p>
-                                            </div>
-                                            <div class="button-group">
-                                                <button class="btn-primary" type="button" onClick=""><span>افزودن به سبد</span></button>
-                                                <div class="add-to-links">
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی" onClick=""><i class="fa fa-heart"></i></button>
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick=""><i class="fa fa-exchange"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-thumb">
-                                            <div class="image"><a href="product.html"><img src="/client/image/product/macbook_pro_1-200x200.jpg" alt=" کتاب آموزش باغبانی " title=" کتاب آموزش باغبانی " class="img-responsive" /></a></div>
-                                            <div class="caption">
-                                                <h4><a href="product.html"> کتاب آموزش باغبانی </a></h4>
-                                                <p class="price"> <span class="price-new">98000 تومان</span> <span class="price-old">120000 تومان</span> <span class="saving">-26%</span> </p>
-                                            </div>
-                                            <div class="button-group">
-                                                <button class="btn-primary" type="button" onClick=""><span>افزودن به سبد</span></button>
-                                                <div class="add-to-links">
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی" onClick=""><i class="fa fa-heart"></i></button>
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick=""><i class="fa fa-exchange"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-thumb">
-                                            <div class="image"><a href="product.html"><img src="/client/image/product/macbook_air_1-200x200.jpg" alt="لپ تاپ ایلین ور" title="لپ تاپ ایلین ور" class="img-responsive" /></a></div>
-                                            <div class="caption">
-                                                <h4><a href="product.html">لپ تاپ ایلین ور</a></h4>
-                                                <p class="price"> <span class="price-new">10 میلیون تومان</span> <span class="price-old">12 میلیون تومان</span> <span class="saving">-5%</span> </p>
-                                            </div>
-                                            <div class="button-group">
-                                                <button class="btn-primary" type="button" onClick=""><span>افزودن به سبد</span></button>
-                                                <div class="add-to-links">
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی" onClick=""><i class="fa fa-heart"></i></button>
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick=""><i class="fa fa-exchange"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-thumb">
-                                            <div class="image"><a href="product.html"><img src="/client/image/product/macbook_1-200x200.jpg" alt="آیدیا پد یوگا" title="آیدیا پد یوگا" class="img-responsive" /></a></div>
-                                            <div class="caption">
-                                                <h4><a href="product.html">آیدیا پد یوگا</a></h4>
-                                                <p class="price"> 900000 تومان </p>
-                                                <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                                            </div>
-                                            <div class="button-group">
-                                                <button class="btn-primary" type="button" onClick=""><span>افزودن به سبد</span></button>
-                                                <div class="add-to-links">
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی" onClick=""><i class="fa fa-heart"></i></button>
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick=""><i class="fa fa-exchange"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-thumb">
-                                            <div class="image"><a href="product.html"><img src="/client/image/product/ipod_nano_1-200x200.jpg" alt="پخش کننده موزیک" title="پخش کننده موزیک" class="img-responsive" /></a></div>
-                                            <div class="caption">
-                                                <h4><a href="product.html">پخش کننده موزیک</a></h4>
-                                                <p class="price"> 122000 تومان </p>
-                                            </div>
-                                            <div class="button-group">
-                                                <button class="btn-primary" type="button" onClick=""><span>افزودن به سبد</span></button>
-                                                <div class="add-to-links">
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی" onClick=""><i class="fa fa-heart"></i></button>
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick=""><i class="fa fa-exchange"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-thumb">
-                                            <div class="image"><a href="product.html"><img src="/client/image/product/FinePix-Long-Zoom-Camera-200x200.jpg" alt="دوربین فاین پیکس" title="دوربین فاین پیکس" class="img-responsive" /></a></div>
-                                            <div class="caption">
-                                                <h4><a href="product.html">دوربین فاین پیکس</a></h4>
-                                                <p class="price"> 122000 تومان </p>
-                                            </div>
-                                            <div class="button-group">
-                                                <button class="btn-primary" type="button" onClick=""><span>افزودن به سبد</span></button>
-                                                <div class="add-to-links">
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی" onClick=""><i class="fa fa-heart"></i></button>
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick=""><i class="fa fa-exchange"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-thumb">
-                                            <div class="image"><a href="product.html"><img src="/client/image/product/ipod_shuffle_1-200x200.jpg" alt="لپ تاپ hp پاویلیون" title="لپ تاپ hp پاویلیون" class="img-responsive" /></a></div>
-                                            <div class="caption">
-                                                <h4><a href="product.html">لپ تاپ hp پاویلیون</a></h4>
-                                                <p class="price"> 122000 تومان </p>
-                                            </div>
-                                            <div class="button-group">
-                                                <button class="btn-primary" type="button" onClick="cart.add('34');"><span>افزودن به سبد</span></button>
-                                                <div class="add-to-links">
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی" onClick="wishlist.add('34');"><i class="fa fa-heart"></i></button>
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick="compare.add('34');"><i class="fa fa-exchange"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-thumb">
-                                            <div class="image"><a href="product.html"><img src="/client/image/product/ipod_touch_1-200x200.jpg" alt="سامسونگ گلکسی s7" title="سامسونگ گلکسی s7" class="img-responsive" /></a></div>
-                                            <div class="caption">
-                                                <h4><a href="product.html">سامسونگ گلکسی s7</a></h4>
-                                                <p class="price"> <span class="price-new">62000 تومان</span> <span class="price-old">122000 تومان</span> <span class="saving">-50%</span> </p>
-                                            </div>
-                                            <div class="button-group">
-                                                <button class="btn-primary" type="button" onClick=""><span>افزودن به سبد</span></button>
-                                                <div class="add-to-links">
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی" onClick=""><i class="fa fa-heart"></i></button>
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick=""><i class="fa fa-exchange"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-thumb">
-                                            <div class="image"><a href="product.html"><img src="/client/image/product/nikon_d300_1-200x200.jpg" alt="دوربین دیجیتال حرفه ای" title="دوربین دیجیتال حرفه ای" class="img-responsive" /></a></div>
-                                            <div class="caption">
-                                                <h4><a href="product.html">دوربین دیجیتال حرفه ای</a></h4>
-                                                <p class="price"> <span class="price-new">92000 تومان</span> <span class="price-old">98000 تومان</span> <span class="saving">-6%</span> </p>
-                                            </div>
-                                            <div class="button-group">
-                                                <button class="btn-primary" type="button" onClick=""><span>افزودن به سبد</span></button>
-                                                <div class="add-to-links">
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی" onClick=""><i class="fa fa-heart"></i></button>
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick=""><i class="fa fa-exchange"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="tab-cat6" class="tab_content">
-                                    <div class="owl-carousel latest_category_tabs">
-                                        <div class="product-thumb">
-                                            <div class="image"><a href="product.html"><img src="/client/image/product/ipod_classic_1-200x200.jpg" alt="آیپاد نسل 5" title="آیپاد نسل 5" class="img-responsive" /></a></div>
-                                            <div class="caption">
-                                                <h4><a href="product.html">آیپاد نسل 5</a></h4>
-                                                <p class="price"> 122000 تومان </p>
-                                            </div>
-                                            <div class="button-group">
-                                                <button class="btn-primary" type="button" onClick="cart.add('48');"><span>افزودن به سبد</span></button>
-                                                <div class="add-to-links">
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی" onClick=""><i class="fa fa-heart"></i></button>
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick=""><i class="fa fa-exchange"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-thumb">
-                                            <div class="image"><a href="product.html"><img src="/client/image/product/ipod_nano_1-200x200.jpg" alt="پخش کننده موزیک" title="پخش کننده موزیک" class="img-responsive" /></a></div>
-                                            <div class="caption">
-                                                <h4><a href="product.html">پخش کننده موزیک</a></h4>
-                                                <p class="price"> 122000 تومان </p>
-                                            </div>
-                                            <div class="button-group">
-                                                <button class="btn-primary" type="button" onClick=""><span>افزودن به سبد</span></button>
-                                                <div class="add-to-links">
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به علاقه مندی" onClick=""><i class="fa fa-heart"></i></button>
-                                                    <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick=""><i class="fa fa-exchange"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- دسته ها محصولات Slider End-->
-                <!-- Banner Start -->
-                <div class="marketshop-banner">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><a href="#"><img src="/client/image/banner/sample-banner-5-400x150.jpg" alt="2 Block Banner 1" title="2 Block Banner 1" /></a></div>
+                    <div class="nav-btn">
+                        <a href="log-in.html" class="default-btn border-radius-5 btn-bg-one">وارد شوید</a>
                     </div>
                 </div>
-                <!-- Banner End -->
-                    <!-- دسته ها محصولات Slider Start -->
-                        <h3 class="subtitle"> - <a class="viewall" href="category.html">نمایش همه</a></h3>
-                        <div class="owl-carousel latest_category_carousel">
-                                <div class="product-thumb">
-                                <div class="image"><a href=""><img src="" alt="محصولات مراقبت از مو" title="محصولات مراقبت از مو" class="img-responsive" /></a></div>
-                                <div class="caption">
-                                    <h4><a href=""></a></h4>
-                                    <p class="price"> <span class="price-new"> تومان</span>
-
-                                            <span class="price-old"> تومان</span>
-                                            <span class="saving">-%</span>
-
-                                    </p>
-                                    <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
-                                </div>
-                                <div class="button-group">
-                                    <button class="btn-primary" type="button" onClick="addToCart();"><span>افزودن به سبد</span></button>
-                                    <div class="add-to-links">
-                                        <button type="button" class="wishlist" id="like-" onClick="like();">
-                                            <i class="fa fa-heart  like "></i>
-                                        </button>
-                                        <button type="button" data-toggle="tooltip" title="افزودن به مقایسه" onClick=""><i class="fa fa-exchange"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <!-- دسته ها محصولات Slider End -->
-
-                <!-- Brand Logo Carousel Start-->
-                <div id="carousel" class="owl-carousel nxt">
-                        <div class="item text-center"> <a href="#"><img src="" alt="" class="img-responsive" /></a> </div>
-                </div>
-                <!-- Brand Logo Carousel End -->
-            </div>
-            <!--Middle Part End-->
+            </nav>
         </div>
     </div>
+</div>
+<!-- End Navbar Area -->
+
+<!-- Banner Area -->
+<div class="banner-area">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-lg-4">
+                <div class="banner-content-area">
+                    <div class="banner-content">
+                        <span>20UNH22U رولکس 1002 ، کد </span>
+                        <h1> اولکس ، بهترین راه برای خرید </h1>
+                        <p>این یکی از بهترین روش های مناسب و مناسب برای خرید محصول با قیمت مناسب و مناسب است.</p>
+                        <a href="shop-details.html" class="default-btn btn-bg-one border-radius-5">خرید</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+                <div class="banner-img-area">
+                    <div class="banner-img">
+                        <img src="client/images/home-one/home-one1.png" alt="Images">
+                        <div class="banner-offer-tag">
+                            <h3>60%</h3>
+                            <span>پیشنهاد</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Banner Area End -->
+
+<!-- Product New Arrival  -->
+<section class="product-new-arrival pt-100 pb-70">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-3 col-md-3">
+                <div class="section-title">
+                    <h2>تازه رسیده ها</h2>
+                </div>
+            </div>
+
+            <div class="col-lg-9 col-md-9">
+                <ul class="filter-menu">
+                    <li class="filter active" data-filter="all">همه محصولات</li>
+                    <li class="filter" data-filter=".television">تلویزیون</li>
+                    <li class="filter" data-filter=".lamp">لامپ</li>
+                    <li class="filter" data-filter=".smartphone">گوشی همراه</li>
+                    <li class="filter" data-filter=".camera">دوربین</li>
+                </ul>
+            </div>
+        </div>
+        <hr class="line-bottom">
+
+        <div id="Container" class="row">
+            <div class="col-lg-3 col-sm-6 mix smartphone">
+                <div class="arrival-product">
+                    <div class="arrival-img">
+                        <a href="shop-details.html">
+                            <img src="client/images/products/product-img1.png" alt="تصویر محصول">
+                        </a>
+                        <div class="new-tag">
+                            <h3>جدید</h3>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <h3><a href="shop-details.html">هدفون سنهیزر</a></h3>
+                        <span>کد محصول # 20UN23HU</span>
+                        <div class="price-tag">
+                            <h4>120 تومان<del>159 تومان</del></h4>
+                        </div>
+
+                        <div class="add-btn">
+                            <a href="shop-details.html" class="add-cart-btn">خرید</a>
+                        </div>
+
+                        <ul class="products-action">
+                            <li>
+                                <a href="#" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart'></i></a>
+                            </li>
+                            <li>
+                                <a href="#" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
+                                    <i class='bx bx-show-alt'></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6 mix smartphone television camera">
+                <div class="arrival-product">
+                    <div class="arrival-img">
+                        <a href="shop-details.html">
+                            <img src="client/images/products/product-img2.png" alt="تصویر محصول">
+                        </a>
+                        <div class="new-tag">
+                            <h3>جدید</h3>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <h3><a href="shop-details.html">نیکون پی-1000</a></h3>
+                        <span>کد محصول # 30PN23HU</span>
+                        <div class="price-tag">
+                            <h4>999 تومان<del>1050 تومان</del></h4>
+                        </div>
+
+                        <div class="add-btn">
+                            <a href="shop-details.html" class="add-cart-btn">خرید</a>
+                        </div>
+                        <ul class="products-action">
+                            <li>
+                                <a href="#" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart'></i></a>
+                            </li>
+                            <li>
+                                <a href="#" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
+                                    <i class='bx bx-show-alt'></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6 mix smartphone lamp camera">
+                <div class="arrival-product">
+                    <div class="arrival-img">
+                        <a href="shop-details.html">
+                            <img src="client/images/products/product-img3.png" alt="تصویر محصول">
+                        </a>
+                        <div class="new-tag">
+                            <h3>جدید</h3>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <h3><a href="shop-details.html">گوشی سنهیزر</a></h3>
+                        <span>کد محصول # 40PN24LU</span>
+                        <div class="price-tag">
+                            <h4>320 تومان<del>340 تومان</del></h4>
+                        </div>
+
+                        <div class="add-btn">
+                            <a href="shop-details.html" class="add-cart-btn">خرید</a>
+                        </div>
+                        <ul class="products-action">
+                            <li>
+                                <a href="#" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart'></i></a>
+                            </li>
+                            <li>
+                                <a href="#" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
+                                    <i class='bx bx-show-alt'></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6 mix smartphone television">
+                <div class="arrival-product">
+                    <div class="arrival-img">
+                        <a href="shop-details.html">
+                            <img src="client/images/products/product-img4.png" alt="تصویر محصول">
+                        </a>
+                        <div class="new-tag">
+                            <h3>جدید</h3>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <h3><a href="shop-details.html">ای واچ گالری</a></h3>
+                        <span>کد محصول # 40PN24LU</span>
+                        <div class="price-tag">
+                            <h4>310 تومان<del>340 تومان</del></h4>
+                        </div>
+
+                        <div class="add-btn">
+                            <a href="shop-details.html" class="add-cart-btn">خرید</a>
+                        </div>
+                        <ul class="products-action">
+                            <li>
+                                <a href="#" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart'></i></a>
+                            </li>
+                            <li>
+                                <a href="#" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
+                                    <i class='bx bx-show-alt'></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6 mix lamp camera">
+                <div class="arrival-product">
+                    <div class="arrival-img">
+                        <a href="shop-details.html">
+                            <img src="client/images/products/product-img5.png" alt="تصویر محصول">
+                        </a>
+                        <div class="new-tag">
+                            <h3>جدید</h3>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <h3><a href="shop-details.html">توستر کلور 3569</a></h3>
+                        <span>کد محصول # 70PN24LU</span>
+                        <div class="price-tag">
+                            <h4>129 تومان<del>159 تومان</del></h4>
+                        </div>
+
+                        <div class="add-btn">
+                            <a href="shop-details.html" class="add-cart-btn">خرید</a>
+                        </div>
+                        <ul class="products-action">
+                            <li>
+                                <a href="#" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart'></i></a>
+                            </li>
+                            <li>
+                                <a href="#" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
+                                    <i class='bx bx-show-alt'></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6 mix television lamp">
+                <div class="arrival-product">
+                    <div class="arrival-img">
+                        <a href="shop-details.html">
+                            <img src="client/images/products/product-img6.png" alt="تصویر محصول">
+                        </a>
+                        <div class="new-tag">
+                            <h3>جدید</h3>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <h3><a href="shop-details.html">بریویل گیو بلندر</a></h3>
+                        <span>کد محصول # 60PN14LU</span>
+                        <div class="price-tag">
+                            <h4>129 تومان<del>159 تومان</del></h4>
+                        </div>
+
+                        <div class="add-btn">
+                            <a href="shop-details.html" class="add-cart-btn">خرید</a>
+                        </div>
+                        <ul class="products-action">
+                            <li>
+                                <a href="#" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart'></i></a>
+                            </li>
+                            <li>
+                                <a href="#" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
+                                    <i class='bx bx-show-alt'></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6 mix lamp ">
+                <div class="arrival-product">
+                    <div class="arrival-img">
+                        <a href="shop-details.html">
+                            <img src="client/images/products/product-img7.png" alt="تصویر محصول">
+                        </a>
+                        <div class="new-tag">
+                            <h3>جدید</h3>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <h3><a href="shop-details.html">الکتریک هاتپات</a></h3>
+                        <span>کد محصول # 60PN14LU</span>
+                        <div class="price-tag">
+                            <h4>300 تومان<del>340 تومان</del></h4>
+                        </div>
+
+                        <div class="add-btn">
+                            <a href="shop-details.html" class="add-cart-btn">خرید</a>
+                        </div>
+                        <ul class="products-action">
+                            <li>
+                                <a href="#" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart'></i></a>
+                            </li>
+                            <li>
+                                <a href="#" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
+                                    <i class='bx bx-show-alt'></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6 mix television camera">
+                <div class="arrival-product">
+                    <div class="arrival-img">
+                        <a href="shop-details.html">
+                            <img src="client/images/products/product-img8.png" alt="تصویر محصول">
+                        </a>
+                        <div class="new-tag">
+                            <h3>جدید</h3>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <h3><a href="shop-details.html">میکرو اون سمی</a></h3>
+                        <span>کد محصول # 20PN10LU</span>
+                        <div class="price-tag">
+                            <h4>400 تومان<del>500 تومان</del></h4>
+                        </div>
+
+                        <div class="add-btn">
+                            <a href="shop-details.html" class="add-cart-btn">خرید</a>
+                        </div>
+                        <ul class="products-action">
+                            <li>
+                                <a href="#" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart'></i></a>
+                            </li>
+                            <li>
+                                <a href="#" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
+                                    <i class='bx bx-show-alt'></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Product New Arrival End -->
+
+<!-- Product Category Area -->
+<div class="product-category-area">
+    <div class="container-fluid">
+        <div class="section-max-bg pt-100 pb-70">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-8 col-md-6">
+                        <div class="section-title">
+                            <h2>محصولات بر اساس دسته‌بندی</h2>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="product-category-form">
+                            <select class="form-control">
+                                <option>دسته‌بندی</option>
+                                <option>الکترونیکی</option>
+                                <option>کودک و نوزاد</option>
+                                <option>کفش و لباس</option>
+                                <option>سلامت و زیبایی</option>
+                                <option>سرگرمی و هنر</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row pt-45">
+                    <div class="col-lg-9">
+                        <div class="product-category-bg-card">
+                            <div class="content">
+                                <span>این محصول را با قیمت پیشنهادی دریافت کنید</span>
+                                <h3>بزرگترین پیشنهاد فروش فقط در تاریخ 30 آذر</h3>
+                                <p>حداکثر 55٪ تخفبف</p>
+                                <a href="#" class="default-btn border-radius-5 btn-bg-one">شروع کنید</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="product-category-card">
+                            <div class="product-category-img">
+                                <a href="shop-details.html">
+                                    <img src="client/images/products/product-img9.png" alt="تصویر محصول">
+                                </a>
+                                <div class="new-tag">
+                                    <h3>جدید</h3>
+                                </div>
+                                <ul class="product-category-action">
+                                    <li>
+                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart'></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
+                                            <i class='bx bx-show-alt'></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="content">
+                                <h3><a href="shop-details.html">تی-710 ایرفون</a></h3>
+                                <span>کد محصول # 27PN10LU</span>
+                                <div class="price-tag">
+                                    <h4>120 تومان<del>140 تومان</del></h4>
+                                </div>
+
+                                <div class="add-btn">
+                                    <a href="shop-details.html" class="add-cart-btn">خرید</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="product-category-card">
+                            <div class="product-category-img">
+                                <a href="shop-details.html">
+                                    <img src="client/images/products/product-img10.png" alt="تصویر محصول">
+                                </a>
+                                <div class="new-tag">
+                                    <h3>جدید</h3>
+                                </div>
+                                <ul class="product-category-action">
+                                    <li>
+                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart'></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
+                                            <i class='bx bx-show-alt'></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="content">
+                                <h3><a href="shop-details.html">ساعت هوشمند مشکی</a></h3>
+                                <span>کد محصول # 67HN10LU</span>
+                                <div class="price-tag">
+                                    <h4>100 تومان<del>120 تومان</del></h4>
+                                </div>
+
+                                <div class="add-btn">
+                                    <a href="shop-details.html" class="add-cart-btn">خرید</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="product-category-card">
+                            <div class="product-category-img">
+                                <a href="shop-details.html">
+                                    <img src="client/images/products/product-img11.png" alt="تصویر محصول">
+                                </a>
+                                <div class="new-tag">
+                                    <h3>جدید</h3>
+                                </div>
+                                <ul class="product-category-action">
+                                    <li>
+                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart'></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
+                                            <i class='bx bx-show-alt'></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="content">
+                                <h3><a href="shop-details.html">سونی ایکس ایرفون</a></h3>
+                                <span>کد محصول # 47PN20LU</span>
+                                <div class="price-tag">
+                                    <h4>240 تومان <del>270 تومان </del></h4>
+                                </div>
+
+                                <div class="add-btn">
+                                    <a href="shop-details.html" class="add-cart-btn">خرید</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="product-category-card">
+                            <div class="product-category-img">
+                                <a href="shop-details.html">
+                                    <img src="client/images/products/product-img12.png" alt="تصویر محصول">
+                                </a>
+                                <div class="new-tag">
+                                    <h3>جدید</h3>
+                                </div>
+                                <ul class="product-category-action">
+                                    <li>
+                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart'></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
+                                            <i class='bx bx-show-alt'></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="content">
+                                <h3><a href="shop-details.html">بریویل گیو بلندر</a></h3>
+                                <span>کد محصول # 47GN10HU</span>
+                                <div class="price-tag">
+                                    <h4>700 تومان <del>800 تومان </del></h4>
+                                </div>
+
+                                <div class="add-btn">
+                                    <a href="shop-details.html" class="add-cart-btn">خرید</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-6 offset-lg-0 offset-sm-3">
+                        <div class="product-category-card">
+                            <div class="product-category-img">
+                                <a href="shop-details.html">
+                                    <img src="client/images/products/product-img13.png" alt="تصویر محصول">
+                                </a>
+                                <div class="new-tag">
+                                    <h3>جدید</h3>
+                                </div>
+                                <ul class="product-category-action">
+                                    <li>
+                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart'></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
+                                            <i class='bx bx-show-alt'></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="content">
+                                <h3><a href="shop-details.html">لنووو لپتاپ</a></h3>
+                                <span>کد محصول # 47GN10HU</span>
+                                <div class="price-tag">
+                                    <h4>1200 تومان <del>1400 تومان </del></h4>
+                                </div>
+
+                                <div class="add-btn">
+                                    <a href="shop-details.html" class="add-cart-btn">خرید</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Product Category Area End -->
+
+<!-- Other Product Area End -->
+<div class="other-product-area pt-100 pb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="other-product-card">
+                    <img src="client/images/products/smart-tv.png" alt="Images">
+                    <div class="content">
+                        <h3>تلویزیون <b>هوشمند</b></h3>
+                        <span>حالا در 5 کی نتورک</span>
+                    </div>
+
+                    <div class="price-title">
+                        <h2><sup>از <sup class="sup-text">99</sup></sup> 877  تومان</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="other-product-champaign">
+                            <div class="content">
+                                <span>شروع از</span>
+                                <h2>80 تومان </h2>
+                                <h3>خرید رایگان در کمپین</h3>
+                            </div>
+                            <div class="product-champaign-img">
+                                <img src="client/images/products/product-img1.png" alt="Images">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div class="other-product-list">
+                            <i class='bx bx-shopping-bag'></i>
+                            <h3> تخفیف خرید </h3>
+                            <p>
+                                این یکی از بزرگترین و بزرگترین فروش بهترین محصولات این محصول است.
+                                شما به راحتی می توانید این محصول را از یک پیشنهاد ویژه خریداری کنید و این واقعاً موثر است.
+                            </p>
+                            <a href="#" class="default-btn border-radius-5">شروع کنید</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Other Product Area End -->
+
+<!-- Choose Area -->
+<div class="choose-area pb-70">
+    <div class="container">
+        <div class="section-title text-center">
+            <h2> چرا ما را انتخاب کنید </h2>
+        </div>
+        <div class="row pt-45">
+            <div class="col-lg-4 col-sm-6">
+                <div class="choose-card">
+                    <i class="flaticon-return"></i>
+                    <h3> بازگشت آسان </h3>
+                    <p>
+                        بازگشت 20 روزه بدون پرسش و سوال ، با خیال راحت. این یکی از بهترین پیشنهادات برای شما است.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-sm-6">
+                <div class="choose-card">
+                    <i class="flaticon-verified"></i>
+                    <h3> پرداخت امن </h3>
+                    <p>
+                        بازگشت 20 روزه بدون پرسش و سوال ، با خیال راحت. این یکی از بهترین پیشنهادات برای شما است.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-sm-6 offset-lg-0 offset-sm-3">
+                <div class="choose-card">
+                    <i class="flaticon-planet-earth"></i>
+                    <h3> خرید جهانی </h3>
+                    <p>
+                        بازگشت 20 روزه بدون پرسش و سوال ، با خیال راحت. این یکی از بهترین پیشنهادات برای شما است.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Choose Area End -->
+
+<!-- Product Offer Area -->
+<div class="product-offer-area">
+    <div class="container-fluid">
+        <div class="section-max-bg pt-100 pb-70">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-5">
+                        <div class="offer-card">
+                            <h2>این یکی از بزرگترین پیشنهادات است</h2>
+                            <h3>330 تومان<del>500 تومان</del></h3>
+                            <p>این یکی از بزرگترین و بزرگترین فروش این بهترین محصول است. شما به راحتی می توانید این محصول را از یک پیشنهاد ویژه خریداری کنید و این واقعاً موثر است.</p>
+                            <div id="timer">
+                                <div id="days"></div>
+                                <div id="hours"></div>
+                                <div id="minutes"></div>
+                                <div id="seconds"></div>
+                            </div>
+                            <a href="shop-details.html" class="default-btn btn-bg-one border-radius-5">خرید</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7">
+                        <div class="offer-slider owl-carousel owl-theme">
+                            <div class="offer-img-item">
+                                <img src="client/images/offer-img/offer-img1.jpg" alt="Offer Images">
+                                <div class="offer-tag">
+                                    <h3>60%</h3>
+                                    <span>پیشنهاد</span>
+                                </div>
+                            </div>
+
+                            <div class="offer-img-item">
+                                <img src="client/images/offer-img/offer-img2.jpg" alt="Offer Images">
+                                <div class="offer-tag">
+                                    <h3>50%</h3>
+                                    <span>پیشنهاد</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Product Offer Area End -->
+
+<!-- Best Sell Area -->
+<div class="best-sell-area pt-100 pb-70">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 col-md-6">
+                <div class="section-title">
+                    <h2>محصولات پرفروش</h2>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="product-search-form">
+                    <input type="search" class="form-control" placeholder="جستجو محصولات">
+                    <button type="submit">
+                        <i class="bx bx-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row pt-45">
+            <div class="col-lg-3 col-sm-6">
+                <div class="best-sell-card">
+                    <div class="best-sell-img">
+                        <a href="shop-details.html">
+                            <img src="client/images/products/best-sell-product1.png" alt="تصویر محصول">
+                        </a>
+                        <div class="new-tag">
+                            <h3>جدید</h3>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <h3><a href="shop-details.html">هیرز 7.5 کیلوگرم قسطی</a></h3>
+                        <span>کد محصول # 47GN10HU</span>
+                        <div class="price-tag">
+                            <h4>129 تومان<del>159 تومان</del></h4>
+                        </div>
+
+                        <div class="add-btn">
+                            <a href="shop-details.html" class="add-cart-btn">خرید</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6">
+                <div class="best-sell-card">
+                    <div class="best-sell-img">
+                        <a href="shop-details.html">
+                            <img src="client/images/products/best-sell-product2.png" alt="تصویر محصول">
+                        </a>
+                        <div class="new-tag">
+                            <h3>جدید</h3>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <h3><a href="shop-details.html">دی اس تلویزیون</a></h3>
+                        <span>کد محصول # 57GN10HU</span>
+                        <div class="price-tag">
+                            <h4>149 تومان<del>169 تومان</del></h4>
+                        </div>
+
+                        <div class="add-btn">
+                            <a href="shop-details.html" class="add-cart-btn">خرید</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6">
+                <div class="best-sell-card">
+                    <div class="best-sell-img">
+                        <a href="shop-details.html">
+                            <img src="client/images/products/best-sell-product3.png" alt="تصویر محصول">
+                        </a>
+                        <div class="new-tag">
+                            <h3>جدید</h3>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <h3><a href="shop-details.html">رنجز التی دی یخچال</a></h3>
+                        <span>کد محصول # 57GN10HU</span>
+                        <div class="price-tag">
+                            <h4>1400 تومان<del>1600 تومان</del></h4>
+                        </div>
+
+                        <div class="add-btn">
+                            <a href="shop-details.html" class="add-cart-btn">خرید</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6">
+                <div class="best-sell-card">
+                    <div class="best-sell-img">
+                        <a href="shop-details.html">
+                            <img src="client/images/products/best-sell-product4.png" alt="تصویر محصول">
+                        </a>
+                        <div class="new-tag">
+                            <h3>جدید</h3>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <h3><a href="shop-details.html">الکتریک ایکس فالکس</a></h3>
+                        <span>کد محصول # 57GN10HU</span>
+                        <div class="price-tag">
+                            <h4>200 تومان<del>300 تومان</del></h4>
+                        </div>
+
+                        <div class="add-btn">
+                            <a href="shop-details.html" class="add-cart-btn">خرید</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6">
+                <div class="best-sell-card">
+                    <div class="best-sell-img">
+                        <a href="shop-details.html">
+                            <img src="client/images/products/best-sell-product5.png" alt="تصویر محصول">
+                        </a>
+                        <div class="new-tag">
+                            <h3>جدید</h3>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <h3><a href="shop-details.html">چایساز میکسر</a></h3>
+                        <span>کد محصول # 67GN10HU</span>
+                        <div class="price-tag">
+                            <h4>1000 تومان<del>1400 تومان </del></h4>
+                        </div>
+
+                        <div class="add-btn">
+                            <a href="shop-details.html" class="add-cart-btn">خرید</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6">
+                <div class="best-sell-card">
+                    <div class="best-sell-img">
+                        <a href="shop-details.html">
+                            <img src="client/images/products/best-sell-product6.png" alt="تصویر محصول">
+                        </a>
+                        <div class="new-tag">
+                            <h3>جدید</h3>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <h3><a href="shop-details.html">الکترونیک مینی میکسر</a></h3>
+                        <span>کد محصول # 67GN40HU</span>
+                        <div class="price-tag">
+                            <h4>220 تومان<del>200 تومان</del></h4>
+                        </div>
+
+                        <div class="add-btn">
+                            <a href="shop-details.html" class="add-cart-btn">خرید</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6">
+                <div class="best-sell-card">
+                    <div class="best-sell-img">
+                        <a href="shop-details.html">
+                            <img src="client/images/products/best-sell-product7.png" alt="تصویر محصول">
+                        </a>
+                        <div class="new-tag">
+                            <h3>جدید</h3>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <h3><a href="shop-details.html">پیروت واتر کاسر</a></h3>
+                        <span>کد محصول # 67GN40HU</span>
+                        <div class="price-tag">
+                            <h4>210 تومان<del>220 تومان</del></h4>
+                        </div>
+
+                        <div class="add-btn">
+                            <a href="shop-details.html" class="add-cart-btn">خرید</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6">
+                <div class="best-sell-card">
+                    <div class="best-sell-img">
+                        <a href="shop-details.html">
+                            <img src="client/images/products/best-sell-product8.png" alt="تصویر محصول">
+                        </a>
+                        <div class="new-tag">
+                            <h3>جدید</h3>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <h3><a href="shop-details.html">میکرو اون سمی</a></h3>
+                        <span>کد محصول # 57GN30HU</span>
+                        <div class="price-tag">
+                            <h4>888 تومان<del>900 تومان</del></h4>
+                        </div>
+
+                        <div class="add-btn">
+                            <a href="shop-details.html" class="add-cart-btn">خرید</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Best Sell Area End -->
+
+<!-- Blog Area -->
+<div class="blog-area pb-70">
+    <div class="container">
+        <div class="section-title text-center">
+            <h2>بلاگ ما</h2>
+        </div>
+
+        <div class="row pt-45">
+            <div class="col-lg-4 col-md-6">
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <a href="blog-details.html">
+                            <img src="client/images/blog/blog-img1.jpg" alt="Blog Images">
+                        </a>
+                        <div class="blog-date">27 آذر</div>
+                    </div>
+
+                    <div class="content">
+                        <h3><a href="blog-details.html">در اپل واچ در مارکت 25٪ تخفیف بگیرید</a></h3>
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+                        <a href="blog-details.html" class="read-btn">بیشتر بخوانید</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <a href="blog-details.html">
+                            <img src="client/images/blog/blog-img2.jpg" alt="Blog Images">
+                        </a>
+                        <div class="blog-date">29 آذر</div>
+                    </div>
+
+                    <div class="content">
+                        <h3><a href="blog-details.html">چرخ دنده های بازی می توانند در محدوده قیمت مناسب خریداری کنند</a></h3>
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+                        <a href="blog-details.html" class="read-btn">بیشتر بخوانید</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 offset-lg-0 offset-md-3">
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <a href="blog-details.html">
+                            <img src="client/images/blog/blog-img3.jpg" alt="Blog Images">
+                        </a>
+                        <div class="blog-date">25 آذر</div>
+                    </div>
+
+                    <div class="content">
+                        <h3><a href="blog-details.html">بیایید با یک ساعت مچی مارک جدید آشنا شویم</a></h3>
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+                        <a href="blog-details.html" class="read-btn">بیشتر بخوانید</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Blog Area End -->
 
 @endsection

@@ -33,7 +33,10 @@
                             <input type="number" class="form-control" name="cost" id="cost">
                         </div>
 
-
+                        <div class="form-group">
+                            <label for="file">تصویر</label>
+                            <input type="file" name="file" id="file" class="from-control" accept="image/*">
+                        </div>
 
                         <div class="form-group">
                             <label for="description">توضیحات</label>

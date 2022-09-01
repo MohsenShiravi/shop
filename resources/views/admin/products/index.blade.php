@@ -20,7 +20,6 @@
                                 <th>نام</th>
                                 <th>قیمت</th>
                                 <th>دسته بندی</th>
-                                <th>تصویر</th>
                                 <th>ویرایش</th>
                                 <th>حذف</th>
                             </tr>
@@ -32,9 +31,6 @@
                                     <td>{{$product->name}}</td>
                                     <td>{{$product->cost}}</td>
                                     <td>{{$product->category->title}}</td>
-                                    <td>
-                                        <img src="#" width="100" alt="">
-                                    </td>
                                     <td>
                                         <a href="{{route('products.edit', $product)}}" class="btn btn-sm btn-primary">ویرایش</a>
                                     </td>
@@ -51,13 +47,12 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th>#</th>
+                                <th>ردیف</th>
                                 <th>نام</th>
                                 <th>قیمت</th>
-                                <th>برند</th>
                                 <th>دسته بندی</th>
-                                <th></th>
-                                <th>تاریخ ایجاد</th>
+
+
                             </tr>
                             </tfoot>
                         </table>

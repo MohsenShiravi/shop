@@ -1,434 +1,428 @@
-<!DOCTYPE html>
-<html dir="rtl">
+<!doctype html>
+<html lang="zxx">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href="image/favicon.png" rel="icon" />
-    <title>مارکت شاپ - قالب HTML فروشگاهی</title>
-    <meta name="description" content="Responsive and clean html template design for any kind of ecommerce webshop">
-    <!-- CSS Part Start-->
-    <link rel="stylesheet" type="text/css" href="{{asset('client/js/bootstrap/css/bootstrap.min.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('client/js/bootstrap/css/bootstrap-rtl.min.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('client/css/font-awesome/css/font-awesome.min.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('client/css/stylesheet.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('client/css/owl.carousel.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('client/css/owl.transitions.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('client/css/responsive.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('client/css/stylesheet-rtl.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('client/css/responsive-rtl.css')}}" />
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans' type='text/css'>
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    @yield('links')
-    <!-- CSS Part End-->
-    <style>
-        .like {
-            color: red;
-        }
-    </style>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="client/css/bootstrap.rtl.min.css">
+    <!-- Animate Min CSS -->
+    <link rel="stylesheet" href="client/css/animate.min.css">
+    <!-- Flaticon CSS -->
+    <link rel="stylesheet" href="client/fonts/flaticon.css">
+    <!-- Boxicons CSS -->
+    <link rel="stylesheet" href="client/css/boxicons.min.css">
+    <!-- Magnific Popup CSS -->
+    <link rel="stylesheet" href="client/css/magnific-popup.css">
+    <!-- Owl Carousel Min CSS -->
+    <link rel="stylesheet" href="client/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="client/css/owl.theme.default.min.css">
+    <!-- Nice Select Min CSS -->
+    <link rel="stylesheet" href="client/css/nice-select.min.css">
+    <!-- Meanmenu CSS -->
+    <link rel="stylesheet" href="client/css/meanmenu.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="client/css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="client/css/responsive.css">
+    <!-- RTL CSS -->
+    <link rel="stylesheet" href="client/css/rtl.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="client/images/favicon.png">
+
+    <title> اولکس - الگوی HTML تجارت الکترونیکی چند منظوره </title>
 </head>
-<body>
-<div class="wrapper-wide">
-    <div id="header">
-        <!-- Top Bar Start-->
-        <nav id="top" class="htop">
-            <div class="container">
-                <div class="row"> <span class="drop-icon visible-sm visible-xs"><i class="fa fa-align-justify"></i></span>
-                    <div class="pull-left flip left-top">
-                        <div class="links">
-                            <ul>
-                                <li class="mobile"><i class="fa fa-phone"></i>+21 9898777656</li>
-                                <li class="email"><a href="mailto:info@marketshop.com"><i class="fa fa-envelope"></i>info@marketshop.com</a></li>
-                                <li class="wrap_custom_block hidden-sm hidden-xs"><a>بلاک سفارشی<b></b></a>
-                                    <div class="dropdown-menu custom_block">
-                                        <ul>
-                                            <li>
-                                                <table>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td><img alt="" src="{{asset('client/image/banner/cms-block.jpg')}}"></td>
-                                                        <td><img alt="" src="{{asset('client/image/banner/responsive.jpg')}}"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><h4>بلاک های محتوا</h4></td>
-                                                        <td><h4>قالب واکنش گرا</h4></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>این یک بلاک مدیریت محتواست. شما میتوانید هر نوع محتوای html نوشتاری یا تصویری را در آن قرار دهید.</td>
-                                                        <td>این یک بلاک مدیریت محتواست. شما میتوانید هر نوع محتوای html نوشتاری یا تصویری را در آن قرار دهید.</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><strong><a class="btn btn-default btn-sm" href="#">ادامه مطلب</a></strong></td>
-                                                        <td><strong><a class="btn btn-default btn-sm" href="#">ادامه مطلب</a></strong></td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                    <li><a href="">لیست علاقه مندی (<span id="likes_count"></span>)</a></li>
-                                <li><a href="checkout.html">تسویه حساب</a></li>
-                            </ul>
-                        </div>
-                        <div id="language" class="btn-group">
-                            <button class="btn-link dropdown-toggle" data-toggle="dropdown"> <span> <img src="{{asset('client/image/flags/gb.png')}}" alt="انگلیسی" title="انگلیسی">انگلیسی <i class="fa fa-caret-down"></i></span></button>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <button class="btn btn-link btn-block language-select" type="button" name="GB"><img src="{{asset('client/image/flags/gb.png')}}" alt="انگلیسی" title="انگلیسی" /> انگلیسی</button>
-                                </li>
-                                <li>
-                                    <button class="btn btn-link btn-block language-select" type="button" name="GB"><img src="{{asset('client/image/flags/ar.png')}}" alt="عربی" title="عربی" /> عربی</button>
-                                </li>
-                            </ul>
-                        </div>
-                        <div id="currency" class="btn-group">
-                            <button class="btn-link dropdown-toggle" data-toggle="dropdown"> <span> تومان <i class="fa fa-caret-down"></i></span></button>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <button class="currency-select btn btn-link btn-block" type="button" name="EUR">€ Euro</button>
-                                </li>
-                                <li>
-                                    <button class="currency-select btn btn-link btn-block" type="button" name="GBP">£ Pound Sterling</button>
-                                </li>
-                                <li>
-                                    <button class="currency-select btn btn-link btn-block" type="button" name="USD">$ USD</button>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div id="top-links" class="nav pull-right flip">
-                            <form action="" method="post">
-                                <input type="submit" name="logout" class="btn btn-sm btn-danger" value="خروج">
-                            </form>
-                            <ul>
-                                <li><a href="">ورود/ثبت نام</a></li>
-                            </ul>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        <!-- Top Bar End-->
-        <!-- Header Start-->
-        <header class="header-row">
-            <div class="container">
-                <div class="table-container">
-                    <!-- Logo Start -->
-                    <div class="col-table-cell col-lg-6 col-md-6 col-sm-12 col-xs-12 inner">
-                        <div id="logo"><a href="index.html"><img class="img-responsive" src="{{asset('client/image/logo.png')}}" title="MarketShop" alt="MarketShop" /></a></div>
-                    </div>
-                    <!-- Logo End -->
-                    <!-- Mini Cart Start-->
-                    <div class="col-table-cell col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div id="cart">
-                            <button type="button" data-toggle="dropdown" data-loading-text="Loading..." class="heading dropdown-toggle">
-                                <span class="cart-icon pull-left flip"></span>
-                                <span id="cart-total">
-                                    <span class="total-items"></span> آیتم -
-                                    <span class="total-amount"></span>
-                                    تومان</span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <table id="menu-cart" class="table">
-                                        <tbody id="cart-table-body">
 
-                                            <tr class="cart-row-">
-                                                <td class="text-center"><a href="product.html"><img width="100"  class="img-thumbnail" title="" alt="" src=""></a></td>
-                                                <td class="text-left"><a href="product.html"></a></td>
-                                                <td class="text-right">x </td>
-                                                <td class="text-right"> تومان</td>
-                                                <td class="text-center"><button class="btn btn-danger btn-xs remove" title="حذف" onClick="removeFromCart()" type="button"><i class="fa fa-times"></i></button></td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-                                </li>
-                                <li>
-                                    <div>
-                                        <table class="table table-bordered">
-                                            <tbody>
-                                            <tr>
-                                                <td class="text-right"><strong>جمع کل</strong></td>
-                                                <td class="text-right"><span class="total-amount"></span> تومان</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td class="text-right"><strong>قابل پرداخت</strong></td>
-                                                <td class="text-right"><span class="total-amount"></span> تومان</td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                        <p class="checkout"><a href="" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> مشاهده سبد</a>&nbsp;&nbsp;&nbsp;<a href="" class="btn btn-primary"><i class="fa fa-share"></i> ثبت سفارش</a></p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- Mini Cart End-->
-                    <!-- جستجو Start-->
-                    <div class="col-table-cell col-lg-3 col-md-3 col-sm-6 col-xs-12 inner">
-                        <div id="search" class="input-group">
-                            <input id="filter_name" type="text" name="search" value="" placeholder="جستجو" class="form-control input-lg" />
-                            <button type="button" class="button-search"><i class="fa fa-search"></i></button>
-                        </div>
-                    </div>
-                    <!-- جستجو End-->
-                </div>
-            </div>
-        </header>
-        <!-- Header End-->
-        <!-- Main آقایانu Start-->
-        @include('client.layout.menu')
-        <!-- Main آقایانu End-->
+<body class="body-color">
+<div class="preloader">
+    <div class="spinner">
+        <div class="dot1"></div>
+        <div class="dot2"></div>
     </div>
-    @yield('content')
-    <!--Footer Start-->
-    <footer id="footer">
-        <div class="fpart-first">
-            <div class="container">
-                <div class="row">
-                    <div class="contact col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        <h5>اطلاعات تماس</h5>
-                        <ul>
-                            <li class="address"><i class="fa fa-map-marker"></i>میدان تایمز، شماره 77، نیویورک</li>
-                            <li class="mobile"><i class="fa fa-phone"></i>+21 9898777656</li>
-                            <li class="email"><i class="fa fa-envelope"></i>برقراری ارتباط از طریق <a href="contact-us.html">تماس با ما</a>
-                        </ul>
-                    </div>
-                    <div class="column col-lg-2 col-md-2 col-sm-3 col-xs-12">
-                        <h5>اطلاعات</h5>
-                        <ul>
-                            <li><a href="about-us.html">درباره ما</a></li>
-                            <li><a href="about-us.html">اطلاعات ارسال</a></li>
-                            <li><a href="about-us.html">حریم خصوصی</a></li>
-                            <li><a href="about-us.html">شرایط و قوانین</a></li>
-                        </ul>
-                    </div>
-                    <div class="column col-lg-2 col-md-2 col-sm-3 col-xs-12">
-                        <h5>خدمات مشتریان</h5>
-                        <ul>
-                            <li><a href="contact-us.html">تماس با ما</a></li>
-                            <li><a href="#">بازگشت</a></li>
-                            <li><a href="sitemap.html">نقشه سایت</a></li>
-                        </ul>
-                    </div>
-                    <div class="column col-lg-2 col-md-2 col-sm-3 col-xs-12">
-                        <h5>امکانات جانبی</h5>
-                        <ul>
-                            <li><a href="#">برند ها</a></li>
-                            <li><a href="#">کارت هدیه</a></li>
-                            <li><a href="#">بازاریابی</a></li>
-                            <li><a href="#">ویژه ها</a></li>
-                        </ul>
-                    </div>
-                    <div class="column col-lg-2 col-md-2 col-sm-3 col-xs-12">
-                        <h5>حساب من</h5>
-                        <ul>
-                            <li><a href="#">حساب کاربری</a></li>
-                            <li><a href="#">تاریخچه سفارشات</a></li>
-                            <li><a href="#">لیست علاقه مندی</a></li>
-                            <li><a href="#">خبرنامه</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="fpart-second">
-            <div class="container">
-                <div id="powered" class="clearfix">
-                    <div class="powered_text pull-left flip">
-                        <p>کپی رایت © 2016 فروشگاه شما | پارسی سازی و ویرایش توسط <a href="http://onescript.ir" target="_blank">وان اسکریپت</a></p>
-                    </div>
-                    <div class="social pull-right flip"> <a href="#" target="_blank"> <img data-toggle="tooltip" src="{{asset('client/image/socialicons/facebook.png')}}" alt="Facebook" title="Facebook"></a> <a href="#" target="_blank"> <img data-toggle="tooltip" src="{{asset('client/image/socialicons/twitter.png')}}" alt="Twitter" title="Twitter"> </a> <a href="#" target="_blank"> <img data-toggle="tooltip" src="{{asset('client/image/socialicons/google_plus.png')}}" alt="Google+" title="Google+"> </a> <a href="#" target="_blank"> <img data-toggle="tooltip" src="{{asset('client/image/socialicons/pinterest.png')}}" alt="Pinterest" title="Pinterest"> </a> <a href="#" target="_blank"> <img data-toggle="tooltip" src="{{asset('client/image/socialicons/rss.png')}}" alt="RSS" title="RSS"> </a> </div>
-                </div>
-                <div class="bottom-row">
-                    <div class="custom-text text-center">
-                        <p>این یک بلاک مدیریت محتواست. شما میتوانید هر نوع محتوای html نوشتاری یا تصویری را در آن قرار دهید. لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
-                    </div>
-                    <div class="payments_types"> <a href="#" target="_blank"> <img data-toggle="tooltip" src="{{asset('client/image/payment/payment_paypal.png')}}" alt="paypal" title="PayPal"></a> <a href="#" target="_blank"> <img data-toggle="tooltip" src="{{asset('client/image/payment/payment_american.png')}}" alt="american-express" title="American Express"></a> <a href="#" target="_blank"> <img data-toggle="tooltip" src="{{asset('client/image/payment/payment_2checkout.png')}}" alt="2checkout" title="2checkout"></a> <a href="#" target="_blank"> <img data-toggle="tooltip" src="{{asset('client/image/payment/payment_maestro.png')}}" alt="maestro" title="Maestro"></a> <a href="#" target="_blank"> <img data-toggle="tooltip" src="{{asset('client/image/payment/payment_discover.png')}}" alt="discover" title="Discover"></a> <a href="#" target="_blank"> <img data-toggle="tooltip" src="{{asset('client/image/payment/payment_mastercard.png')}}" alt="mastercard" title="MasterCard"></a> </div>
-                </div>
-            </div>
-        </div>
-        <div id="back-top"><a data-toggle="tooltip" title="بازگشت به بالا" href="javascript:void(0)" class="backtotop"><i class="fa fa-chevron-up"></i></a></div>
-    </footer>
-    <!--Footer End-->
-    <!-- Facebook Side Block Start -->
-    <div id="facebook" class="fb-left sort-order-1">
-        <div class="facebook_icon"><i class="fa fa-facebook"></i></div>
-        <div class="fb-page" data-href="https://www.facebook.com/harnishdesign/" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true" data-show-posts="false">
-            <div class="fb-xfbml-parse-ignore">
-                <blockquote cite="https://www.facebook.com/harnishdesign/"><a href="https://www.facebook.com/harnishdesign/">هارنیش دیزاین</a></blockquote>
-            </div>
-        </div>
-        <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s); js.id = id;
-                js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));</script>
-    </div>
-    <!-- Facebook Side Block End -->
-    <!-- Twitter Side Block Start -->
-    <div id="twitter_footer" class="twit-left sort-order-2">
-        <div class="twitter_icon"><i class="fa fa-twitter"></i></div>
-        <a class="twitter-timeline" href="https://twitter.com/" data-chrome="nofooter noscrollbar transparent" data-theme="light" data-tweet-limit="2" data-related="twitterapi,twitter" data-aria-polite="assertive" data-widget-id="347621595801608192">توییت های @</a>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-    </div>
-    <!-- Twitter Side Block End -->
-    <!-- Video Side Block Start -->
-    <div id="video_box" class="vb-left sort-order-3">
-        <div id="video_box_icon"><i class="fa fa-play"></i></div>
-        <p>
-            <iframe allowfullscreen="" src="" height="315" width="560"></iframe>
-        </p>
-    </div>
-    <!-- Video Side Block End -->
-    <!-- Custom Side Block Start -->
-    <div id="custom_side_block" class="custom_side_block_left sort-order-4">
-        <div class="custom_side_block_icon"> <i class="fa fa-chevron-right"></i> </div>
-        <table>
-            <tbody>
-            <tr>
-                <td><h2>بلاک های محتوا</h2></td>
-            </tr>
-            <tr>
-                <td><img alt="" src="{{asset('client/image/banner/cms-block.jpg')}}"></td>
-            </tr>
-            <tr>
-                <td>میتوانید محتوای دلخواه خود را به این بخش اضافه کنید.</td>
-            </tr>
-            <tr>
-                <td><strong><a href="#">ادامه مطلب</a></strong></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <!-- Custom Side Block End -->
 </div>
-<!-- JS Part Start-->
-<script type="text/javascript" src="{{asset('client/js/jquery-2.1.1.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('client/js/bootstrap/js/bootstrap.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('client/js/jquery.easing-1.3.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('client/js/jquery.dcjqaccordion.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('client/js/owl.carousel.min.js')}}"></script>
-<script>
-    function like(productId){
 
-        $.ajax({
-            type: 'post',
-            url: '/likes/' + productId,
-            data: {
-                _token: "{{csrf_token()}}"
-            },
-            success: function (data){
-                var icon = $('#like-'+productId + '>.fa-heart');
+<!-- Top Header Start -->
+<header class="top-header top-header-bg">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7 col-md-7">
+                <div class="top-header-form">
+                    <form>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <select class="form-control">
+                                        <option>دسته‌بندی</option>
+                                        <option>الکترونیکی</option>
+                                        <option>کودک و نوزاد</option>
+                                        <option>کفش و لباس</option>
+                                        <option>سلامت و زیبایی</option>
+                                        <option>سرگرمی و هنر</option>
+                                    </select>
+                                </div>
+                            </div>
 
-                if (icon.hasClass('like')){
-                    icon.removeClass('like');
-                }else {
-                    icon.addClass('like');
-                }
+                            <div class="col-lg-8 pl-0">
+                                <div class="form-group search-form">
+                                    <input type="search" class="form-control" placeholder="جستجو محصولات">
+                                    <button type="submit">
+                                        <i class="bx bx-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
-                $('#likes_count').text(data.likes_count)
+            <div class="col-lg-5 col-md-5">
+                <div class="top-header-right">
+                    <div class="phone-btn">
+                        <span><i class='bx bx-mobile-alt'></i><a href="tel:+501-529-1747">+501-529-1747</a></span>
+                    </div>
 
-            }
-        })
+                    <div class="other-option">
+                        <div class="option-item">
+                            <div class="language-list">
+                                <select class="language-list-item">
+                                    <option>English</option>
+                                    <option>العربيّة</option>
+                                    <option>Deutsch</option>
+                                    <option>Português</option>
+                                    <option>简体中文</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="option-item">
+                            <div class="cart-btn-area">
+                                <a href="#" class="cart-btn"><i class='bx bx-cart'></i></a>
+                                <span>1</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Top Header End -->
+    @yield('content')
+<!-- Footer Area -->
+<footer class="footer-area footer-bg">
+    <div class="container">
+        <div class="footer-contact">
+            <div class="newsletter-area">
+                <h2>به اشتراک خبرنامه ما اضافه شوید</h2>
+                <form class="newsletter-form" data-toggle="validator" method="POST">
+                    <input type="email" class="form-control" placeholder="ایمیل خود را وارد کنید" name="EMAIL" required autocomplete="off">
+                    <button class="subscribe-btn" type="submit">
+                        اشتراک
+                    </button>
+                    <div id="validator-newsletter" class="form-result"></div>
+                </form>
+            </div>
 
-    }
+            <div class="newsletter-shape">
+                <div class="shape1">
+                    <img src="client/images/shape/shape1.png" alt="Images">
+                </div>
+                <div class="shape2">
+                    <img src="client/images/shape/shape2.png" alt="Images">
+                </div>
+                <div class="shape3">
+                    <img src="client/images/shape/shape3.png" alt="Images">
+                </div>
+                <div class="shape4">
+                    <img src="client/images/shape/shape4.png" alt="Images">
+                </div>
+                <div class="shape5">
+                    <img src="client/images/shape/shape3.png" alt="Images">
+                </div>
+                <div class="shape6">
+                    <img src="client/images/shape/shape2.png" alt="Images">
+                </div>
+            </div>
+        </div>
 
-    function addToCart(productId)
-    {
-        var quantity = 1;
+        <div class="footer-top pb-70">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-widget">
+                        <div class="footer-logo">
+                            <a href="index-2.html">
+                                <img src="client/images/logos/logo-1.png" alt="Images">
+                            </a>
+                        </div>
+                        <p>
+                            ما یکی از بهترین شرکت ها در جهان هستیم و شما می توانید به راحتی از ما خرید کنید.
+                        </p>
+                        <ul class="footer-list-contact">
+                            <li>
+                                <i class='flaticon-placeholder'></i>
+                                <a href="#">2873  یورک شایر سیرکل ، کارولینا</a>
+                            </li>
+                            <li>
+                                <i class='flaticon-smartphone'></i>
+                                <a href="tel:+501-529-1747">+501-529-1747</a>
+                            </li>
+                            <li>
+                                <i class='flaticon-messenger'></i>
+                                <a href="mailto:hello@olex.com">hello@olex.com</a>
+                            </li>
+                        </ul>
 
-        if($('#input-quantity').length){
-            quantity = $('#input-quantity').val();
-        }
+                        <ul class="social-link">
+                            <li>
+                                <a href="#" target="_blank"><i class='bx bxl-facebook'></i></a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank"><i class='bx bxl-twitter'></i></a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank"><i class='bx bxl-instagram'></i></a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank"><i class='bx bxl-pinterest-alt'></i></a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank"><i class='bx bxl-youtube'></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
-        $.ajax({
-            type: "post",
-            url: "/cart/" + productId,
-            data: {
-                _token: "{{csrf_token()}}",
-                quantity: quantity
-            },
-            success: function (data){
-                $('.total-items').text(data.cart.total_items);
-                $('.total-amount').text(data.cart.total_amount);
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h3>خدمات</h3>
+                        <ul class="footer-list">
+                            <li>
+                                <a href="wordpress-hosting.html" target="_blank">
+                                    اکانت من
+                                </a>
+                            </li>
+                            <li>
+                                <a href="tracking-order.html" target="_blank">
+                                    پیگیری سفارش
+                                </a>
+                            </li>
+                            <li>
+                                <a href="customer-services.html" target="_blank">
+                                    خدمات مشتریان
+                                </a>
+                            </li>
+                            <li>
+                                <a href="compare.html" target="_blank">
+                                    مقایسه
+                                </a>
+                            </li>
+                            <li>
+                                <a href="wishlist.html" target="_blank">
+                                    علاقه‌مندی‌ها
+                                </a>
+                            </li>
+                            <li>
+                                <a href="privacy-policy.html" target="_blank">
+                                    سیاست حفظ حریم شخصی
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
-                if (!$('#cart-row-' + productId).length){
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-widget">
+                        <h3>لینک‌های مفید</h3>
+                        <ul class="footer-list">
+                            <li>
+                                <a href="index-2.html" target="_blank">
+                                    خانه
+                                </a>
+                            </li>
+                            <li>
+                                <a href="about.html" target="_blank">
+                                    درباره ما
+                                </a>
+                            </li>
+                            <li>
+                                <a href="blog-details.html" target="_blank">
+                                    بلاگ جزییات
+                                </a>
+                            </li>
+                            <li>
+                                <a href="shop-details.html" target="_blank">
+                                    جزییات محصول
+                                </a>
+                            </li>
+                            <li>
+                                <a href="testimonials.html" target="_blank">
+                                    رضایت مشتریان
+                                </a>
+                            </li>
+                            <li>
+                                <a href="team.html" target="_blank">
+                                    تیم
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
-                    var product = data.cart[productId]['product'];
-                    var productQty = data.cart[productId]['quantity'];
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h3>ساعت کاری</h3>
+                        <p>
+                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                        </p>
+                        <ul class="footer-work-hour-list">
+                            <li>
+                                <span>شنبه-پنجشنبه:</span> 8:30 قبل‌ازظهر - 5:30 بعدازظهر
+                            </li>
+                            <li>
+                                <span> جمعه:</span> 9:00 قبل‌ازظهر - 2:00 بعدازظهر
+                            </li>
+                            <li>
+                                <span>دوشنبه:</span>  بسته
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                    $('#cart-table-body:last-child').append(
-                        '<tr id="cart-row-' + product.id +'">'
-                        + '<td class="text-center"><a href="product.html"><img width="100"  class="img-thumbnail" title="'+ product.name +'" alt="' + product.name + '" src="' + product.image_path +'"></a></td>'
-                        + '<td class="text-left"><a href="product.html">' + product.name +'</a></td>'
-                        + '<td class="text-right">x' + productQty +'</td>'
-                        + '<td class="text-right">' + product.cost_with_discount + ' تومان</td>'
-                        + '<td class="text-center"><button class="btn btn-danger btn-xs remove" title="حذف" onClick="removeFromCart(' + product.id + ')" type="button"><i class="fa fa-times"></i></button></td>'
-                        + '</tr>'
-                    );
+        <div class="copy-right-area">
+            <div class="copy-right-text">
+                <p>
+                    کپی رایت @ 1399 اولکس. کلیه حقوق محفوظ است . ارایه از
+                    <a href=" " target="_blank">AFARIDTEAM</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer Area End -->
 
-                }
+<!-- QuickView Modal Area -->
+<div class="modal fade productsQuickView" id="productsQuickView" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true"><i class='bx bx-x'></i></span>
+            </button>
+
+            <div class="row">
+                <div class="col-lg-5 col-md-4">
+                    <div class="products-image"><img src="client/images/products/shop-details-img1.png" alt="Images"></div>
+                </div>
+
+                <div class="col-lg-7 col-md-8">
+                    <div class="product-content">
+                        <h3>خرس بزرگ تدی بر</h3>
+                        <div class="product-text">
+                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
+                        </div>
+                        <div class="price-status">
+                            <div class="price">
+                                <span class="new-price">54100 تومان</span>
+                                <div class="rating">
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                </div>
+                            </div>
+
+                            <div class="availability-status">
+                                <ul>
+                                    <li>موجودی: <span>موجود در انبار</span></li>
+                                    <li>تاریخ انقضا: <span>12 آذر, 1399</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="product-add-to-cart">
+                            <div class="input-counter">
+                                        <span class="minus-btn">
+                                            <i class='bx bx-minus'></i>
+                                        </span>
+                                <input type="text" value="1">
+                                <span class="plus-btn">
+                                            <i class='bx bx-plus'></i>
+                                        </span>
+                            </div>
+                            <button type="submit" class="default-btn btn-bg-three">
+                                افزودن به سبد خرید
+                            </button>
+
+                            <button type="submit" class="default-btn btn-bg-three">
+                                همین حالا بخرید
+                            </button>
+                        </div>
+
+                        <div class="advantage-list">
+                            <h3>جرییات فنی این محصول:</h3>
+                            <ul>
+                                <li>بسیار تازه و با کیفیت کامل</li>
+                                <li>این را از منبع طبیعی جمع آوری کنید</li>
+                                <li>دامنه اعتبار مناسبی داشته باشید</li>
+                                <li>تحویل رایگان خانه</li>
+                            </ul>
+                        </div>
+
+                        <div class="products-share">
+                            <ul class="social">
+                                <li><span>اشتراک:</span></li>
+                                <li>
+                                    <a href="#" class="facebook" target="_blank"><i class='bx bxl-facebook'></i></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="twitter" target="_blank"><i class='bx bxl-twitter'></i></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="linkedin" target="_blank"><i class='bx bxl-linkedin'></i></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="instagram" target="_blank"><i class='bx bxl-instagram'></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- QuickView Modal Area End -->
 
 
-            }
-        })
-
-    }
-
-    function updateCart(productId)
-    {
-        var quantity = 1;
-
-        if($('#input-quantity-' + productId).length){
-            quantity = $('#input-quantity-'  + productId).val();
-        }
-
-        $.ajax({
-            type: "post",
-            url: "/cart/" + productId,
-            data: {
-                _token: "{{csrf_token()}}",
-                quantity: quantity
-            },
-            success: function (data){
-                var product = data.cart[productId]['product'];
-                var productQty = data.cart[productId]['quantity'];
-                console.log(productQty);
-                $('.total-items').text(data.cart.total_items);
-                $('.total-amount').text(data.cart.total_amount);
-                $('#total-amount-'+productId).text(product.cost_with_discount * productQty);
-            }
-        })
-
-    }
-
-    function removeFromCart(productId)
-    {
-        $.ajax({
-            type: "delete",
-            url: "/cart/" + productId,
-            data: {
-                _token: "{{csrf_token()}}",
-            },
-            success: function (data){
-                $('.total-items').text(data.cart.total_items);
-                $('.total-amount').text(data.cart.total_amount);
-                $('.cart-row-' + productId).remove();
-            }
-        })
-
-    }
-</script>
-@yield('scripts')
-<script type="text/javascript" src="{{asset('client/js/custom.js')}}"></script>
-
-
-<!-- JS Part End-->
+<!-- Jquery Min JS -->
+<script src="client/js/jquery-3.5.1.slim.min.js"></script>
+<!-- Popper Min JS -->
+<!-- <script src="client/js/popper.min.js"></script> -->
+<!-- Bootstrap Min JS -->
+<!--<script src="client/js/bootstrap.min.js"></script>-->
+<script src="client/js/bootstrap.bundle.js"></script>
+<!-- Magnific Popup Min JS -->
+<script src="client/js/jquery.magnific-popup.min.js"></script>
+<!-- Owl Carousel Min JS -->
+<script src="client/js/owl.carousel.min.js"></script>
+<!-- Nice Select Min JS -->
+<script src="client/js/jquery.nice-select.min.js"></script>
+<!-- Wow Min JS -->
+<script src="client/js/wow.min.js"></script>
+<!-- Meanmenu JS -->
+<script src="client/js/meanmenu.js"></script>
+<!-- Ajaxchimp Min JS -->
+<script src="client/js/jquery.ajaxchimp.min.js"></script>
+<!-- Form Validator Min JS -->
+<script src="client/js/form-validator.min.js"></script>
+<!-- Contact Form JS -->
+<script src="client/js/contact-form-script.js"></script>
+<!-- Mixitup Min JS -->
+<script src="client/js/mixitup.min.js"></script>
+<!-- Custom JS -->
+<script src="client/js/custom.js"></script>
 </body>
 </html>

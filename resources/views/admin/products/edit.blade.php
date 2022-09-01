@@ -48,7 +48,7 @@
                                     <input type="file" name="file" id="file" class="from-control">
                                 </div>
                                 <div class="col-sm-6">
-                                    <img src="#" alt="">
+                                    <img src="{{$image}}" alt="">
                                 </div>
                             </div>
                         </div>
