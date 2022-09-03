@@ -14,4 +14,9 @@ class HomeController extends Controller
         $products=Product::all();
         return view('client.home',['products'=>$products]);
     }
+
+    public function productDetails(Product $product)
+    {
+        return view('client.showProduct',['product'=>$product]);
+     }
 }

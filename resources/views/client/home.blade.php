@@ -265,23 +265,25 @@
             <div class="col-lg-3 col-sm-6 mix smartphone">
                 <div class="arrival-product">
                     <div class="arrival-img">
-                        <a href="shop-details.html">
+                        <a href="{{route('showProduct',$product)}}">
                             <img src="{{Storage::url($product->file->path.'/'.$product->file->name)}}" alt="تصویر محصول">
                         </a>
+                        @if($product->discount()->exists())
                         <div class="new-tag">
-                            <h3>جدید</h3>
+                            <h3>تخفیف : {{$product->discount->value}}%</h3>
                         </div>
+                        @endif
                     </div>
 
                     <div class="content">
-                        <h3><a href="shop-details.html">{{$product->name}}</a></h3>
+                        <h3><a href="{{route('showProduct',$product)}}">{{$product->name}}</a></h3>
                         <span>دسته بندی : {{$product->category->title}}</span>
                         <div class="price-tag">
-                            <h4>{{$product->cost}} تومان</h4>
+                            <h4>{{$product->getCostWithDiscount()}} تومان @if($product->discount()->exists())<del>{{$product->cost}}</del> @endif </h4>
                         </div>
 
                         <div class="add-btn">
-                            <a href="shop-details.html" class="add-cart-btn">خرید</a>
+                            <a href="{{route('showProduct',$product)}}" class="add-cart-btn">خرید</a>
                         </div>
 
                         <ul class="products-action">

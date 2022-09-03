@@ -21,6 +21,7 @@
                                 <th>قیمت</th>
                                 <th>دسته بندی</th>
                                 <th>تصویر</th>
+                                <th>ایجاد تخفیف</th>
                                 <th>ویرایش</th>
                                 <th>حذف</th>
                             </tr>
@@ -33,6 +34,19 @@
                                     <td>{{$product->cost}}</td>
                                     <td>{{$product->category->title}}</td>
                                     <td><img src="{{Storage::url($product->file->path.'/'.$product->file->name)}}"></td>
+                                    <td>
+                                        @if(!$product->discount()->exists())
+                                            <a href="{{route('products.discounts.create', $product)}}" class="btn btn-sm btn-success">ایجاد تخفیف</a>
+                                        @else
+                                            <p>{{$product->discount->value}}%</p>
+                                            <form action="{{route('products.discounts.destroy', ['product' => $product, 'discount' => $product->discount])}}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <input type="submit" class="btn btn-sm btn-danger" value="حذف">
+                                            </form>
+                                        @endif
+                                    </td>
                                     <td>
                                         <a href="{{route('products.edit', $product)}}" class="btn btn-sm btn-primary">ویرایش</a>
                                     </td>

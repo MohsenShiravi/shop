@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Product extends Model
 {
@@ -18,5 +19,31 @@ class Product extends Model
     public function file()
     {
         return $this->morphOne(File::class,'fileable');
+    }
+
+    public function discount()
+    {
+        return $this->hasOne(Discount::class);
+    }
+
+    public function addDiscount(Request $request)
+    {
+        if (!$this->discount()->exists()){
+            $this->discount()->create([
+                'value' => $request->get('value')
+            ]);
+        }else {
+            $this->discount->update([
+                'value' => $request->get('value')
+            ]);
+        }
+    }
+
+    public function getCostWithDiscount()
+    {
+        if (!$this->discount()->exists()){
+            return $this->cost;
+        }
+        return $this->cost - $this->cost * $this->discount->value /100;
     }
 }
