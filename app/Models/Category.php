@@ -26,4 +26,10 @@ class Category extends Model
         return $this->hasMany(Product::class, 'category_id');
     }
 
+    public function getAllSubCategoryProducts()
+    {
+         return $this->children()->pluck('id');
+
+    }
+
 }

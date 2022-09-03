@@ -17,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
-
 Route::get('/panel', function () {
     return view('admin.home');});
+    Route::get('/showCategory/{category}',[CategoryController::class,'show'])->name('showCategory');
 
 Route::prefix('panel/categories')->group(function () {
     Route::get('/',[CategoryController::class,'index'])->name('categories.index');

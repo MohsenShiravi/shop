@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -49,6 +50,17 @@ class CategoryController extends Controller
         ]);
 
         return redirect()->route('categories.index');
+    }
+
+    public function show(Category $category)
+    {
+        $childrenIds=$category->getAllSubCategoryProducts();
+        $cats=Product::query()
+            ->whereIn('category_id', $childrenIds)
+            ->orWhere('category_id', $category->id)
+            ->get();
+
+        return view('client.showCategory',['cats'=>$cats,'category'=>$category]);
     }
 
     public function edit(Category $category)

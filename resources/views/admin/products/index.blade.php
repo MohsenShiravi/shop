@@ -20,6 +20,7 @@
                                 <th>نام</th>
                                 <th>قیمت</th>
                                 <th>دسته بندی</th>
+                                <th>تصویر</th>
                                 <th>ویرایش</th>
                                 <th>حذف</th>
                             </tr>
@@ -31,6 +32,7 @@
                                     <td>{{$product->name}}</td>
                                     <td>{{$product->cost}}</td>
                                     <td>{{$product->category->title}}</td>
+                                    <td><img src="{{Storage::url($product->file->path.'/'.$product->file->name)}}"></td>
                                     <td>
                                         <a href="{{route('products.edit', $product)}}" class="btn btn-sm btn-primary">ویرایش</a>
                                     </td>

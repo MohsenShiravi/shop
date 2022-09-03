@@ -63,6 +63,17 @@ class ProductController extends Controller
            'cost' => $request->get('cost', $product->price),
            'description' => $request->get('description', $product->description),
            ]);
+
+           if ($request->has('file')){
+               if (filled($product->file)){
+                   Storage::delete($product->file->path.'/'.$product->file->name);
+                   $product->file()->delete();
+               }}
+               $pic=$request->file('file');
+               $path='public/products';
+               $file=$this->uploadFile($pic , $path);
+               $product->file()->save($file);
+
     return redirect(route('products.index'));
     }
 
@@ -71,18 +82,5 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect(route('products.index'));
-    }
-
-    public function uploadFile($file , $path)
-    {
-        $FileName=time() . '_' .$file->getClientOriginalName();
-        $file->storeAs($path , $FileName);
-
-        return new File([
-            'name'=>$FileName,
-            'path'=>$path,
-            'size'=>$file->getSize(),
-            'mime_type'=>$file->getMimeType(),
-        ]);
     }
 }

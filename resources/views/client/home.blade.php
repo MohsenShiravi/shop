@@ -1,156 +1,221 @@
 @extends('client.layout.master')
 @section('content')
-<!-- Start Navbar Area -->
-<div class="navbar-area">
-    <!-- Menu For Mobile Device -->
-    <div class="mobile-nav">
-        <a href="index-2.html" class="logo">
-            <img src="client/images/logos/logo-1.png" alt="Logo">
-        </a>
-    </div>
-
-    <!-- Menu For Desktop Device -->
-    <div class="main-nav">
+    <!-- Top Header Start -->
+    <header class="top-header top-header-bg">
         <div class="container">
-            <nav class="navbar navbar-expand-md navbar-light ">
-                <a class="navbar-brand" href="index-2.html">
-                    <img src="client/images/logos/logo-1.png" alt="Logo">
-                </a>
+            <div class="row align-items-center">
+                <div class="col-lg-7 col-md-7">
+                    <div class="top-header-form">
+                        <form>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <select class="form-control">
+                                            <option>دسته‌بندی</option>
+                                            <option>الکترونیکی</option>
+                                            <option>کودک و نوزاد</option>
+                                            <option>کفش و لباس</option>
+                                            <option>سلامت و زیبایی</option>
+                                            <option>سرگرمی و هنر</option>
+                                        </select>
+                                    </div>
+                                </div>
 
-                <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
-                    <ul class="navbar-nav m-auto">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                دسته ها
-                                <i class='bx bx-chevron-down'></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                @foreach($categories as $category)
-                                    <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        {{$category->title}}
-                                        @if($category->children->count() > 0) <i class='bx bx-chevron-down'></i> @endif
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        @foreach($category->children as $childCategory)
-                                            <li class="nav-item">
-                                            <a href="shop-details.html" class="nav-link">
-                                                {{$childCategory->title}}
-                                                @if($childCategory->children->count() > 0) <i class='bx bx-chevron-down'></i> @endif
-                                            </a>
-                                                <ul class="dropdown-menu">
-                                                    @foreach($childCategory->children as $subchildCategory)
-                                                        <li class="nav-item">
-                                                            <a href="shop-details.html" class="nav-link">
-                                                                {{$subchildCategory->title}}
-                                                            </a>
-                                                        </li>
-                                                    @endforeach
-                                                </ul>
-                                        </li>
-                                        @endforeach
-                                    </ul>
-                                </li>
-                                @endforeach
-                            </ul>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                فروشگاه
-                                <i class='bx bx-chevron-down'></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    <a href="shop-left-sidebar.html" class="nav-link">
-                                        فروشگاه با سایدبار راست
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="shop-right-sidebar.html" class="nav-link">
-                                        فروشگاه با سایدبار چپ
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="shop-grid.html" class="nav-link">
-                                        فروشگاه با گرید
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="shop-full-width-sidebar.html" class="nav-link">
-                                        فروشگاه با عرض کامل سایدبار     </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                دسته‌بندی
-                                <i class='bx bx-chevron-down'></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    <a href="categories-1.html" class="nav-link">
-                                        دسته‌بندی(2 در صف)
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="categories-2.html" class="nav-link">
-                                        دسته‌بندی (3 در صف)
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="categories-full-width.html" class="nav-link">
-                                        دسته‌بندی تمام عرض
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                بلاگ
-                                <i class='bx bx-chevron-down'></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    <a href="blog-1.html" class="nav-link">
-                                        بلاگ استایل یک
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="blog-2.html" class="nav-link">
-                                        بلاگ استایل دو
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="blog-details.html" class="nav-link">
-                                        بلاگ جزییات
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="contact.html" class="nav-link">
-                                ارتباط با ما
-                            </a>
-                        </li>
-
-                        <li class="nav-item-btn ">
-                            <a href="log-in.html" class="default-btn border-radius-5 btn-bg-one">وارد شوید</a>
-                        </li>
-                    </ul>
-
-                    <div class="nav-btn">
-                        <a href="log-in.html" class="default-btn border-radius-5 btn-bg-one">وارد شوید</a>
+                                <div class="col-lg-8 pl-0">
+                                    <div class="form-group search-form">
+                                        <input type="search" class="form-control" placeholder="جستجو محصولات">
+                                        <button type="submit">
+                                            <i class="bx bx-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </nav>
+
+                <div class="col-lg-5 col-md-5">
+                    <div class="top-header-right">
+                        <div class="phone-btn">
+                            <span><i class='bx bx-mobile-alt'></i><a href="tel:+501-529-1747">+501-529-1747</a></span>
+                        </div>
+
+                        <div class="other-option">
+                            <div class="option-item">
+                                <div class="language-list">
+                                    <select class="language-list-item">
+                                        <option>English</option>
+                                        <option>العربيّة</option>
+                                        <option>Deutsch</option>
+                                        <option>Português</option>
+                                        <option>简体中文</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="option-item">
+                                <div class="cart-btn-area">
+                                    <a href="#" class="cart-btn"><i class='bx bx-cart'></i></a>
+                                    <span>1</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Top Header End -->
+
+    <!-- End Navbar Area -->
+    <div class="navbar-area">
+        <!-- Menu For Mobile Device -->
+        <div class="mobile-nav">
+            <a href="index-2.html" class="logo">
+                <img src="client/images/logos/logo-1.png" alt="Logo">
+            </a>
+        </div>
+
+        <!-- Menu For Desktop Device -->
+        <div class="main-nav">
+            <div class="container">
+                <nav class="navbar navbar-expand-md navbar-light ">
+                    <a class="navbar-brand" href="index-2.html">
+                        <img src="client/images/logos/logo-1.png" alt="Logo">
+                    </a>
+
+                    <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+                        <ul class="navbar-nav m-auto">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    دسته ها
+                                    <i class='bx bx-chevron-down'></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    @foreach($categories as $category)
+                                        <li class="nav-item">
+                                            <a href="{{route('showCategory', $category)}}" class="nav-link">
+                                                {{$category->title}}
+                                                @if($category->children->count() > 0) <i class='bx bx-chevron-down'></i> @endif
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                @foreach($category->children as $childCategory)
+                                                    <li class="nav-item">
+                                                        <a href="{{route('showCategory', $childCategory)}}" class="nav-link">
+                                                            {{$childCategory->title}}
+                                                            @if($childCategory->children->count() > 0) <i class='bx bx-chevron-down'></i> @endif
+                                                        </a>
+                                                        <ul class="dropdown-menu">
+                                                            @foreach($childCategory->children as $subchildCategory)
+                                                                <li class="nav-item">
+                                                                    <a href="{{route('showCategory', $subchildCategory)}}" class="nav-link">
+                                                                        {{$subchildCategory->title}}
+                                                                    </a>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    فروشگاه
+                                    <i class='bx bx-chevron-down'></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item">
+                                        <a href="shop-left-sidebar.html" class="nav-link">
+                                            فروشگاه با سایدبار راست
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="shop-right-sidebar.html" class="nav-link">
+                                            فروشگاه با سایدبار چپ
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="shop-grid.html" class="nav-link">
+                                            فروشگاه با گرید
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="shop-full-width-sidebar.html" class="nav-link">
+                                            فروشگاه با عرض کامل سایدبار     </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    دسته‌بندی
+                                    <i class='bx bx-chevron-down'></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item">
+                                        <a href="categories-1.html" class="nav-link">
+                                            دسته‌بندی(2 در صف)
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="categories-2.html" class="nav-link">
+                                            دسته‌بندی (3 در صف)
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="categories-full-width.html" class="nav-link">
+                                            دسته‌بندی تمام عرض
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    بلاگ
+                                    <i class='bx bx-chevron-down'></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item">
+                                        <a href="blog-1.html" class="nav-link">
+                                            بلاگ استایل یک
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="blog-2.html" class="nav-link">
+                                            بلاگ استایل دو
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="blog-details.html" class="nav-link">
+                                            بلاگ جزییات
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="contact.html" class="nav-link">
+                                    ارتباط با ما
+                                </a>
+                            </li>
+
+                            <li class="nav-item-btn ">
+                                <a href="log-in.html" class="default-btn border-radius-5 btn-bg-one">وارد شوید</a>
+                            </li>
+                        </ul>
+
+                        <div class="nav-btn">
+                            <a href="log-in.html" class="default-btn border-radius-5 btn-bg-one">وارد شوید</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
         </div>
     </div>
-</div>
-<!-- End Navbar Area -->
 
 <!-- Banner Area -->
 <div class="banner-area">
@@ -170,7 +235,7 @@
             <div class="col-lg-8">
                 <div class="banner-img-area">
                     <div class="banner-img">
-                        <img src="client/images/home-one/home-one1.png" alt="Images">
+                        <img src="client/images/home-one/inner-banner1.png" alt="Images">
                         <div class="banner-offer-tag">
                             <h3>60%</h3>
                             <span>پیشنهاد</span>
@@ -189,28 +254,19 @@
         <div class="row align-items-center">
             <div class="col-lg-3 col-md-3">
                 <div class="section-title">
-                    <h2>تازه رسیده ها</h2>
+                    <h2>همه محصولات</h2>
                 </div>
-            </div>
-
-            <div class="col-lg-9 col-md-9">
-                <ul class="filter-menu">
-                    <li class="filter active" data-filter="all">همه محصولات</li>
-                    <li class="filter" data-filter=".television">تلویزیون</li>
-                    <li class="filter" data-filter=".lamp">لامپ</li>
-                    <li class="filter" data-filter=".smartphone">گوشی همراه</li>
-                    <li class="filter" data-filter=".camera">دوربین</li>
-                </ul>
             </div>
         </div>
         <hr class="line-bottom">
 
         <div id="Container" class="row">
+            @foreach($products as $product)
             <div class="col-lg-3 col-sm-6 mix smartphone">
                 <div class="arrival-product">
                     <div class="arrival-img">
                         <a href="shop-details.html">
-                            <img src="client/images/products/product-img1.png" alt="تصویر محصول">
+                            <img src="{{Storage::url($product->file->path.'/'.$product->file->name)}}" alt="تصویر محصول">
                         </a>
                         <div class="new-tag">
                             <h3>جدید</h3>
@@ -218,10 +274,10 @@
                     </div>
 
                     <div class="content">
-                        <h3><a href="shop-details.html">هدفون سنهیزر</a></h3>
-                        <span>کد محصول # 20UN23HU</span>
+                        <h3><a href="shop-details.html">{{$product->name}}</a></h3>
+                        <span>دسته بندی : {{$product->category->title}}</span>
                         <div class="price-tag">
-                            <h4>120 تومان<del>159 تومان</del></h4>
+                            <h4>{{$product->cost}} تومان</h4>
                         </div>
 
                         <div class="add-btn">
@@ -241,251 +297,7 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-lg-3 col-sm-6 mix smartphone television camera">
-                <div class="arrival-product">
-                    <div class="arrival-img">
-                        <a href="shop-details.html">
-                            <img src="client/images/products/product-img2.png" alt="تصویر محصول">
-                        </a>
-                        <div class="new-tag">
-                            <h3>جدید</h3>
-                        </div>
-                    </div>
-
-                    <div class="content">
-                        <h3><a href="shop-details.html">نیکون پی-1000</a></h3>
-                        <span>کد محصول # 30PN23HU</span>
-                        <div class="price-tag">
-                            <h4>999 تومان<del>1050 تومان</del></h4>
-                        </div>
-
-                        <div class="add-btn">
-                            <a href="shop-details.html" class="add-cart-btn">خرید</a>
-                        </div>
-                        <ul class="products-action">
-                            <li>
-                                <a href="#" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart'></i></a>
-                            </li>
-                            <li>
-                                <a href="#" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
-                                    <i class='bx bx-show-alt'></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-sm-6 mix smartphone lamp camera">
-                <div class="arrival-product">
-                    <div class="arrival-img">
-                        <a href="shop-details.html">
-                            <img src="client/images/products/product-img3.png" alt="تصویر محصول">
-                        </a>
-                        <div class="new-tag">
-                            <h3>جدید</h3>
-                        </div>
-                    </div>
-
-                    <div class="content">
-                        <h3><a href="shop-details.html">گوشی سنهیزر</a></h3>
-                        <span>کد محصول # 40PN24LU</span>
-                        <div class="price-tag">
-                            <h4>320 تومان<del>340 تومان</del></h4>
-                        </div>
-
-                        <div class="add-btn">
-                            <a href="shop-details.html" class="add-cart-btn">خرید</a>
-                        </div>
-                        <ul class="products-action">
-                            <li>
-                                <a href="#" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart'></i></a>
-                            </li>
-                            <li>
-                                <a href="#" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
-                                    <i class='bx bx-show-alt'></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-sm-6 mix smartphone television">
-                <div class="arrival-product">
-                    <div class="arrival-img">
-                        <a href="shop-details.html">
-                            <img src="client/images/products/product-img4.png" alt="تصویر محصول">
-                        </a>
-                        <div class="new-tag">
-                            <h3>جدید</h3>
-                        </div>
-                    </div>
-
-                    <div class="content">
-                        <h3><a href="shop-details.html">ای واچ گالری</a></h3>
-                        <span>کد محصول # 40PN24LU</span>
-                        <div class="price-tag">
-                            <h4>310 تومان<del>340 تومان</del></h4>
-                        </div>
-
-                        <div class="add-btn">
-                            <a href="shop-details.html" class="add-cart-btn">خرید</a>
-                        </div>
-                        <ul class="products-action">
-                            <li>
-                                <a href="#" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart'></i></a>
-                            </li>
-                            <li>
-                                <a href="#" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
-                                    <i class='bx bx-show-alt'></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-sm-6 mix lamp camera">
-                <div class="arrival-product">
-                    <div class="arrival-img">
-                        <a href="shop-details.html">
-                            <img src="client/images/products/product-img5.png" alt="تصویر محصول">
-                        </a>
-                        <div class="new-tag">
-                            <h3>جدید</h3>
-                        </div>
-                    </div>
-
-                    <div class="content">
-                        <h3><a href="shop-details.html">توستر کلور 3569</a></h3>
-                        <span>کد محصول # 70PN24LU</span>
-                        <div class="price-tag">
-                            <h4>129 تومان<del>159 تومان</del></h4>
-                        </div>
-
-                        <div class="add-btn">
-                            <a href="shop-details.html" class="add-cart-btn">خرید</a>
-                        </div>
-                        <ul class="products-action">
-                            <li>
-                                <a href="#" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart'></i></a>
-                            </li>
-                            <li>
-                                <a href="#" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
-                                    <i class='bx bx-show-alt'></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-sm-6 mix television lamp">
-                <div class="arrival-product">
-                    <div class="arrival-img">
-                        <a href="shop-details.html">
-                            <img src="client/images/products/product-img6.png" alt="تصویر محصول">
-                        </a>
-                        <div class="new-tag">
-                            <h3>جدید</h3>
-                        </div>
-                    </div>
-
-                    <div class="content">
-                        <h3><a href="shop-details.html">بریویل گیو بلندر</a></h3>
-                        <span>کد محصول # 60PN14LU</span>
-                        <div class="price-tag">
-                            <h4>129 تومان<del>159 تومان</del></h4>
-                        </div>
-
-                        <div class="add-btn">
-                            <a href="shop-details.html" class="add-cart-btn">خرید</a>
-                        </div>
-                        <ul class="products-action">
-                            <li>
-                                <a href="#" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart'></i></a>
-                            </li>
-                            <li>
-                                <a href="#" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
-                                    <i class='bx bx-show-alt'></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-sm-6 mix lamp ">
-                <div class="arrival-product">
-                    <div class="arrival-img">
-                        <a href="shop-details.html">
-                            <img src="client/images/products/product-img7.png" alt="تصویر محصول">
-                        </a>
-                        <div class="new-tag">
-                            <h3>جدید</h3>
-                        </div>
-                    </div>
-
-                    <div class="content">
-                        <h3><a href="shop-details.html">الکتریک هاتپات</a></h3>
-                        <span>کد محصول # 60PN14LU</span>
-                        <div class="price-tag">
-                            <h4>300 تومان<del>340 تومان</del></h4>
-                        </div>
-
-                        <div class="add-btn">
-                            <a href="shop-details.html" class="add-cart-btn">خرید</a>
-                        </div>
-                        <ul class="products-action">
-                            <li>
-                                <a href="#" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart'></i></a>
-                            </li>
-                            <li>
-                                <a href="#" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
-                                    <i class='bx bx-show-alt'></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-sm-6 mix television camera">
-                <div class="arrival-product">
-                    <div class="arrival-img">
-                        <a href="shop-details.html">
-                            <img src="client/images/products/product-img8.png" alt="تصویر محصول">
-                        </a>
-                        <div class="new-tag">
-                            <h3>جدید</h3>
-                        </div>
-                    </div>
-
-                    <div class="content">
-                        <h3><a href="shop-details.html">میکرو اون سمی</a></h3>
-                        <span>کد محصول # 20PN10LU</span>
-                        <div class="price-tag">
-                            <h4>400 تومان<del>500 تومان</del></h4>
-                        </div>
-
-                        <div class="add-btn">
-                            <a href="shop-details.html" class="add-cart-btn">خرید</a>
-                        </div>
-                        <ul class="products-action">
-                            <li>
-                                <a href="#" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart'></i></a>
-                            </li>
-                            <li>
-                                <a href="#" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
-                                    <i class='bx bx-show-alt'></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -496,27 +308,6 @@
     <div class="container-fluid">
         <div class="section-max-bg pt-100 pb-70">
             <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-8 col-md-6">
-                        <div class="section-title">
-                            <h2>محصولات بر اساس دسته‌بندی</h2>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="product-category-form">
-                            <select class="form-control">
-                                <option>دسته‌بندی</option>
-                                <option>الکترونیکی</option>
-                                <option>کودک و نوزاد</option>
-                                <option>کفش و لباس</option>
-                                <option>سلامت و زیبایی</option>
-                                <option>سرگرمی و هنر</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="row pt-45">
                     <div class="col-lg-9">
                         <div class="product-category-bg-card">
