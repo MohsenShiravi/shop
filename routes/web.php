@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\client\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,4 +44,6 @@ Route::prefix('panel/products')->group(function () {
 });
 
 Route::resource('products.discounts', DiscountController::class);
+Route::resource('roles', RoleController::class);
+Route::resource('users', UserController::class);
 

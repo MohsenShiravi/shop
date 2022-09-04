@@ -34,7 +34,7 @@
             </div>
             <hr>
             <div id="Container" class="row">
-                @foreach($cats as $product)
+                @foreach($category->getAllSubCategoryProducts() as $product)
                     <div class="col-lg-3 col-sm-6 mix smartphone">
                         <div class="arrival-product">
                             <div class="arrival-img">

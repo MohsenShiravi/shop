@@ -54,13 +54,7 @@ class CategoryController extends Controller
 
     public function show(Category $category)
     {
-        $childrenIds=$category->getAllSubCategoryProducts();
-        $cats=Product::query()
-            ->whereIn('category_id', $childrenIds)
-            ->orWhere('category_id', $category->id)
-            ->get();
-
-        return view('client.showCategory',['cats'=>$cats,'category'=>$category]);
+        return view('client.showCategory',['category'=>$category]);
     }
 
     public function edit(Category $category)

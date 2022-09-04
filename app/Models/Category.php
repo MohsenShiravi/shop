@@ -28,8 +28,12 @@ class Category extends Model
 
     public function getAllSubCategoryProducts()
     {
-         return $this->children()->pluck('id');
+        $childrenIds = $this->children()->pluck('id');
 
+        return Product::query()
+            ->whereIn('category_id', $childrenIds)
+            ->orWhere('category_id', $this->id)
+            ->get();
     }
 
 }

@@ -306,201 +306,60 @@
 <!-- Product New Arrival End -->
 
 <!-- Product Category Area -->
-<div class="product-category-area">
-    <div class="container-fluid">
-        <div class="section-max-bg pt-100 pb-70">
-            <div class="container">
-                <div class="row pt-45">
-                    <div class="col-lg-9">
-                        <div class="product-category-bg-card">
-                            <div class="content">
-                                <span>این محصول را با قیمت پیشنهادی دریافت کنید</span>
-                                <h3>بزرگترین پیشنهاد فروش فقط در تاریخ 30 آذر</h3>
-                                <p>حداکثر 55٪ تخفبف</p>
-                                <a href="#" class="default-btn border-radius-5 btn-bg-one">شروع کنید</a>
+
+
+                <!-- دسته‌بندی Area -->
+                <div class="categories-area pt-100 pb-70">
+                    <div class="container-fluid">
+                        @foreach($categories as $category)
+
+                        <div class="container-max">
+                            <hr>
+                            <div class="section-title">
+                                <h2>{{$category->title}}</h2>
+                            </div>
+
+                            <div class="row pt-45">
+                                @foreach($category->getAllSubCategoryProducts() as $product)
+                                  <div class="col-lg-3 col-sm-6">
+                                    <div class="product-card">
+                                        <div class="product-card-img">
+                                            <a href="shop-details.html">
+                                                <img src="{{Storage::url($product->file->path.'/'.$product->file->name)}}" alt="تصویر محصول">
+                                            </a>
+                                            @if($product->discount()->exists())
+                                            <div class="product-card-tag">
+                                                <h3>تخفیف : {{$product->discount->value}}%</h3>
+                                            </div>
+                                            @endif
+                                            <ul class="product-card-action">
+                                                <li>
+                                                    <a href="cart.html"><i class='bx bx-cart'></i></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><i class='bx bx-heart'></i></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" data-toggle="modal" data-target="#productsQuickView">
+                                                        <i class='bx bx-show-alt'></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="content">
+                                            <h3><a href="shop-details.html">{{$product->name}}</a></h3>
+                                            <span>{{$product->getCostWithDiscount()}} تومان @if($product->discount()->exists())<del>{{$product->cost}}</del> @endif </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="product-category-card">
-                            <div class="product-category-img">
-                                <a href="shop-details.html">
-                                    <img src="client/images/products/product-img9.png" alt="تصویر محصول">
-                                </a>
-                                <div class="new-tag">
-                                    <h3>جدید</h3>
-                                </div>
-                                <ul class="product-category-action">
-                                    <li>
-                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart'></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
-                                            <i class='bx bx-show-alt'></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="content">
-                                <h3><a href="shop-details.html">تی-710 ایرفون</a></h3>
-                                <span>کد محصول # 27PN10LU</span>
-                                <div class="price-tag">
-                                    <h4>120 تومان<del>140 تومان</del></h4>
-                                </div>
-
-                                <div class="add-btn">
-                                    <a href="shop-details.html" class="add-cart-btn">خرید</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="product-category-card">
-                            <div class="product-category-img">
-                                <a href="shop-details.html">
-                                    <img src="client/images/products/product-img10.png" alt="تصویر محصول">
-                                </a>
-                                <div class="new-tag">
-                                    <h3>جدید</h3>
-                                </div>
-                                <ul class="product-category-action">
-                                    <li>
-                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart'></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
-                                            <i class='bx bx-show-alt'></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="content">
-                                <h3><a href="shop-details.html">ساعت هوشمند مشکی</a></h3>
-                                <span>کد محصول # 67HN10LU</span>
-                                <div class="price-tag">
-                                    <h4>100 تومان<del>120 تومان</del></h4>
-                                </div>
-
-                                <div class="add-btn">
-                                    <a href="shop-details.html" class="add-cart-btn">خرید</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="product-category-card">
-                            <div class="product-category-img">
-                                <a href="shop-details.html">
-                                    <img src="client/images/products/product-img11.png" alt="تصویر محصول">
-                                </a>
-                                <div class="new-tag">
-                                    <h3>جدید</h3>
-                                </div>
-                                <ul class="product-category-action">
-                                    <li>
-                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart'></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
-                                            <i class='bx bx-show-alt'></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="content">
-                                <h3><a href="shop-details.html">سونی ایکس ایرفون</a></h3>
-                                <span>کد محصول # 47PN20LU</span>
-                                <div class="price-tag">
-                                    <h4>240 تومان <del>270 تومان </del></h4>
-                                </div>
-
-                                <div class="add-btn">
-                                    <a href="shop-details.html" class="add-cart-btn">خرید</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="product-category-card">
-                            <div class="product-category-img">
-                                <a href="shop-details.html">
-                                    <img src="client/images/products/product-img12.png" alt="تصویر محصول">
-                                </a>
-                                <div class="new-tag">
-                                    <h3>جدید</h3>
-                                </div>
-                                <ul class="product-category-action">
-                                    <li>
-                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart'></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
-                                            <i class='bx bx-show-alt'></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="content">
-                                <h3><a href="shop-details.html">بریویل گیو بلندر</a></h3>
-                                <span>کد محصول # 47GN10HU</span>
-                                <div class="price-tag">
-                                    <h4>700 تومان <del>800 تومان </del></h4>
-                                </div>
-
-                                <div class="add-btn">
-                                    <a href="shop-details.html" class="add-cart-btn">خرید</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-sm-6 offset-lg-0 offset-sm-3">
-                        <div class="product-category-card">
-                            <div class="product-category-img">
-                                <a href="shop-details.html">
-                                    <img src="client/images/products/product-img13.png" alt="تصویر محصول">
-                                </a>
-                                <div class="new-tag">
-                                    <h3>جدید</h3>
-                                </div>
-                                <ul class="product-category-action">
-                                    <li>
-                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart'></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
-                                            <i class='bx bx-show-alt'></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="content">
-                                <h3><a href="shop-details.html">لنووو لپتاپ</a></h3>
-                                <span>کد محصول # 47GN10HU</span>
-                                <div class="price-tag">
-                                    <h4>1200 تومان <del>1400 تومان </del></h4>
-                                </div>
-
-                                <div class="add-btn">
-                                    <a href="shop-details.html" class="add-cart-btn">خرید</a>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
+
+
 <!-- Product Category Area End -->
 
 <!-- Other Product Area End -->
