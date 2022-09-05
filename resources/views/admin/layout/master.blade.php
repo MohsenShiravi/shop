@@ -454,6 +454,22 @@
                         <li><a href="{{route('products.index')}}"><i class="mdi mdi-toggle-switch-off"></i>لیست</a></li>
                     </ul>
                 </li>
+
+                <li class="treeview">
+                    <a href="#">
+                        <i class="mdi mdi-apps"></i>
+                        <span>کدهای تخفیف</span>
+                        <span class="pull-right-container">
+                          <i class="fa fa-angle-right pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route('offers.create')}}"><i class="mdi mdi-toggle-switch-off"></i>ایجاد</a></li>
+                        <li><a href="{{route('offers.index')}}"><i class="mdi mdi-toggle-switch-off"></i>لیست</a></li>
+                    </ul>
+                </li>
+
+
                 <li class="treeview">
                     <a href="#">
                         <i class="mdi mdi-apps"></i>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DiscountController;
+use App\Http\Controllers\Admin\OfferController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
@@ -53,6 +54,7 @@ Route::prefix('panel/products')->group(function () {
 Route::resource('products.discounts', DiscountController::class);
 Route::resource('roles', RoleController::class);
 Route::resource('users', UserController::class);
+Route::resource('offers', OfferController::class);
 
 
 Route::get('/register',[RegisterController::class,'create'])->name('register');
