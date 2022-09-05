@@ -20,8 +20,7 @@
                                 <th>نام</th>
                                 <th>ایمیل</th>
                                 <th>نقش</th>
-                                <th>ویرایش</th>
-                                <th>حذف</th>
+                                <th>اختصاص نقش</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -32,15 +31,9 @@
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->role->title}}</td>
                                     <td>
-                                        <a href="{{route('users.edit', $user)}}" class="btn btn-sm btn-primary">ویرایش</a>
+                                        <a href="{{route('users.edit', $user)}}" class="btn btn-sm btn-outline-primary">اختصاص نقش</a>
                                     </td>
-                                    <td>
-                                        <form action="{{route('users.destroy', $user)}}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <input type="submit" class="btn btn-sm btn-danger" value="حذف">
-                                        </form>
-                                    </td>
+
                                 </tr>
                             @endforeach
 

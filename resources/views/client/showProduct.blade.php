@@ -18,7 +18,7 @@
 
             <div class="col-lg-6">
                 <div class="inner-banner-img">
-                    <img src="/client/images/inner-banner/inner-banner6.png" alt="Inner Banner">
+                    <img src="{{asset('client/images/inner-banner/inner-banner6.png')}}" alt="Inner Banner">
                 </div>
             </div>
         </div>
@@ -32,11 +32,12 @@
         <div class="row">
             <div class="col-lg-6 col-md-12">
                 <div class="product-detls-image">
-                    <img src="{{Storage::url($product->file->path.'/'.$product->file->name)}}" alt="Image">
+                    <img src="{{Storage::url($product->file->path.'/'.$product->file->name)}}" alt="{{$product->name}}" title="{{$product->name}}">
                 </div>
             </div>
 
             <div class="col-lg-6 col-md-12">
+
                 <div class="product-desc">
                     <h3>{{$product->name}}</h3>
                     <div class="price">
@@ -56,7 +57,9 @@
                             <span class="plus-btn"><i class='bx bx-plus'></i></span>
                         </div>
                     </div>
-
+                    <li>
+                        <a id="like-{{$product->id}}" onClick="like({{$product->id}});" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها">افزودن در علاقه‌مندی‌ها<i class='bx bx-heart'></i></a>
+                    </li>
                     <div class="product-add-btn">
                         <button type="submit" class="default-btn btn-bg-three">
                             <i class="fas fa-cart-plus"></i> خرید!
@@ -142,7 +145,7 @@
                                                 <div class="products-review-tab">
                                                     <ul>
                                                         <li>
-                                                            <img src="/client/images/blog/blog-profile1.jpg" alt="Image">
+                                                            <img src="{{asset('client/images/blog/blog-profile1.jpg')}}" alt="Image">
                                                             <h3>مگان فاکس</h3>
                                                             <span><i class='bx bx-calendar-event'></i>  آذر 02, 1399, 12:10 بعدازظهر </span>
                                                             <p>
@@ -155,7 +158,7 @@
                                                         </li>
 
                                                         <li>
-                                                            <img src="/client/images/blog/blog-profile2.jpg" alt="Image">
+                                                            <img src="{{asset('client/images/blog/blog-profile2.jpg')}}" alt="Image">
                                                             <h3>مایک توماس</h3>
                                                             <span><i class='bx bx-calendar-event'></i>  آذر 02, 1399, 11:30 بعدازظهر </span>
                                                             <p>
@@ -257,7 +260,7 @@
                 <div class="product-card">
                     <div class="product-card-img">
                         <a href="shop-details.html">
-                            <img src="/client/images/products/product-img1.png" alt="تصویر محصول">
+                            <img src="{{asset('client/images/products/product-img1.png')}}" alt="تصویر محصول">
                         </a>
                         <div class="product-card-tag">
                             <h3>فروش</h3>
@@ -288,7 +291,7 @@
                 <div class="product-card">
                     <div class="product-card-img">
                         <a href="shop-details.html">
-                            <img src="/client/images/products/product-img2.png" alt="تصویر محصول">
+                            <img src="{{asset('client/images/products/product-img2.png')}}" alt="تصویر محصول">
                         </a>
                         <div class="product-card-tag">
                             <h3>فروش</h3>
@@ -319,7 +322,7 @@
                 <div class="product-card">
                     <div class="product-card-img">
                         <a href="shop-details.html">
-                            <img src="/client/images/products/product-img3.png" alt="تصویر محصول">
+                            <img src="{{asset('client/images/products/product-img3.png')}}" alt="تصویر محصول">
                         </a>
                         <div class="product-card-tag">
                             <h3>جدید</h3>
@@ -350,7 +353,7 @@
                 <div class="product-card">
                     <div class="product-card-img">
                         <a href="shop-details.html">
-                            <img src="/client/images/products/product-img4.png" alt="تصویر محصول">
+                            <img src="{{asset('client/images/products/product-img4.png')}}" alt="تصویر محصول">
                         </a>
                         <div class="product-card-tag">
                             <h3>جدید</h3>

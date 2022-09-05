@@ -3,7 +3,7 @@
     <!-- Menu For Mobile Device -->
     <div class="mobile-nav">
         <a href="index-2.html" class="logo">
-            <img src="/client/images/logos/logo-1.png" alt="Logo">
+            <img src="{{asset('client/images/logos/logo-1.png')}}" alt="Logo">
         </a>
     </div>
 
@@ -12,11 +12,14 @@
         <div class="container">
             <nav class="navbar navbar-expand-md navbar-light ">
                 <a class="navbar-brand" href="index-2.html">
-                    <img src="/client/images/logos/logo-3.png" alt="Logo">
+                    <img src="{{asset('client/images/logos/logo-3.png')}}" alt="Logo">
                 </a>
 
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav m-auto">
+                        @auth
+                            <li class="nav-item"><a  href="{{route('client.likes.index')}}">لیست علاقه مندی (<span  id="likes_count">{{auth()->user()->likes()->count()}}</span>)</a></li>
+                        @endauth
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 دسته ها
@@ -135,23 +138,23 @@
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton-two">
                                             <a class="dropdown-item" href="#">
-                                                <img src="/client/images/language-flag/eng.png" alt="Images">
+                                                <img src="{{asset('client/images/language-flag/eng.png')}}" alt="Images">
                                                 انگلیسی
                                             </a>
                                             <a href="#">
-                                                <img src="/client/images/language-flag/arabic.png" alt="Images">
+                                                <img src="{{asset('client/images/language-flag/arabic.png')}}" alt="Images">
                                                 عربی
                                             </a>
                                             <a href="#">
-                                                <img src="/client/images/language-flag/germany.png" alt="Images">
+                                                <img src="{{asset('client/images/language-flag/germany.png')}}" alt="Images">
                                                 آلمانی
                                             </a>
                                             <a href="#">
-                                                <img src="/client/images/language-flag/portugal.png" alt="Images">
+                                                <img src="{{asset('client/images/language-flag/portugal.png')}}" alt="Images">
                                                 پرتقالی
                                             </a>
                                             <a href="#">
-                                                <img src="/client/images/language-flag/china.png" alt="Images">
+                                                <img src="{{asset('client/images/language-flag/china.png')}}" alt="Images">
                                                 چینی
                                             </a>
                                         </div>

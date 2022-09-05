@@ -19,4 +19,9 @@ class Role extends Model
     {
         return $this->permissions()->pluck('id')->toArray();
     }
+
+    public function hasPermission($permission)
+    {
+        return $this->permissions()->where('title', $permission)->exists();
+    }
 }

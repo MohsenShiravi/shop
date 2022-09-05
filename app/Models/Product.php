@@ -46,4 +46,15 @@ class Product extends Model
         }
         return $this->cost - $this->cost * $this->discount->value /100;
     }
+
+    public function likes()
+    {
+        return $this->belongsToMany(User::class, 'likes')
+            ->withTimestamps();
+    }
+
+    public function getIsLikedAttribute()
+    {
+        return $this->likes()->where('user_id', auth()->id())->exists();
+    }
 }

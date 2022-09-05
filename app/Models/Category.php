@@ -28,8 +28,7 @@ class Category extends Model
 
     public function getAllSubCategoryProducts()
     {
-        $childrenIds = $this->children()->pluck('id');
-
+        $childrenIds = $this->children()->pluck('id')->toArray();
         return Product::query()
             ->whereIn('category_id', $childrenIds)
             ->orWhere('category_id', $this->id)

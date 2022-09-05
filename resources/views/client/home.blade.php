@@ -71,16 +71,17 @@
         <!-- Menu For Mobile Device -->
         <div class="mobile-nav">
             <a href="index-2.html" class="logo">
-                <img src="client/images/logos/logo-1.png" alt="Logo">
+                <img src="{{asset('client/images/logos/logo-1.png')}}" alt="Logo">
             </a>
         </div>
 
         <!-- Menu For Desktop Device -->
         <div class="main-nav">
+
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light ">
                     <a class="navbar-brand" href="index-2.html">
-                        <img src="client/images/logos/logo-1.png" alt="Logo">
+                        <img src="{{asset('client/images/logos/logo-1.png')}}" alt="Logo">
                     </a>
 
                     <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
@@ -120,82 +121,10 @@
                                     @endforeach
                                 </ul>
                             </li>
+                            @auth
+                                <li class="nav-item"><a style="color:white" href="{{route('client.likes.index')}}">لیست علاقه مندی (<span style="color: lightgoldenrodyellow" id="likes_count">{{auth()->user()->likes()->count()}}</span>)</a></li>
+                            @endauth
 
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    فروشگاه
-                                    <i class='bx bx-chevron-down'></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item">
-                                        <a href="shop-left-sidebar.html" class="nav-link">
-                                            فروشگاه با سایدبار راست
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="shop-right-sidebar.html" class="nav-link">
-                                            فروشگاه با سایدبار چپ
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="shop-grid.html" class="nav-link">
-                                            فروشگاه با گرید
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="shop-full-width-sidebar.html" class="nav-link">
-                                            فروشگاه با عرض کامل سایدبار     </a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    دسته‌بندی
-                                    <i class='bx bx-chevron-down'></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item">
-                                        <a href="categories-1.html" class="nav-link">
-                                            دسته‌بندی(2 در صف)
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="categories-2.html" class="nav-link">
-                                            دسته‌بندی (3 در صف)
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="categories-full-width.html" class="nav-link">
-                                            دسته‌بندی تمام عرض
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    بلاگ
-                                    <i class='bx bx-chevron-down'></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item">
-                                        <a href="blog-1.html" class="nav-link">
-                                            بلاگ استایل یک
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="blog-2.html" class="nav-link">
-                                            بلاگ استایل دو
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="blog-details.html" class="nav-link">
-                                            بلاگ جزییات
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
 
                             <li class="nav-item">
                                 <a href="contact.html" class="nav-link">
@@ -235,7 +164,7 @@
             <div class="col-lg-8">
                 <div class="banner-img-area">
                     <div class="banner-img">
-                        <img src="client/images/home-one/inner-banner1.png" alt="Images">
+                        <img src="{{asset('client/images/home-one/inner-banner1.png')}}" alt="Images">
                         <div class="banner-offer-tag">
                             <h3>60%</h3>
                             <span>پیشنهاد</span>
@@ -266,7 +195,7 @@
                 <div class="arrival-product">
                     <div class="arrival-img">
                         <a href="{{route('showProduct',$product)}}">
-                            <img src="{{Storage::url($product->file->path.'/'.$product->file->name)}}" alt="تصویر محصول">
+                            <img src="{{Storage::url($product->file->path.'/'.$product->file->name)}}" alt="{{$product->name}}" title="{{$product->name}}">
                         </a>
                         @if($product->discount()->exists())
                         <div class="new-tag">
@@ -288,7 +217,7 @@
 
                         <ul class="products-action">
                             <li>
-                                <a href="#" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart'></i></a>
+                                <a id="like-{{$product->id}}" onClick="like({{$product->id}});" data-tooltip="tooltip"  data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart @if($product->is_liked) like @endif'></i></a>
                             </li>
                             <li>
                                 <a href="#" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
@@ -325,7 +254,7 @@
                                     <div class="product-card">
                                         <div class="product-card-img">
                                             <a href="shop-details.html">
-                                                <img src="{{Storage::url($product->file->path.'/'.$product->file->name)}}" alt="تصویر محصول">
+                                                <img src="{{Storage::url($product->file->path.'/'.$product->file->name)}}" alt="{{$product->name}}" title="{{$product->name}}">
                                             </a>
                                             @if($product->discount()->exists())
                                             <div class="product-card-tag">
@@ -337,7 +266,7 @@
                                                     <a href="cart.html"><i class='bx bx-cart'></i></a>
                                                 </li>
                                                 <li>
-                                                    <a href="#"><i class='bx bx-heart'></i></a>
+                                                    <a id="like-{{$product->id}}" onClick="like({{$product->id}});"><i class='bx bx-heart @if($product->is_liked) like @endif''></i></a>
                                                 </li>
                                                 <li>
                                                     <a href="#" data-toggle="modal" data-target="#productsQuickView">
@@ -368,7 +297,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="other-product-card">
-                    <img src="client/images/products/smart-tv.png" alt="Images">
+                    <img src="{{asset('client/images/products/smart-tv.png')}}" alt="Images">
                     <div class="content">
                         <h3>تلویزیون <b>هوشمند</b></h3>
                         <span>حالا در 5 کی نتورک</span>
@@ -390,7 +319,7 @@
                                 <h3>خرید رایگان در کمپین</h3>
                             </div>
                             <div class="product-champaign-img">
-                                <img src="client/images/products/product-img1.png" alt="Images">
+                                <img src="{{asset('client/images/products/product-img1.png')}}" alt="Images">
                             </div>
                         </div>
                     </div>
@@ -478,7 +407,7 @@
                     <div class="col-lg-7">
                         <div class="offer-slider owl-carousel owl-theme">
                             <div class="offer-img-item">
-                                <img src="client/images/offer-img/offer-img1.jpg" alt="Offer Images">
+                                <img src="{{asset('client/images/offer-img/offer-img1.jpg')}}" alt="Offer Images">
                                 <div class="offer-tag">
                                     <h3>60%</h3>
                                     <span>پیشنهاد</span>
@@ -486,7 +415,7 @@
                             </div>
 
                             <div class="offer-img-item">
-                                <img src="client/images/offer-img/offer-img2.jpg" alt="Offer Images">
+                                <img src="{{asset('client/images/offer-img/offer-img2.jpg')}}" alt="Offer Images">
                                 <div class="offer-tag">
                                     <h3>50%</h3>
                                     <span>پیشنهاد</span>
@@ -526,7 +455,7 @@
                 <div class="best-sell-card">
                     <div class="best-sell-img">
                         <a href="shop-details.html">
-                            <img src="client/images/products/best-sell-product1.png" alt="تصویر محصول">
+                            <img src="{{asset('client/images/products/best-sell-product1.png')}}" alt="تصویر محصول">
                         </a>
                         <div class="new-tag">
                             <h3>جدید</h3>
@@ -551,7 +480,7 @@
                 <div class="best-sell-card">
                     <div class="best-sell-img">
                         <a href="shop-details.html">
-                            <img src="client/images/products/best-sell-product2.png" alt="تصویر محصول">
+                            <img src="{{asset('client/images/products/best-sell-product2.png')}}" alt="تصویر محصول">
                         </a>
                         <div class="new-tag">
                             <h3>جدید</h3>
@@ -576,7 +505,7 @@
                 <div class="best-sell-card">
                     <div class="best-sell-img">
                         <a href="shop-details.html">
-                            <img src="client/images/products/best-sell-product3.png" alt="تصویر محصول">
+                            <img src="{{asset('client/images/products/best-sell-product3.png')}}" alt="تصویر محصول">
                         </a>
                         <div class="new-tag">
                             <h3>جدید</h3>
@@ -601,7 +530,7 @@
                 <div class="best-sell-card">
                     <div class="best-sell-img">
                         <a href="shop-details.html">
-                            <img src="client/images/products/best-sell-product4.png" alt="تصویر محصول">
+                            <img src="{{asset('client/images/products/best-sell-product4.png')}}" alt="تصویر محصول">
                         </a>
                         <div class="new-tag">
                             <h3>جدید</h3>
@@ -626,7 +555,7 @@
                 <div class="best-sell-card">
                     <div class="best-sell-img">
                         <a href="shop-details.html">
-                            <img src="client/images/products/best-sell-product5.png" alt="تصویر محصول">
+                            <img src="{{asset('client/images/products/best-sell-product5.png')}}" alt="تصویر محصول">
                         </a>
                         <div class="new-tag">
                             <h3>جدید</h3>
@@ -651,7 +580,7 @@
                 <div class="best-sell-card">
                     <div class="best-sell-img">
                         <a href="shop-details.html">
-                            <img src="client/images/products/best-sell-product6.png" alt="تصویر محصول">
+                            <img src="{{asset('client/images/products/best-sell-product6.png')}}" alt="تصویر محصول">
                         </a>
                         <div class="new-tag">
                             <h3>جدید</h3>
@@ -676,7 +605,7 @@
                 <div class="best-sell-card">
                     <div class="best-sell-img">
                         <a href="shop-details.html">
-                            <img src="client/images/products/best-sell-product7.png" alt="تصویر محصول">
+                            <img src="{{asset('client/images/products/best-sell-product7.png')}}" alt="تصویر محصول">
                         </a>
                         <div class="new-tag">
                             <h3>جدید</h3>
@@ -701,7 +630,7 @@
                 <div class="best-sell-card">
                     <div class="best-sell-img">
                         <a href="shop-details.html">
-                            <img src="client/images/products/best-sell-product8.png" alt="تصویر محصول">
+                            <img src="{{asset('client/images/products/best-sell-product8.png')}}" alt="تصویر محصول">
                         </a>
                         <div class="new-tag">
                             <h3>جدید</h3>
@@ -738,7 +667,7 @@
                 <div class="blog-card">
                     <div class="blog-img">
                         <a href="blog-details.html">
-                            <img src="client/images/blog/blog-img1.jpg" alt="Blog Images">
+                            <img src="{{asset('client/images/blog/blog-img1.jpg')}}" alt="Blog Images">
                         </a>
                         <div class="blog-date">27 آذر</div>
                     </div>
@@ -755,7 +684,7 @@
                 <div class="blog-card">
                     <div class="blog-img">
                         <a href="blog-details.html">
-                            <img src="client/images/blog/blog-img2.jpg" alt="Blog Images">
+                            <img src="{{asset('client/images/blog/blog-img2.jpg')}}" alt="Blog Images">
                         </a>
                         <div class="blog-date">29 آذر</div>
                     </div>
@@ -772,7 +701,7 @@
                 <div class="blog-card">
                     <div class="blog-img">
                         <a href="blog-details.html">
-                            <img src="client/images/blog/blog-img3.jpg" alt="Blog Images">
+                            <img src="{{asset('client/images/blog/blog-img3.jpg')}}')}}" alt="Blog Images">
                         </a>
                         <div class="blog-date">25 آذر</div>
                     </div>

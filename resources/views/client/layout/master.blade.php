@@ -7,31 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/client/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="{{asset('client/css/bootstrap.rtl.min.css')}}">
     <!-- Animate Min CSS -->
-    <link rel="stylesheet" href="/client/css/animate.min.css">
+    <link rel="stylesheet" href="{{asset('client/css/animate.min.css')}}">
     <!-- Flaticon CSS -->
-    <link rel="stylesheet" href="/client/fonts/flaticon.css">
+    <link rel="stylesheet" href="{{asset('client/fonts/flaticon.css')}}">
     <!-- Boxicons CSS -->
-    <link rel="stylesheet" href="/client/css/boxicons.min.css">
+    <link rel="stylesheet" href="{{asset('client/css/boxicons.min.css')}}">
     <!-- Magnific Popup CSS -->
-    <link rel="stylesheet" href="/client/css/magnific-popup.css">
+    <link rel="stylesheet" href="{{asset('client/css/magnific-popup.css')}}">
     <!-- Owl Carousel Min CSS -->
-    <link rel="stylesheet" href="/client/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/client/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="{{asset('client/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('client/css/owl.theme.default.min.css')}}">
     <!-- Nice Select Min CSS -->
-    <link rel="stylesheet" href="/client/css/nice-select.min.css">
+    <link rel="stylesheet" href="{{asset('client/css/nice-select.min.css')}}">
     <!-- Meanmenu CSS -->
-    <link rel="stylesheet" href="/client/css/meanmenu.css">
+    <link rel="stylesheet" href="{{asset('client/css/meanmenu.css')}}">
     <!-- Style CSS -->
-    <link rel="stylesheet" href="/client/css/style.css">
+    <link rel="stylesheet" href="{{asset('client/css/style.css')}}">
     <!-- Responsive CSS -->
-    <link rel="stylesheet" href="/client/css/responsive.css">
+    <link rel="stylesheet" href="{{asset('client/css/responsive.css')}}">
     <!-- RTL CSS -->
-    <link rel="stylesheet" href="/client/css/rtl.css">
+    <link rel="stylesheet" href="{{asset('client/css/rtl.css')}}">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/client/images/favicon.png">
+    <link rel="icon" type="image/png" href="{{asset('client/images/favicon.png')}}')}}">
 
     <title> پروژه فروشگاه انلاین | محسن شیروی </title>
 </head>
@@ -43,6 +43,7 @@
         <div class="dot2"></div>
     </div>
 </div>
+
 @yield('content')
 <!-- Footer Area -->
 <footer class="footer-area footer-bg">
@@ -61,22 +62,22 @@
 
             <div class="newsletter-shape">
                 <div class="shape1">
-                    <img src="/client/images/shape/shape1.png" alt="Images">
+                    <img src="{{asset('client/images/shape/shape1.png')}}" alt="Images">
                 </div>
                 <div class="shape2">
-                    <img src="/client/images/shape/shape2.png" alt="Images">
+                    <img src="{{asset('client/images/shape/shape2.png')}}" alt="Images">
                 </div>
                 <div class="shape3">
-                    <img src="/client/images/shape/shape3.png" alt="Images">
+                    <img src="{{asset('client/images/shape/shape3.png')}}" alt="Images">
                 </div>
                 <div class="shape4">
-                    <img src="/client/images/shape/shape4.png" alt="Images">
+                    <img src="{{asset('client/images/shape/shape4.png')}}" alt="Images">
                 </div>
                 <div class="shape5">
-                    <img src="/client/images/shape/shape3.png" alt="Images">
+                    <img src="{{asset('client/images/shape/shape3.png')}}" alt="Images">
                 </div>
                 <div class="shape6">
-                    <img src="/client/images/shape/shape2.png" alt="Images">
+                    <img src="{{asset('client/images/shape/shape2.png')}}" alt="Images">
                 </div>
             </div>
         </div>
@@ -87,7 +88,7 @@
                     <div class="footer-widget">
                         <div class="footer-logo">
                             <a href="index-2.html">
-                                <img src="/client/images/logos/logo-1.png" alt="Images">
+                                <img src="{{asset('client/images/logos/logo-1.png')}}" alt="Images">
                             </a>
                         </div>
                         <p>
@@ -248,7 +249,7 @@
 
             <div class="row">
                 <div class="col-lg-5 col-md-4">
-                    <div class="products-image"><img src="/client/images/products/shop-details-img1.png" alt="Images"></div>
+                    <div class="products-image"><img src="{{asset('client/images/products/shop-details-img1.png')}}" alt="Images"></div>
                 </div>
 
                 <div class="col-lg-7 col-md-8">
@@ -330,33 +331,61 @@
 </div>
 <!-- QuickView Modal Area End -->
 
-
+<style>
+    .like {
+        color: red;
+    }
+</style>
 <!-- Jquery Min JS -->
-<script src="/client/js/jquery-3.5.1.slim.min.js"></script>
+<script src="{{asset('client/js/jquery-3.5.1.slim.min.js')}}"></script>
 <!-- Popper Min JS -->
-<!-- <script src="/client/js/popper.min.js"></script> -->
+<!-- <script src="{{asset('client/js/popper.min.js')}}"></script> -->
 <!-- Bootstrap Min JS -->
-<!--<script src="/client/js/bootstrap.min.js"></script>-->
-<script src="/client/js/bootstrap.bundle.js"></script>
+<!--<script src="{{asset('client/js/bootstrap.min.js')}}"></script>-->
+<script src="{{asset('client/js/bootstrap.bundle.js')}}"></script>
 <!-- Magnific Popup Min JS -->
-<script src="/client/js/jquery.magnific-popup.min.js"></script>
+<script src="{{asset('client/js/jquery.magnific-popup.min.js')}}"></script>
 <!-- Owl Carousel Min JS -->
-<script src="/client/js/owl.carousel.min.js"></script>
+<script src="{{asset('client/js/owl.carousel.min.js')}}"></script>
 <!-- Nice Select Min JS -->
-<script src="/client/js/jquery.nice-select.min.js"></script>
+<script src="{{asset('client/js/jquery.nice-select.min.js')}}"></script>
 <!-- Wow Min JS -->
-<script src="/client/js/wow.min.js"></script>
+<script src="{{asset('client/js/wow.min.js')}}"></script>
 <!-- Meanmenu JS -->
-<script src="/client/js/meanmenu.js"></script>
+<script src="{{asset('client/js/meanmenu.js')}}"></script>
 <!-- Ajaxchimp Min JS -->
-<script src="/client/js/jquery.ajaxchimp.min.js"></script>
+<script src="{{asset('client/js/jquery.ajaxchimp.min.js')}}"></script>
 <!-- Form Validator Min JS -->
-<script src="/client/js/form-validator.min.js"></script>
+<script src="{{asset('client/js/form-validator.min.js')}}"></script>
 <!-- Contact Form JS -->
-<script src="/client/js/contact-form-script.js"></script>
+<script src="{{asset('client/js/contact-form-script.js')}}"></script>
 <!-- Mixitup Min JS -->
-<script src="/client/js/mixitup.min.js"></script>
+<script src="{{asset('client/js/mixitup.min.js')}}"></script>
 <!-- Custom JS -->
-<script src="/client/js/custom.js"></script>
+<script src="{{asset('client/js/custom.js')}}"></script>
+<script>
+    function like(productId){
+
+        $.ajax({
+            type: 'post',
+            url: '/likes/' + productId,
+            data: {
+                _token: "{{csrf_token()}}"
+            },
+            success: function (data){
+                var icon = $('#like-'+productId + '>.fa-heart');
+
+                if (icon.hasClass('like')){
+                    icon.removeClass('like');
+                }else {
+                    icon.addClass('like');
+                }
+
+                $('#likes_count').text(data.likes_count)
+
+            }
+        })
+    }
+</script>
 </body>
 </html>

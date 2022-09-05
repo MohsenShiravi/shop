@@ -17,7 +17,7 @@
 
             <div class="col-lg-6">
                 <div class="inner-banner-img">
-                    <img src="/client/images/inner-banner/inner-banner7.png" alt="Inner Banner">
+                    <img src="{{asset('client/images/inner-banner/inner-banner7.png')}}" alt="Inner Banner">
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
                         <div class="arrival-product">
                             <div class="arrival-img">
                                 <a href="{{route('showProduct',$product)}}">
-                                    <img src="{{Storage::url($product->file->path.'/'.$product->file->name)}}" alt="تصویر محصول">
+                                    <img src="{{Storage::url($product->file->path.'/'.$product->file->name)}}" alt="{{$product->name}}" title="{{$product->name}}">
                                 </a>
                                 @if($product->discount()->exists())
                                     <div class="new-tag">
@@ -61,7 +61,7 @@
 
                                 <ul class="products-action">
                                     <li>
-                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart'></i></a>
+                                        <a id="like-{{$product->id}}" onClick="like({{$product->id}});" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart'></i></a>
                                     </li>
                                     <li>
                                         <a href="#" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">

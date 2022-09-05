@@ -6,30 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="/admin/images/favicon.ico">
+    <link rel="icon" href="{{asset('admin/images/favicon.ico')}}">
 
     <title>Superieur Admin - Dashboard</title>
 
     <!-- Bootstrap 4.0-->
-    <link rel="stylesheet" href="/admin/assets/vendor_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="{{asset('admin/assets/vendor_components/bootstrap/dist/css/bootstrap.css')}}">
 
     <!-- Bootstrap extend-->
-    <link rel="stylesheet" href="/admin/css/bootstrap-extend.css">
+    <link rel="stylesheet" href="{{asset('admin/css/bootstrap-extend.css')}}">
 
     <!-- theme style -->
-    <link rel="stylesheet" href="/admin/css/master_style.css">
+    <link rel="stylesheet" href="{{asset('admin/css/master_style.css')}}">
 
     <!-- Superieur Admin skins -->
-    <link rel="stylesheet" href="/admin/css/skins/_all-skins.css">
+    <link rel="stylesheet" href="{{asset('admin/css/skins/_all-skins.css')}}">
 
     <!-- daterange picker -->
-    <link rel="stylesheet" href="/admin/assets/vendor_components/bootstrap-daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="{{asset('admin/assets/vendor_components/bootstrap-daterangepicker/daterangepicker.css')}}">
 
     <!-- Morris charts -->
-    <link rel="stylesheet" href="/admin/assets/vendor_components/morris.js/morris.css">
+    <link rel="stylesheet" href="{{asset('admin/assets/vendor_components/morris.js/morris.css')}}">
 
     <!-- Data Table-->
-    <link rel="stylesheet" type="text/css" href="/admin/assets/vendor_components/datatable/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/assets/vendor_components/datatable/datatables.min.css')}}"/>
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -50,13 +50,13 @@
         <a href="index.html" class="logo">
             <!-- mini logo -->
             <div class="logo-mini">
-                <span class="light-logo"><img src="/admin/images/logo-light.png" alt="logo"></span>
-                <span class="dark-logo"><img src="/admin/images/logo-dark.png" alt="logo"></span>
+                <span class="light-logo"><img src="{{asset('admin/images/logo-light.png')}}" alt="logo"></span>
+                <span class="dark-logo"><img src="{{asset('admin/images/logo-dark.png')}}" alt="logo"></span>
             </div>
             <!-- logo-->
             <div class="logo-lg">
-                <span class="light-logo"><img src="/admin/images/logo-light-text.png" alt="logo"></span>
-                <span class="dark-logo"><img src="/admin/images/logo-dark-text.png" alt="logo"></span>
+                <span class="light-logo"><img src="{{asset('admin/images/logo-light-text.png')}}" alt="logo"></span>
+                <span class="dark-logo"><img src="{{asset('admin/images/logo-dark-text.png')}}" alt="logo"></span>
             </div>
         </a>
         <!-- Header Navbar -->
@@ -79,16 +79,16 @@
                     <!-- User Account-->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="/admin/images/avatar/7.jpg" class="user-image rounded-circle" alt="User Image">
+                            <img src="{{asset('admin/images/avatar/7.jpg')}}" class="user-image rounded-circle" alt="User Image">
                         </a>
                         <ul class="dropdown-menu animated flipInY">
                             <!-- User image -->
                             <li class="user-header bg-img" style="background-image: url(../images/user-info.jpg)" data-overlay="3">
                                 <div class="flexbox align-self-center">
-                                    <img src="/admin/images/avatar/7.jpg" class="float-left rounded-circle" alt="User Image">
+                                    <img src="{{asset('admin/images/avatar/7.jpg')}}" class="float-left rounded-circle" alt="User Image">
                                     <h4 class="user-name align-self-center">
-                                        <span>Samuel Brus</span>
-                                        <small>samuel@gmail.com</small>
+                                        <span>{{auth()->user()->name}}</span>
+                                        <small>samuelkkkkkkkkkkkkkkkk@gmail.com</small>
                                     </h4>
                                 </div>
                             </li>
@@ -100,7 +100,7 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ion ion-settings"></i> Account Setting</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ion-log-out"></i> Logout</a>
+                                <a class="dropdown-item" href="{{route('logout')}}"><i class="ion-log-out"></i> Logout</a>
                                 <div class="dropdown-divider"></div>
                                 <div class="p-10"><a href="javascript:void(0)" class="btn btn-sm btn-rounded btn-success">View Profile</a></div>
                             </li>
@@ -133,7 +133,7 @@
                                     <li><!-- start message -->
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="/admin/images/user2-160x160.jpg" class="rounded-circle" alt="User Image">
+                                                <img src="{{asset('admin/images/user2-160x160.jpg')}}" class="rounded-circle" alt="User Image">
                                             </div>
                                             <div class="mail-contnet">
                                                 <h4>
@@ -148,7 +148,7 @@
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="/admin/images/user3-128x128.jpg" class="rounded-circle" alt="User Image">
+                                                <img src="{{asset('admin/images/user3-128x128.jpg')}}" class="rounded-circle" alt="User Image">
                                             </div>
                                             <div class="mail-contnet">
                                                 <h4>
@@ -162,7 +162,7 @@
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="/admin/images/user4-128x128.jpg" class="rounded-circle" alt="User Image">
+                                                <img src="{{asset('admin/images/user4-128x128.jpg')}}" class="rounded-circle" alt="User Image">
                                             </div>
                                             <div class="mail-contnet">
                                                 <h4>
@@ -176,7 +176,7 @@
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="/admin/images/user3-128x128.jpg" class="rounded-circle" alt="User Image">
+                                                <img src="{{asset('admin/images/user3-128x128.jpg')}}" class="rounded-circle" alt="User Image">
                                             </div>
                                             <div class="mail-contnet">
                                                 <h4>
@@ -190,7 +190,7 @@
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="/admin/images/user4-128x128.jpg" class="rounded-circle" alt="User Image">
+                                                <img src="{{asset('admin/images/user4-128x128.jpg')}}" class="rounded-circle" alt="User Image">
                                             </div>
                                             <div class="mail-contnet">
                                                 <h4>
@@ -408,10 +408,10 @@
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="user-profile treeview">
                     <a href="index.html">
-                        <img src="/admin/images/avatar/7.jpg" alt="user">
+                        <img src="{{asset('admin/images/avatar/7.jpg')}}" alt="user">
                         <span>
-				<span class="d-block font-weight-600 font-size-16">Samuel Brus</span>
-				<span class="email-id">samuel@gmail.com</span>
+				<span class="d-block font-weight-600 font-size-16">{{auth()->user()->name}}</span>
+				<span class="email-id">{{auth()->user()->email}}</span>
 			  </span>
                         <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
@@ -422,7 +422,7 @@
                         <li><a href="javascript:void()"><i class="fa fa-money mr-5"></i>My Balance</a></li>
                         <li><a href="javascript:void()"><i class="fa fa-envelope-open mr-5"></i>Inbox</a></li>
                         <li><a href="javascript:void()"><i class="fa fa-cog mr-5"></i>Account Setting</a></li>
-                        <li><a href="javascript:void()"><i class="fa fa-power-off mr-5"></i>Logout</a></li>
+                        <li><a href="{{route('logout')}}"><i class="fa fa-power-off mr-5"></i>logout</a></li>
                     </ul>
                 </li>
                 <li class="header nav-small-cap"><i class="mdi mdi-drag-horizontal mr-5"></i>PERSONAL</li>
@@ -482,7 +482,7 @@
 
 
                 <li>
-                    <a href="pages/auth_login.html">
+                    <a href="{{route('logout')}}">
                         <i class="mdi mdi-directions"></i>
                         <span>Log Out</span>
                     </a>
@@ -737,10 +737,10 @@
 
 
 <!-- jQuery 3 -->
-<script src="/admin/assets/vendor_components/jquery-3.3.1/jquery-3.3.1.js"></script>
+<script src="{{asset('admin/assets/vendor_components/jquery-3.3.1/jquery-3.3.1.js')}}"></script>
 
 <!-- jQuery UI 1.11.4 -->
-<script src="/admin/assets/vendor_components/jquery-ui/jquery-ui.js"></script>
+<script src="{{asset('admin/assets/vendor_components/jquery-ui/jquery-ui.js')}}"></script>
 
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
@@ -748,39 +748,39 @@
 </script>
 
 <!-- popper -->
-<script src="/admin/assets/vendor_components/popper/dist/popper.min.js"></script>
+<script src="{{asset('admin/assets/vendor_components/popper/dist/popper.min.js')}}"></script>
 
 <!-- date-range-picker -->
-<script src="/admin/assets/vendor_components/moment/min/moment.min.js"></script>
-<script src="/admin/assets/vendor_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script src="{{asset('admin/assets/vendor_components/moment/min/moment.min.js')}}"></script>
+<script src="{{asset('admin/assets/vendor_components/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
 
 <!-- Bootstrap 4.0-->
-<script src="/admin/assets/vendor_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="{{asset('admin/assets/vendor_components/bootstrap/dist/js/bootstrap.js')}}"></script>
 
 <!-- ChartJS -->
-<script src="/admin/assets/vendor_components/chart.js-master/Chart.min.js"></script>
+<script src="{{asset('admin/assets/vendor_components/chart.js-master/Chart.min.js')}}"></script>
 
 <!-- Slimscroll -->
-<script src="/admin/assets/vendor_components/jquery-slimscroll/jquery.slimscroll.js"></script>
+<script src="{{asset('admin/assets/vendor_components/jquery-slimscroll/jquery.slimscroll.js')}}"></script>
 
 <!-- FastClick -->
-<script src="/admin/assets/vendor_components/fastclick/lib/fastclick.js"></script>
+<script src="{{asset('admin/assets/vendor_components/fastclick/lib/fastclick.js')}}"></script>
 
 <!-- Morris.js charts -->
-<script src="/admin/assets/vendor_components/raphael/raphael.min.js"></script>
-<script src="/admin/assets/vendor_components/morris.js/morris.min.js"></script>
+<script src="{{asset('admin/assets/vendor_components/raphael/raphael.min.js')}}"></script>
+<script src="{{asset('admin/assets/vendor_components/morris.js/morris.min.js')}}"></script>
 
 <!-- This is data table -->
-<script src="/admin/assets/vendor_components/datatable/datatables.min.js"></script>
+<script src="{{asset('admin/assets/vendor_components/datatable/datatables.min.js')}}"></script>
 
 <!-- Superieur Admin App -->
-<script src="/admin/js/template.js"></script>
+<script src="{{asset('admin/js/template.js')}}"></script>
 
 <!-- Superieur Admin dashboard demo (This is only for demo purposes) -->
-<script src="/admin/js/pages/dashboard.js"></script>
+<script src="{{asset('admin/js/pages/dashboard.js')}}"></script>
 
 <!-- Superieur Admin for demo purposes -->
-<script src="/admin/js/demo.js"></script>
+<script src="{{asset('admin/js/demo.js')}}"></script>
 
 @yield('scripts')
 

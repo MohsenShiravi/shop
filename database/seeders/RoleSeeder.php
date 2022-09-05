@@ -23,7 +23,7 @@ class RoleSeeder extends Seeder
             $admin->permissions()->attach(Permission::all());
 
             Role::query()->insert([
-                'title' => 'user'
+                'title' => 'normal user'
             ]);
 
 
