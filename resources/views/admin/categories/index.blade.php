@@ -21,6 +21,8 @@
                                 <th>دسته والد</th>
                                 <th>ویرایش</th>
                                 <th>حذف</th>
+
+
                             </tr>
                             </thead>
                             <tbody>
@@ -32,6 +34,7 @@
                                         <td>
                                             <a href="{{route('categories.edit', $category)}}" class="btn btn-sm btn-primary">ویرایش</a>
                                         </td>
+                                        @if($category->products()->count() == 0)
                                         <td>
                                             <form action="{{route('categories.destroy', $category)}}" method="post">
                                                 @csrf
@@ -39,6 +42,7 @@
                                                 <input type="submit" class="btn btn-sm btn-danger" value="حذف" onclick="return confirm('آیا از حذف این دسته بندی مطمئن هستید؟')">
                                             </form>
                                         </td>
+                                        @endif
                                     </tr>
                                 @endforeach
 

@@ -54,8 +54,8 @@
                             </div>
                             <div class="option-item">
                                 <div class="cart-btn-area">
-                                    <a href="#" class="cart-btn"><i class='bx bx-cart'></i></a>
-                                    <span>1</span>
+                                    <a href="{{route('cart.index')}}" id="input-quantity" class="cart-btn"><i class='bx bx-cart'></i></a>
+                                    <span class="total-items">{{\App\Models\Cart::totalItems()}}</span>
                                 </div>
                             </div>
                         </div>
@@ -133,13 +133,18 @@
                             </li>
 
                             <li class="nav-item-btn ">
-                                <a href="log-in.html" class="default-btn border-radius-5 btn-bg-one">وارد شوید</a>
+                                <a href="{{route('login')}}" class="default-btn border-radius-5 btn-bg-one">وارد شوید</a>
                             </li>
                         </ul>
-
+                       @if(!auth()->user())
                         <div class="nav-btn">
-                            <a href="log-in.html" class="default-btn border-radius-5 btn-bg-one">وارد شوید</a>
+                            <a href="{{route('login')}}" class="default-btn border-radius-5 btn-bg-one">وارد شوید</a>
                         </div>
+                        @else
+                            <div class="nav-btn">
+                                <a href="{{route('logout')}}" class="default-btn border-radius-5 btn-bg-one">خروج</a>
+                            </div>
+                        @endif
                     </div>
                 </nav>
             </div>
@@ -197,7 +202,7 @@
                         <a href="{{route('showProduct',$product)}}">
                             <img src="{{Storage::url($product->file->path.'/'.$product->file->name)}}" alt="{{$product->name}}" title="{{$product->name}}">
                         </a>
-                        @if($product->discount()->exists())
+                        @if($product->has_discount)
                         <div class="new-tag">
                             <h3>تخفیف : {{$product->discount->value}}%</h3>
                         </div>
@@ -208,7 +213,7 @@
                         <h3><a href="{{route('showProduct',$product)}}">{{$product->name}}</a></h3>
                         <span>دسته بندی : {{$product->category->title}}</span>
                         <div class="price-tag">
-                            <h4>{{$product->getCostWithDiscount()}} تومان @if($product->discount()->exists())<del>{{$product->cost}}</del> @endif </h4>
+                            <h4>{{$product->cost_with_discount}} تومان @if($product->has_discount)<del>{{$product->cost}}</del> @endif </h4>
                         </div>
 
                         <div class="add-btn">
@@ -253,7 +258,7 @@
                                   <div class="col-lg-3 col-sm-6">
                                     <div class="product-card">
                                         <div class="product-card-img">
-                                            <a href="shop-details.html">
+                                            <a href="{{route('showProduct',$product)}}">
                                                 <img src="{{Storage::url($product->file->path.'/'.$product->file->name)}}" alt="{{$product->name}}" title="{{$product->name}}">
                                             </a>
                                             @if($product->discount()->exists())
@@ -263,10 +268,10 @@
                                             @endif
                                             <ul class="product-card-action">
                                                 <li>
-                                                    <a href="cart.html"><i class='bx bx-cart'></i></a>
+                                                    <a href="{{route('showProduct',$product)}}" ><i class='bx bx-cart'></i></a>
                                                 </li>
                                                 <li>
-                                                    <a id="like-{{$product->id}}" onClick="like({{$product->id}});"><i class='bx bx-heart @if($product->is_liked) like @endif''></i></a>
+                                                    <a id="like-{{$product->id}}" onClick="like({{$product->id}});"><i class='bx bx-heart @if($product->is_liked) like @endif'></i></a>
                                                 </li>
                                                 <li>
                                                     <a href="#" data-toggle="modal" data-target="#productsQuickView">
@@ -277,7 +282,7 @@
                                         </div>
                                         <div class="content">
                                             <h3><a href="shop-details.html">{{$product->name}}</a></h3>
-                                            <span>{{$product->getCostWithDiscount()}} تومان @if($product->discount()->exists())<del>{{$product->cost}}</del> @endif </span>
+                                            <span>{{$product->cost_with_discount}} تومان @if($product->has_discount)<del>{{$product->cost}}</del> @endif </span>
                                         </div>
                                     </div>
                                 </div>

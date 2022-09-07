@@ -48,6 +48,7 @@ class CategoryController extends Controller
             'title' => $request->get('title'),
             'category_id' => $request->get('category_id')
         ]);
+         session()->flash('success','دسته بندی با موفقیت ایجاد شد');
 
         return redirect()->route('categories.index');
     }
@@ -73,7 +74,7 @@ class CategoryController extends Controller
             'title' => $request->get('title')
         ]);
 
-
+        session()->flash('success','دسته بندی با موفقیت ویرایش شد');
         return redirect(route('categories.index'));
     }
 
@@ -82,7 +83,7 @@ class CategoryController extends Controller
     {
 
         $category->delete();
-
+        session()->flash('success','دسته بندی با موفقیت حذف شد');
         return redirect()->route('categories.index');
     }
 }

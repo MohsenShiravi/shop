@@ -40,6 +40,9 @@ class ProductController extends Controller
             $file=$this->uploadFile($pic , $path);
         }
         $product->file()->save($file);
+
+        session()->flash('success','محصول با موفقیت ایجاد شد');
+
         return redirect(route('products.index'));
     }
 
@@ -73,6 +76,7 @@ class ProductController extends Controller
                $path='public/products';
                $file=$this->uploadFile($pic , $path);
                $product->file()->save($file);
+        session()->flash('success','محصول با موفقیت ویرایش شد');
 
     return redirect(route('products.index'));
     }
@@ -80,7 +84,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-
+        session()->flash('success','محصول با موفقیت حذف شد');
         return redirect(route('products.index'));
     }
 }

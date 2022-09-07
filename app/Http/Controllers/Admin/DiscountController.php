@@ -18,6 +18,7 @@ class DiscountController extends Controller
     public function store(Product $product, DiscountRequest $request)
     {
         $product->addDiscount($request);
+        session()->flash('success','تخفیف با موفقیت اختصاص داده شد');
 
         return redirect(route('products.index'));
     }
@@ -25,7 +26,7 @@ class DiscountController extends Controller
     public function destroy(Product $product)
     {
         $product->discount->delete();
-
+        session()->flash('success','تخفیف با موفقیت حذف شد');
         return redirect(route('products.index'));
     }
 }

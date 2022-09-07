@@ -7,9 +7,9 @@
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <div class="inner-banner-content">
-                    <h2>{{$product->name}} جزییات محصول</h2>
+                    <h2>جزئیات محصول : {{$product->name}}</h2>
                     <ul>
-                        <li><a href="index-2.html">خانه</a></li>
+                        <li><a href="{{route('index')}}">خانه</a></li>
                         <li><i class='bx bx-chevron-left'></i></li>
                         <li><a href="shop-details.html" class="active">جزییات محصول</a></li>
                     </ul>
@@ -38,11 +38,11 @@
 
             <div class="col-lg-6 col-md-12">
 
-                <div class="product-desc">
+                <form class="product-desc">
                     <h3>{{$product->name}}</h3>
                     <div class="price">
-                        <span class="new-price">{{$product->getCostWithDiscount()}} تومان </span>
-                        @if($product->discount()->exists())
+                        <span class="new-price">{{$product->cost_with_discount}} تومان </span>
+                        @if($product->has_discount)
                         <span class="old-price">{{$product->cost}}</span>
                         @endif
                     </div>
@@ -50,54 +50,30 @@
                         {{$product->description}}                    </p>
 
                     <div class="input-count-area">
-                        <h3>تعداد</h3>
+                        <label class="control-label" for="quantity">تعداد</label>
                         <div class="input-counter">
-                            <span class="minus-btn"><i class='bx bx-minus'></i></span>
-                            <input type="text" value="1">
-                            <span class="plus-btn"><i class='bx bx-plus'></i></span>
+                            <input type="number" name="quantity" value="1" size="2" id="input-quantity" class="form-control" />
                         </div>
                     </div>
-                    <li>
-                        <a id="like-{{$product->id}}" onClick="like({{$product->id}});" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها">افزودن در علاقه‌مندی‌ها<i class='bx bx-heart'></i></a>
-                    </li>
-                    <div class="product-add-btn">
-                        <button type="submit" class="default-btn btn-bg-three">
-                            <i class="fas fa-cart-plus"></i> خرید!
-                        </button>
-                        <button type="submit" class="default-btn btn-bg-three">
+                        <div class="product-add-btn">
+                        <button type="button" id="button-cart" onclick="addToCart({{$product->id}});" class="default-btn btn-bg-three" >
                             <i class="fas fa-cart-plus"></i> افزودن به سبد خرید
                         </button>
-                    </div>
+                            <button type="submit" class="default-btn btn-bg-three">
+                                <a href="{{route('cart.index')}}">  رفتن به سبد خرید</a>
+                            </button>
+                    </div><br>
 
-                    <div class="product-share">
-                        <ul>
-                            <li>
-                                <span>اشتراک:</span>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class='bx bxl-facebook' ></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class='bx bxl-linkedin'></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class='bx bxl-twitter'></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class='bx bxl-instagram'></i>
-                                </a>
-                            </li>
-                        </ul>
+
+                    <div >
+                        <ul> <li>
+                                <a id="like-{{$product->id}}" onClick="like({{$product->id}});" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها">افزودن در علاقه‌مندی‌ها<i class='bx bx-heart'></i></a>
+                            </li></ul>
                     </div>
-                </div>
-            </div>
+                    <div class="product-add-btn">
+
+                    </div>
+                </form>
         </div>
     </div>
 </div>

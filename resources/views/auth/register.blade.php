@@ -11,9 +11,9 @@
                         <div class="inner-banner-content">
                             <h2>ثبت‌نام</h2>
                             <ul>
-                                <li><a href="index-2.html">خانه</a></li>
+                                <li><a href="{{route('index')}}">صفحه اصلی فروشگاه</a></li>
                                 <li><i class='bx bx-chevron-left'></i></li>
-                                <li><a href="register.html" class="active">ثبت‌نام</a></li>
+                                <li><a href="{{route('register')}}" class="active">ثبت‌نام</a></li>
                             </ul>
                         </div>
                     </div>

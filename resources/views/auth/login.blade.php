@@ -9,7 +9,7 @@ di    @include('client.layout.navbar')
                 <div class="inner-banner-content">
                     <h2>ورود</h2>
                     <ul>
-                        <li><a href="index-2.html">خانه</a></li>
+                        <li><a href="{{route('index')}}">صفحه اصلی فروشگاه</a></li>
                         <li><i class='bx bx-chevron-left'></i></li>
                         <li><a href="log-in.html" class="active">ورود</a></li>
                     </ul>
@@ -34,7 +34,8 @@ di    @include('client.layout.navbar')
                 <div class="col-lg-6">
                     <div class="user-content">
                         <h2>سلام</h2>
-                        <p>شما به راحتی در هر زمانی میتوانید در سایت ما ثبت نام کنید</p>
+                        <h6>من محسن شیروی سازنده وب سایت فروشگاه هستم</h6>
+                        <p>در صورتیکه ثبت نام نکرده اید روی ثبت نام کلیک کنید</p>
                         <a href="{{route('register')}}" class="user-btn">ثبت نام</a>
                     </div>
                 </div>

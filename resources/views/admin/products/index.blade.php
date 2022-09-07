@@ -43,7 +43,7 @@
                                                 @csrf
                                                 @method('DELETE')
 
-                                                <input type="submit" class="btn btn-sm btn-danger" value="حذف">
+                                                <input type="submit" class="btn btn-sm btn-danger" value="حذف" onclick="return confirm('آیا از حذف این تخفیف مطمئن هستید؟')">
                                             </form>
                                         @endif
                                     </td>

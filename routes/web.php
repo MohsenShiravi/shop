@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\OfferController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\client\CartController;
 use App\Http\Controllers\client\HomeController;
 use App\Http\Controllers\client\LikeController;
 use App\Http\Controllers\client\RegisterController;
@@ -67,3 +68,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
 Route::get('/likes/', [LikeController::class, 'index'])->name('client.likes.index');
 Route::post('/likes/{product}', [LikeController::class, 'store'])->name('client.like');
 Route::get('/likes/{product}', [LikeController::class, 'destroy'])->name('client.likes.destroy');
+
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/{product}', [CartController::class, 'store'])->name('cart.store');
+Route::delete('/cart/{product}', [CartController::class, 'destroy'])->name('cart.destroy');
