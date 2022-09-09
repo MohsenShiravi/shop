@@ -50,13 +50,13 @@
 										@foreach($products as $product)
 											<tr>
 												<td class="product-thumbnail">
-													<a href="#">
+													<a href="{{route('showProduct',$product)}}">
 														<img src="{{Storage::url($product->file->path.'/'.$product->file->name)}}" alt="{{$product->name}}" title="{{$product->name}}">
 													</a>
 												</td>
 
 												<td class="product-name">
-													<a href="#">{{$product->name}}</a>
+													<a href="{{route('showProduct',$product)}}">{{$product->name}}</a>
 												</td>
 
 												<td class="product-price">
@@ -67,7 +67,7 @@
 												</td>
 
 												<td class="product-quantity">
-													<a href="#" class="default-btn btn-bg-three">افزودن به سبد خرید</a>
+													<a href="{{route('showProduct',$product)}}" class="default-btn btn-bg-three">افزودن به سبد خرید</a>
 												</td>
 
 												<td class="product-subtotal">

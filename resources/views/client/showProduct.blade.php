@@ -41,9 +41,9 @@
                 <form class="product-desc">
                     <h3>{{$product->name}}</h3>
                     <div class="price">
-                        <span class="new-price">{{$product->cost_with_discount}} تومان </span>
+                        <span class="new-price">{{number_format($product->cost_with_discount)}} تومان </span>
                         @if($product->has_discount)
-                        <span class="old-price">{{$product->cost}}</span>
+                        <span class="old-price">{{number_format($product->cost)}}</span>
                         @endif
                     </div>
                     <p>

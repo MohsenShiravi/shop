@@ -52,22 +52,18 @@
                                 <h3><a href="{{route('showProduct',$product)}}">{{$product->name}}</a></h3>
                                 <span>دسته بندی : {{$product->category->title}}</span>
                                 <div class="price-tag">
-                                    <h4>{{$product->cost_with_discount}} تومان @if($product->discount()->exists())<del>{{$product->cost}}</del> @endif </h4>
+                                    <h4>{{number_format($product->cost_with_discount)}} تومان @if($product->has_discount)<del>{{number_format($product->cost)}}</del> @endif </h4>
                                 </div>
 
                                 <div class="add-btn">
-                                    <a href="{{route('showProduct',$product)}}" class="add-cart-btn">خرید</a>
+                                    <a  href="{{route('showProduct',$product)}}" class="add-cart-btn">خرید</a>
                                 </div>
 
                                 <ul class="products-action">
                                     <li>
                                         <a id="like-{{$product->id}}" onClick="like({{$product->id}});" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart @if($product->is_liked) like @endif'></i></a>
                                     </li>
-                                    <li>
-                                        <a href="#" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
-                                            <i class='bx bx-show-alt'></i>
-                                        </a>
-                                    </li>
+
                                 </ul>
                             </div>
                         </div>

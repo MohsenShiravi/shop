@@ -34,7 +34,6 @@ di    @include('client.layout.navbar')
                 <div class="col-lg-6">
                     <div class="user-content">
                         <h2>سلام</h2>
-                        <h6>من محسن شیروی سازنده وب سایت فروشگاه هستم</h6>
                         <p>در صورتیکه ثبت نام نکرده اید روی ثبت نام کلیک کنید</p>
                         <a href="{{route('register')}}" class="user-btn">ثبت نام</a>
                     </div>

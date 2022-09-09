@@ -70,7 +70,7 @@
     <div class="navbar-area">
         <!-- Menu For Mobile Device -->
         <div class="mobile-nav">
-            <a href="index-2.html" class="logo">
+            <a href="{{route('index')}}" class="logo">
                 <img src="{{asset('client/images/logos/logo-1.png')}}" alt="Logo">
             </a>
         </div>
@@ -80,7 +80,7 @@
 
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light ">
-                    <a class="navbar-brand" href="index-2.html">
+                    <a class="navbar-brand" href="{{route('index')}}">
                         <img src="{{asset('client/images/logos/logo-1.png')}}" alt="Logo">
                     </a>
 
@@ -213,7 +213,7 @@
                         <h3><a href="{{route('showProduct',$product)}}">{{$product->name}}</a></h3>
                         <span>دسته بندی : {{$product->category->title}}</span>
                         <div class="price-tag">
-                            <h4>{{$product->cost_with_discount}} تومان @if($product->has_discount)<del>{{$product->cost}}</del> @endif </h4>
+                            <h4>{{number_format($product->cost_with_discount)}} تومان @if($product->has_discount)<del>{{number_format($product->cost)}}</del> @endif </h4>
                         </div>
 
                         <div class="add-btn">
@@ -224,11 +224,7 @@
                             <li>
                                 <a id="like-{{$product->id}}" onClick="like({{$product->id}});" data-tooltip="tooltip"  data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart @if($product->is_liked) like @endif'></i></a>
                             </li>
-                            <li>
-                                <a href="#" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
-                                    <i class='bx bx-show-alt'></i>
-                                </a>
-                            </li>
+
                         </ul>
                     </div>
                 </div>
@@ -282,7 +278,7 @@
                                         </div>
                                         <div class="content">
                                             <h3><a href="shop-details.html">{{$product->name}}</a></h3>
-                                            <span>{{$product->cost_with_discount}} تومان @if($product->has_discount)<del>{{$product->cost}}</del> @endif </span>
+                                            <span>{{number_format($product->cost_with_discount)}} تومان @if($product->has_discount)<del>{{number_format($product->cost)}}</del> @endif </span>
                                         </div>
                                     </div>
                                 </div>

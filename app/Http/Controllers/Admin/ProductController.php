@@ -63,7 +63,7 @@ class ProductController extends Controller
            $product->update([
            'name' => $request->get('name', $product->name),
            'category_id' => $request->get('category_id', $product->category_id),
-           'cost' => $request->get('cost', $product->price),
+           'cost' => $request->get('cost', $product->cost),
            'description' => $request->get('description', $product->description),
            ]);
 

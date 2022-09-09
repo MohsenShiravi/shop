@@ -11,6 +11,7 @@ use App\Http\Controllers\client\HomeController;
 use App\Http\Controllers\client\LikeController;
 use App\Http\Controllers\client\RegisterController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrderController;
 use App\Http\Middleware\CheckPermission;
 use Illuminate\Support\Facades\Route;
 
@@ -57,17 +58,27 @@ Route::resource('roles', RoleController::class);
 Route::resource('users', UserController::class);
 Route::resource('offers', OfferController::class);
 
-
-Route::get('/register',[RegisterController::class,'create'])->name('register');
-Route::post('/register/store',[RegisterController::class,'store'])->name('register.store');
+Route::prefix('register')->group(function () {
+    Route::get('/', [RegisterController::class, 'create'])->name('register');
+    Route::post('/store', [RegisterController::class, 'store'])->name('register.store');
+});
 
 Route::get('/login', [LoginController::class, 'create'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
 
-Route::get('/likes/', [LikeController::class, 'index'])->name('client.likes.index');
-Route::post('/likes/{product}', [LikeController::class, 'store'])->name('client.like');
-Route::get('/likes/{product}', [LikeController::class, 'destroy'])->name('client.likes.destroy');
+Route::prefix('')->name('client.')->group(function () {
+    Route::get('/likes/', [LikeController::class, 'index'])->name('likes.index');
+    Route::post('/likes/{product}', [LikeController::class, 'store'])->name('like');
+    Route::get('/likes/{product}', [LikeController::class, 'destroy'])->name('likes.destroy');
+    Route::get('/orders/create', [OrderController::class, 'create'])->name('orders.create');
+    Route::post('/orders/store', [OrderController::class, 'store'])->name('orders.store');
+    Route::get('/orders/index', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('/edit/{order}', [OrderController::class, 'edit'])->name('edit');
+    Route::post('/transaction/{order}', [OrderController::class, 'transaction'])->name('transaction');
+
+
+});
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/{product}', [CartController::class, 'store'])->name('cart.store');

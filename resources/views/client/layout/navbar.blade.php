@@ -2,7 +2,7 @@
 <div class="navbar-area">
     <!-- Menu For Mobile Device -->
     <div class="mobile-nav">
-        <a href="index-2.html" class="logo">
+        <a href="{{route('index')}}" class="logo">
             <img src="{{asset('client/images/logos/logo-1.png')}}" alt="Logo">
         </a>
     </div>
@@ -11,18 +11,19 @@
     <div class="main-nav nav-three">
         <div class="container">
             <nav class="navbar navbar-expand-md navbar-light ">
-                <a class="navbar-brand" href="index-2.html">
+                <a class="navbar-brand" href="{{route('index')}}">
                     <img src="{{asset('client/images/logos/logo-3.png')}}" alt="Logo">
                 </a>
 
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav m-auto">
-                        @auth
-                            <li class="nav-item"><a  href="{{route('client.likes.index')}}">لیست علاقه مندی (<span  id="likes_count">{{auth()->user()->likes()->count()}}</span>)</a></li>
-                        @endauth
-                            <div class="col-table-cell col-lg-3 col-md-3 col-sm-6 col-xs-12">
 
-                            </div>
+                            <li class="nav-item">
+                                <a href="{{route('index')}}" class="nav-link">
+                                    صفحه اصلی
+                                </a>
+                            </li>
+
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 دسته ها
@@ -58,18 +59,19 @@
                                 @endforeach
                             </ul>
                         </li>
+                        @auth
+                            <li class="nav-item"><a  href="{{route('client.likes.index')}}">لیست علاقه مندی (<span  id="likes_count">{{auth()->user()->likes()->count()}}</span>)</a></li>
+                        @endauth
 
 
-                        <li class="nav-item">
-                            <a href="contact.html" class="nav-link">
-                                ارتباط با ما
-                            </a>
-                        </li>
+
+
+
                     </ul>
 
 
                                     <a href="{{route('cart.index')}}"><span class="total-items">{{\App\Models\Cart::totalItems()}}</span> آیتم -
-                                        <span class="total-amount">{{\App\Models\Cart::totalAmount()}}</span>
+                                        <span class="total-amount">{{number_format(\App\Models\Cart::totalAmount())}}</span>
                         تومان</a>
                     </div>
                  </nav>
