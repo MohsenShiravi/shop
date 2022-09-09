@@ -108,105 +108,6 @@
                     </li>
 
                     <!-- Messages -->
-                    <li class="dropdown messages-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="mdi mdi-email"></i>
-                        </a>
-                        <ul class="dropdown-menu animated fadeInDown">
-
-                            <li class="header">
-                                <div class="bg-img text-white p-20" style="background-image: url(../images/user-info.jpg)" data-overlay="5">
-                                    <div class="flexbox">
-                                        <div>
-                                            <h3 class="mb-0 mt-0">5 New</h3>
-                                            <span class="font-light">Messages</span>
-                                        </div>
-                                        <div class="font-size-40">
-                                            <i class="mdi mdi-email-alert"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <!-- inner menu: contains the actual data -->
-                                <ul class="menu sm-scrol">
-                                    <li><!-- start message -->
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="{{asset('admin/images/user2-160x160.jpg')}}" class="rounded-circle" alt="User Image">
-                                            </div>
-                                            <div class="mail-contnet">
-                                                <h4>
-                                                    Lorem Ipsum
-                                                    <small><i class="fa fa-clock-o"></i> 15 mins</small>
-                                                </h4>
-                                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <!-- end message -->
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="{{asset('admin/images/user3-128x128.jpg')}}" class="rounded-circle" alt="User Image">
-                                            </div>
-                                            <div class="mail-contnet">
-                                                <h4>
-                                                    Nullam tempor
-                                                    <small><i class="fa fa-clock-o"></i> 4 hours</small>
-                                                </h4>
-                                                <span>Curabitur facilisis erat quis metus congue viverra.</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="{{asset('admin/images/user4-128x128.jpg')}}" class="rounded-circle" alt="User Image">
-                                            </div>
-                                            <div class="mail-contnet">
-                                                <h4>
-                                                    Proin venenatis
-                                                    <small><i class="fa fa-clock-o"></i> Today</small>
-                                                </h4>
-                                                <span>Vestibulum nec ligula nec quam sodales rutrum sed luctus.</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="{{asset('admin/images/user3-128x128.jpg')}}" class="rounded-circle" alt="User Image">
-                                            </div>
-                                            <div class="mail-contnet">
-                                                <h4>
-                                                    Praesent suscipit
-                                                    <small><i class="fa fa-clock-o"></i> Yesterday</small>
-                                                </h4>
-                                                <span>Curabitur quis risus aliquet, luctus arcu nec, venenatis neque.</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="{{asset('admin/images/user4-128x128.jpg')}}" class="rounded-circle" alt="User Image">
-                                            </div>
-                                            <div class="mail-contnet">
-                                                <h4>
-                                                    Donec tempor
-                                                    <small><i class="fa fa-clock-o"></i> 2 days</small>
-                                                </h4>
-                                                <span>Praesent vitae tellus eget nibh lacinia pretium.</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="footer">
-                                <a href="#" class="text-white bg-info">See all e-Mails</a></li>
-                        </ul>
-                    </li>
                     <!-- Notifications -->
                     <li class="dropdown notifications-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -469,6 +370,19 @@
                     </ul>
                 </li>
 
+                <li class="treeview">
+                    <a href="#">
+                        <i class="mdi mdi-apps"></i>
+                        <span>سفارشات</span>
+                        <span class="pull-right-container">
+                          <i class="fa fa-angle-right pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route('panel.orders')}}"><i class="mdi mdi-toggle-switch-off"></i>لیست</a></li>
+                    </ul>
+                </li>
+
 
                 <li class="treeview">
                     <a href="#">
@@ -514,7 +428,7 @@
         <div class="content-header">
             <div class="d-flex align-items-center">
                 <div class="mr-auto">
-                    <h3 class="page-title">Dashboard</h3>
+                    <a href="{{route('index')}}" style="background-color: #6f42c1;padding: 10px;font-size: x-large;color: white;border-radius: 50px">go to shop</a>
                     <div class="d-inline-block align-items-center">
                         <nav>
                             <ol class="breadcrumb">

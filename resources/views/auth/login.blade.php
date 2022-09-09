@@ -1,7 +1,7 @@
 @extends('client.layout.master')
 @section('content')
 
-di    @include('client.layout.navbar')
+
 <div class="inner-banner-area">
     <div class="container">
         <div class="row align-items-center">

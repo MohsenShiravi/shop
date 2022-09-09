@@ -61,19 +61,29 @@
                         </li>
                         @auth
                             <li class="nav-item"><a  href="{{route('client.likes.index')}}">لیست علاقه مندی (<span  id="likes_count">{{auth()->user()->likes()->count()}}</span>)</a></li>
+                            <li class="nav-item"><a  href="{{route('client.orders.index')}}">وضعیت سفارشات</a></li>
+                            @php $user=auth()->user(); @endphp
+                        @if($user->role->hasPermission('view-dashboard'))
+                            <li class="nav-item"><a  href="/panel">پنل مدیریت </a></li>
+                        @endif
                         @endauth
-
-
-
-
+                        <li class="nav-item"><a  href="{{route('cart.index')}}">سبد خرید</a></li>
 
                     </ul>
-
-
-                                    <a href="{{route('cart.index')}}"><span class="total-items">{{\App\Models\Cart::totalItems()}}</span> آیتم -
+                    <a href="{{route('cart.index')}}"><span class="total-items">{{\App\Models\Cart::totalItems()}}</span> آیتم -
                                         <span class="total-amount">{{number_format(\App\Models\Cart::totalAmount())}}</span>
                         تومان</a>
                     </div>
+                @if(!auth()->user())
+                    <div class="nav-btn">
+                        <a href="{{route('login')}}" class="default-btn border-radius-5 btn-bg-one">ورود</a>
+                    </div>
+                @else
+                    <div class="nav-btn">
+                        <a href="{{route('logout')}}" class="default-btn border-radius-5 btn-bg-one">خروج</a>
+                    </div>
+            @endif
+        </div>
                  </nav>
            </div>
         </div>

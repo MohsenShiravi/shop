@@ -41,13 +41,7 @@
                                 @endforeach
 
                             </tbody>
-                            <tfoot>
-                            <tr>
-                                <th>ردیف</th>
-                                <th>عنوان</th>
 
-                            </tr>
-                            </tfoot>
                         </table>
                     </div>
                 </div>

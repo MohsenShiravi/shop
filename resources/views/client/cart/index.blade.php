@@ -18,7 +18,7 @@
 
                     <div class="col-lg-6">
                         <div class="inner-banner-img">
-                            <img src="client/images/inner-banner/inner-banner3.png" alt="Inner Banner">
+                            <img src="client/images/inner-banner/inner-banner11.png" alt="Inner Banner">
                         </div>
                     </div>
                 </div>

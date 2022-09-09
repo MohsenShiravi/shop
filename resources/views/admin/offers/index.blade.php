@@ -45,13 +45,7 @@
                             @endforeach
 
                             </tbody>
-                            <tfoot>
-                            <tr>
-                                <th>#</th>
-                                <th>عنوان</th>
-                                <th>دسته والد</th>
-                            </tr>
-                            </tfoot>
+
                         </table>
                     </div>
                 </div>

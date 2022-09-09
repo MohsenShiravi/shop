@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\OrderTransaction;
 use App\Models\Cart;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -48,7 +49,8 @@ class OrderController extends Controller
 
     public function index()
     {
-        $orders=Order::all();
+        $user=Auth::id();
+        $orders=Order::query()->where('user_id',$user)->get();
         return view('client.orders.index',['orders'=>$orders]);
 
     }
@@ -64,8 +66,7 @@ class OrderController extends Controller
             'payment_status' =>$request->get('payment_status'),
             'transaction_id'=>rand()
         ]);
-
-return redirect()->route('client.orders.index');
+        event(new OrderTransaction());
+        return redirect()->route('client.orders.index');
     }
-
 }

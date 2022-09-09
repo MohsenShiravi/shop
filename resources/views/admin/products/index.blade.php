@@ -61,16 +61,7 @@
                             @endforeach
 
                             </tbody>
-                            <tfoot>
-                            <tr>
-                                <th>ردیف</th>
-                                <th>نام</th>
-                                <th>قیمت</th>
-                                <th>دسته بندی</th>
 
-
-                            </tr>
-                            </tfoot>
                         </table>
                     </div>
                 </div>
