@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
             $table->string('code')->unique();
+            $table->integer('value');
             $table->timestamp('starts_at')->default(null);
             $table->timestamp('expires_at')->nullable();
             $table->timestamps();

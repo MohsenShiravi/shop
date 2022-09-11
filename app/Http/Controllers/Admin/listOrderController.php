@@ -17,7 +17,7 @@ class listOrderController extends Controller
         }
         else
         {
-            $orders=Order::query()->where('user_id','=',Auth::id())->get();
+            $orders=Order::query()->where('user_id',Auth::id())->get();
         }
         return view('admin.orders.index',['orders'=>$orders]);
     }

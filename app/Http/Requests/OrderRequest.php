@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class OfferRequest extends FormRequest
+class OrderRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -19,15 +19,13 @@ class OfferRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function rules()
     {
         return [
-            'code' => ['required',  'min:4', 'unique:offers,code'],
-            'value' => ['required', 'lte:100', 'gte:1'],
-            'starts_at' => ['required', 'date','before:expires_at'],
-            'expires_at' => ['required', 'date','after:starts_at'],
+            'address'=>'required',
+            'mobile'=>'required',
         ];
     }
 }

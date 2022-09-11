@@ -90,6 +90,7 @@ class OfferController extends Controller
 
         $offer->update([
             'code' => $request->get('code'),
+            'value' => $request->get('value'),
             'starts_at' => $request->get('starts_at'),
             'expires_at' => $request->get('expires_at'),
         ]);

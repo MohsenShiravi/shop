@@ -40,11 +40,12 @@
                         <div class="checkout-tab-item">
                             <div class="row align-items-center">
 
+                                @include('admin.layout.errors')
 
                                 <div class="col-lg-12 px-2">
                                     <div class="checkout-form">
                                         <div class="contact-form">
-                                            <h2>جزییات اکانت</h2>
+                                            <h2>با وارد کردن اطلاعات سفارش خود را تکمیل کنید</h2>
                                             <form action="{{route('client.orders.store')}}" method="post">
                                                 @csrf
                                                 <div class="row">

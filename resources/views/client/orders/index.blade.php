@@ -51,20 +51,21 @@
                             </thead>
 
                             @foreach($orders as $order)
-
-                                    <tr><td>{{ $loop->iteration}}</td>
+                                <tr>
+                                        <td>{{ $loop->iteration}}</td>
                                         <td>{{$order->user->name}}</td>
                                         <td>{{$order->address}}</td>
                                         <td>{{$order->mobile}}</td>
+
                                         <td>{{number_format($order->amount)}}</td>
                                         <td>@if(isset($order->transaction_id))<span style= "color: white;background-color: #0d6632; padding: 5px;border-radius: 5px">{{$order->transaction_id}}</span>@else<span style="color: white;background-color: red; padding: 5px;border-radius: 5px">پرداخت نشده </span> @endif</td>
                                         <td>
                                             @if(is_null($order->transaction_id))
                                             <a href="{{route('client.edit', $order)}}" class="btn btn-sm btn-primary">پرداخت سفارش</a>@else پرداخت با موفقیت انجام شد
                                             @endif
-                                        </td></tr>
+                                        </td>
+                                    </tr>
                             @endforeach
-
                         </table>
                     </div>
                 </div>

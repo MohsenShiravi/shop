@@ -18,6 +18,10 @@
                             <input type="text" class="form-control" name="code" id="code" value="{{$offer->code}}">
                         </div>
 
+                        <div class="form-group">
+                            <label for="value">میزان تخفیف</label>
+                            <input type="number" class="form-control" name="value" id="value" value="{{$offer->value}}">
+                        </div>
 
                         <div class="form-group">
                             <label for="starts_at">تاریخ آغاز</label>

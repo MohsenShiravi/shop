@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Events\OrderTransaction;
+use App\Http\Requests\OrderRequest;
 use App\Models\Cart;
+use App\Models\Offer;
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,7 +24,7 @@ class OrderController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(OrderRequest $request)
     {
         $order = Order::query()->create([
             'amount' => Cart::totalAmount(),
@@ -42,7 +45,7 @@ class OrderController extends Controller
                 'total_amount' => $productQty * $product->cost_with_discount
             ]);
         }
-        Cart::removeAll();
+
 
         return redirect()->route('client.orders.index');
     }
@@ -57,16 +60,28 @@ class OrderController extends Controller
 
     public function edit(Order $order)
     {
-        return view('client.orders.transaction',['order'=>$order]);
+
+        $product=Product::query()->where('id','order_id');
+
+        return view('client.orders.transaction',['order'=>$order,'product'=>$product]);
     }
 
     public function transaction(Request $request, Order $order)
     {
+        /*$offer=Offer::query()->where('code',$request->get('code'))->where('starts_at',"<" ,now())->where('starts_at', now())->where('expires_at',">" ,now())->get();
+        if ($offer){
+            $amount=$order->amount - $order->amount * $offer->value /100;
+            $order->update([
+                'amount'=>$amount
+            ]);
+        }*/
         $order->update([
             'payment_status' =>$request->get('payment_status'),
             'transaction_id'=>rand()
         ]);
+        Cart::removeAll();
         event(new OrderTransaction());
         return redirect()->route('client.orders.index');
     }
+
 }

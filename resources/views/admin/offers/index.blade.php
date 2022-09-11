@@ -18,6 +18,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>کد</th>
+                                <th>میزان تخفیف</th>
                                 <th>تاریخ آغاز</th>
                                 <th>تاریخ پایان</th>
                                 <th>ویرایش</th>
@@ -29,6 +30,7 @@
                                 <tr>
                                     <td>{{$offer->id}}</td>
                                     <td>{{$offer->code}}</td>
+                                    <td>{{$offer->value}}%</td>
                                     <td>{{$offer->starts_at->format('Y-m-d')}}</td>
                                     <td>{{$offer->expires_at->format('Y-m-d')}}</td>
                                     <td>

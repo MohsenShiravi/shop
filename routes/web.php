@@ -80,6 +80,8 @@ Route::prefix('')->name('client.')->group(function () {
     Route::post('/transaction/{order}', [OrderController::class, 'transaction'])->name('transaction');
 
 
+
+
 });
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');

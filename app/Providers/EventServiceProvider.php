@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Events\OrderReminder;
 use App\Events\OrderTransaction;
+use App\Listeners\SendEmailReminder;
 use App\Listeners\SendEmailToAdmin;
 use App\Listeners\SendEmailToUser;
 use Illuminate\Auth\Events\Registered;
@@ -24,7 +26,10 @@ class EventServiceProvider extends ServiceProvider
         OrderTransaction::class=>[
             SendEmailToAdmin::class,
             SendEmailToUser::class
-            ]
+            ],
+        OrderReminder::class=>[
+            SendEmailReminder::class
+        ]
     ];
 
     /**
