@@ -10,6 +10,7 @@ use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -60,10 +61,7 @@ class OrderController extends Controller
 
     public function edit(Order $order)
     {
-
-        $product=Product::query()->where('id','order_id');
-
-        return view('client.orders.transaction',['order'=>$order,'product'=>$product]);
+        return view('client.orders.transaction',['order'=>$order]);
     }
 
     public function transaction(Request $request, Order $order)

@@ -31,7 +31,7 @@ Sending an email to a user who has not paid the order for a week';
     public function handle()
     {$day=\Illuminate\Support\Carbon::now()->subDay(7);
         Order::query()->where('user_id',auth()->id())
-            ->where('transaction_id',null)
+            ->where('payment_status','unknown')
             ->where('updated_at',"<=",$day)->get();
         event(new OrderReminder());
     }

@@ -31,7 +31,7 @@
         <div class="container">
             <div class="section-title text-center">
                 <h2 style="color: #6f42c1">بیایید تمام محصولات انتخاب شده توسط شما را بررسی کنیم</h2><br>
-                <h3>نکته : در این مرحله هم میتوانید محصول صرف نظر شده را <span style="color: red">حذف</span> نمایید</h3>
+                <h3>نکته : در این مرحله هم میتوانید محصولات را <span style="color: red">ویرایش یا حذف</span>   نمایید.</h3>
             </div>
             <div class="tab checkout-tab">
 
@@ -86,7 +86,7 @@
                                                                                     $product = $item['product'];
                                                                                     $productQty = $item['quantity'];
                                                                                 @endphp
-                                                                                <tr>
+                                                                                <tr class="cart-row-{{$product->id}}">
                                                                                     <td class="product-thumbnail">
                                                                                         <a href="{{route('showProduct',$product)}}">
                                                                                             <img src="{{Storage::url($product->file->path.'/'.$product->file->name)}}" alt="{{$product->name}}" title="{{$product->name}}">
@@ -102,11 +102,21 @@
                                                                                     </td>
 
                                                                                     <td class="product-quantity">
-                                                                                        <span>{{$productQty}}</span>
+                                                                                        <div class="input-counter">
+														                                 <span class="minus-btn">
+															                             <i class='bx bx-minus'></i>
+														                                 </span>
+                                                                                            <input id="input-quantity-{{$product->id}}" name="quantity" type="text" value="1">
+                                                                                            <span class="plus-btn">
+															                                <i class='bx bx-plus'></i>
+													                                      	</span>
+                                                                                            <button type="submit" data-toggle="tooltip" title="بروزرسانی" onclick="updateCart({{$product->id}})" class="btn btn-primary"><i class="fa fa-refresh"></i></button>
+
+                                                                                        </div>
                                                                                     </td>
+                                                                                    <td ><span id="total-amount-{{$product->id}}" >{{$product->cost_with_discount * $productQty}}</span> تومان</td>
 
                                                                                     <td class="product-subtotal">
-                                                                                        <span class="subtotal-amount" id="total-amount-{{$product->id}}">{{number_format($product->cost_with_discount * $productQty)}}</span> تومان
 
                                                                                         <a  class="remove">
                                                                                             <button type="button" data-toggle="tooltip" title="حذف" class="btn btn-danger" onClick="removeFromCart({{$product->id}})"><i class="fa fa-times-circle"></i></button>

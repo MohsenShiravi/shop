@@ -373,7 +373,7 @@
                 _token: "{{csrf_token()}}"
             },
             success: function (data){
-                var icon = $('#like-'+productId + '>.fa-heart');
+                var icon = $('#like-'+productId + '>.bx-heart');
 
                 if (icon.hasClass('like')){
                     icon.removeClass('like');

@@ -46,7 +46,7 @@
                                             <thead>
                                             <tr>
                                                 <th>ردیف</th>
-                                                <th>کد محصول</th>
+                                                <th>نام محصول</th>
                                                 <th>قیمت تک محصول</th>
                                                 <th>تعداد</th>
                                                 <th>قیمت کل</th>
@@ -54,9 +54,11 @@
                                             </thead>
 
                                             @foreach($order->details as $orderDetail)
-                                                <tr>
+@php        $pro=Illuminate\Support\Facades\DB::table('products')->where('id',$orderDetail->product_id)->pluck('name');
+
+@endphp                                                <tr>
                                                     <td>{{ $loop->iteration}}</td>
-                                                    <td>{{$orderDetail->product_id}}</td>
+                                                    <td>{{$pro}}</td>
                                                     <td>{{number_format($orderDetail->unit_amount)}}</td>
                                                     <td>{{$orderDetail->count}}</td>
                                                     <td>{{number_format($orderDetail->total_amount)}}</td>

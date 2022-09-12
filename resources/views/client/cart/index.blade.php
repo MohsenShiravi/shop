@@ -42,6 +42,7 @@
 												<th scope="col">تعداد</th>
 												<th scope="col">کل</th>
 												<th scope="col">حذف</th>
+
 											</tr>
 										</thead>
 
@@ -51,7 +52,7 @@
 												$product = $item['product'];
                                                 $productQty = $item['quantity'];
 											@endphp
-											<tr>
+											<tr class="cart-row-{{$product->id}}">
 												<td class="product-thumbnail">
 													<a href="{{route('showProduct',$product)}}">
 														<img src="{{Storage::url($product->file->path.'/'.$product->file->name)}}" alt="{{$product->name}}" title="{{$product->name}}">
@@ -67,11 +68,21 @@
 												</td>
 
 												<td class="product-quantity">
-													<span>{{$productQty}}</span>
+													<div class="input-counter">
+														<span class="minus-btn">
+															<i class='bx bx-minus'></i>
+														</span>
+														<input id="input-quantity-{{$product->id}}" name="quantity" type="text" value="1">
+														<span class="plus-btn">
+															<i class='bx bx-plus'></i>
+														</span>
+														<button type="submit" data-toggle="tooltip" title="بروزرسانی" onclick="updateCart({{$product->id}})" class="btn btn-primary"><i class="fa fa-refresh"></i></button>
+
+													</div>
 												</td>
+												<td ><span id="total-amount-{{$product->id}}" >{{$product->cost_with_discount * $productQty}}</span> تومان</td>
 
 												<td class="product-subtotal">
-													<span class="subtotal-amount" id="total-amount-{{$product->id}}">{{number_format($product->cost_with_discount * $productQty)}}</span> تومان
 
 													<a  class="remove">
 														<button type="button" data-toggle="tooltip" title="حذف" class="btn btn-danger" onClick="removeFromCart({{$product->id}})"><i class="fa fa-times-circle"></i></button>
@@ -88,9 +99,9 @@
 									<div class="cart-totals">
 										<h3>جمع سبد خرید</h3>
 										<ul>
-											<li>تعداد آیتم<span>{{\App\Models\Cart::totalItems()}}</span></li>
-											<li>جمع کل <span><b>{{number_format(\App\Models\Cart::totalAmount())}} تومان</b></span></li>
-											<li>مبلغ قابل پرداخت<span><b>{{number_format(\App\Models\Cart::totalAmount())}} تومان</b></span></li>
+											<li>تعداد آیتم<span class="total-items">{{\App\Models\Cart::totalItems()}}</span></li>
+											<li>جمع کل <span class="total-amount"><b>{{number_format(\App\Models\Cart::totalAmount())}} تومان</b></span></li>
+											<li>مبلغ قابل پرداخت<span class="total-amount"><b>{{number_format(\App\Models\Cart::totalAmount())}} تومان</b></span></li>
 										</ul>
 										@if(auth()->user())
 										<a href="{{route('client.orders.create')}}" class="default-btn btn-bg-three">
