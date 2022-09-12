@@ -382,8 +382,7 @@
                         <li><a href="{{route('panel.orders')}}"><i class="mdi mdi-toggle-switch-off"></i>لیست</a></li>
                     </ul>
                 </li>
-
-
+                @if(auth()->user()->role->title == 'admin')
                 <li class="treeview">
                     <a href="#">
                         <i class="mdi mdi-apps"></i>
@@ -401,8 +400,8 @@
                         <i class="mdi mdi-apps"></i>
                         <span>نقش ها</span>
                         <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
+                       <i class="fa fa-angle-right pull-right"></i>
+                       </span>
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="{{route('roles.create')}}"><i class="mdi mdi-toggle-switch-off"></i>ایجاد</a></li>
@@ -410,14 +409,13 @@
                     </ul>
                 </li>
 
-
+                @endif
                 <li>
                     <a href="{{route('logout')}}">
                         <i class="mdi mdi-directions"></i>
-                        <span>Log Out</span>
+                        <span style="background-color: red;color: white;border-radius: 5px;padding: 8px;font-size: 12px">LOG OUT</span>
                     </a>
                 </li>
-
             </ul>
         </section>
     </aside>

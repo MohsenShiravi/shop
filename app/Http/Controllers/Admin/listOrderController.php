@@ -11,7 +11,7 @@ class listOrderController extends Controller
 {
     public function index()
     {
-        if(Auth::user()->role('admin'))
+        if(Auth::user()->role->title =='admin')
         {
             $orders=Order::all();
         }

@@ -28,7 +28,7 @@ class Cart
         $cart['total_amount'] = Cart::totalAmount();
 
         session()->put([
-            'cart' => $cart
+            'cart' => $cart 
         ]);
     }
 
