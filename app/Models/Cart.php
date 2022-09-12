@@ -15,10 +15,10 @@ class Cart
             $cart = self::getItems();
         }
 
-        $cart[$product->id] = [
-            'product' => $product,
+        $cart[$product->id] = ['product' => $product,
             'quantity' => $request->get('quantity')
         ];
+
 
         session()->put([
             'cart' => $cart
@@ -28,8 +28,23 @@ class Cart
         $cart['total_amount'] = Cart::totalAmount();
 
         session()->put([
-            'cart' => $cart 
+            'cart' => $cart
         ]);
+    }
+
+    public static function getCart()
+    {
+        if (!session()->has('cart')){
+            return null;
+        }
+        return session()->get('cart');
+    }
+
+    public static function getItems()
+    {
+        return collect(self::getCart())->filter(function ($item){
+            return is_array($item);
+        });
     }
 
 
@@ -42,20 +57,12 @@ class Cart
             if(is_array($cartItem) && array_key_exists('product', $cartItem) && array_key_exists('quantity', $cartItem)){
 
                 $totalAmount += $cartItem['product']->cost_with_discount * $cartItem['quantity'];
-
             }
-
         }
-
         return $totalAmount;
     }
 
-    public static function getItems()
-    {
-        return collect(self::getCart())->filter(function ($item){
-            return is_array($item);
-        });
-    }
+
 
     public static function totalItems()
     {
@@ -64,13 +71,6 @@ class Cart
         return count($items);
     }
 
-    public static function getCart()
-    {
-        if (!session()->has('cart')){
-            return null;
-        }
-        return session()->get('cart');
-    }
 
     public static function remove(Product $product)
     {

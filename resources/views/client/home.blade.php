@@ -52,6 +52,7 @@
                                     </select>
                                 </div>
                             </div>
+
                             <div class="option-item">
                                 <div class="cart-btn-area">
                                     <a href="{{route('cart.index')}}" id="input-quantity" class="cart-btn"><i class='bx bx-cart'></i></a>
@@ -69,23 +70,20 @@
     <!-- End Navbar Area -->
     <div class="navbar-area">
         <!-- Menu For Mobile Device -->
-        <div class="mobile-nav">
-            <a href="{{route('index')}}" class="logo">
-                <img src="{{asset('client/images/logos/logo-1.png')}}" alt="Logo">
-            </a>
-        </div>
+
 
         <!-- Menu For Desktop Device -->
         <div class="main-nav">
 
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light ">
-                    <a class="navbar-brand" href="{{route('index')}}">
-                        <img src="{{asset('client/images/logos/logo-1.png')}}" alt="Logo">
-                    </a>
-
                     <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                         <ul class="navbar-nav m-auto">
+                            <li class="nav-item">
+                                <a href="{{route('index')}}" class="nav-link">
+                                    صفحه اصلی
+                                </a>
+                            </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     دسته ها
@@ -123,7 +121,6 @@
                             </li>
                             @auth
                                 <li class="nav-item"><a style="color:white" href="{{route('client.likes.index')}}">لیست علاقه مندی (<span style="color: lightgoldenrodyellow" id="likes_count">{{auth()->user()->likes()->count()}}</span>)</a></li>
-                                <li class="nav-item"><a  href="{{route('client.orders.index')}}">وضعیت سفارشات</a></li>
 
 
                             @php $user=auth()->user(); @endphp
@@ -132,13 +129,62 @@
                                 <li class="nav-item"><a  href="/panel">پنل مدیریت </a></li>
                             @endif
                             @endauth
-                            <li class="nav-item"><a  href="{{route('cart.index')}}">سبد خرید</a></li>
+                            <li class="nav-item"><a  href="{{route('cart.index')}}">سبد خرید
+                                    <i class='bx bx-chevron-down'></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <table id="menu-cart" class="table">
+                                            <tbody id="cart-table-body">
+                                            @foreach(\App\Models\Cart::getItems() as $item)
+                                                @php
+                                                    $product = $item['product'];
+                                                    $productQty = $item['quantity'];
+                                                @endphp
+                                                <tr class="cart-row-{{$product->id}}">
+                                                    <td class="text-left"><a href="product.html">{{$product->name}}</a></td>
+                                                    <td class="text-right">x {{$productQty}}</td>
+                                                    <td class="text-right">{{number_format($product->cost_with_discount)}}  تومان</td>
+                                                    <td class="text-center"><button class="btn btn-danger btn-xs remove" title="حذف" onClick="removeFromCart({{$product->id}})" type="button"><i class="fa fa-times"></i></button></td>
+                                                </tr>
+                                            @endforeach
 
+                                            </tbody>
+                                        </table>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <table class="table table-bordered">
+                                                <tbody>
+                                                <tr>
+                                                    <td class="text-right"><strong>جمع کل</strong></td>
+                                                    <td class="text-right"><span class="total-amount">{{\App\Models\Cart::totalAmount()}}</span> تومان</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="text-right"><strong>قابل پرداخت</strong></td>
+                                                    <td class="text-right"><span class="total-amount">{{\App\Models\Cart::totalAmount()}}</span> تومان</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            <p class="checkout"><a href="{{route('cart.index')}}" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> مشاهده سبد</a>&nbsp;&nbsp;&nbsp;<a href="{{route('client.orders.create')}}" class="btn btn-primary"><i class="fa fa-share"></i> ثبت سفارش</a></p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
                             <li class="nav-item-btn ">
                                 <a href="{{route('login')}}" class="default-btn border-radius-5 btn-bg-one">وارد شوید</a>
                             </li>
                         </ul>
-                       @if(!auth()->user())
+                        <div class="other-option">
+                        <div class="option-item">
+                            <div class="cart-btn-area">
+                                <a href="{{route('cart.index')}}" id="input-quantity" class="cart-btn"><i style="color: white" class='bx bx-cart'></i></a>
+                                <span class="total-items">{{\App\Models\Cart::totalItems()}}</span>
+                            </div>
+                        </div>
+                        </div>
+                        @if(!auth()->user())
                         <div class="nav-btn">
                             <a href="{{route('login')}}" class="default-btn border-radius-5 btn-bg-one">وارد شوید</a>
                         </div>
@@ -160,12 +206,15 @@
             <div class="col-lg-4">
                 <div class="banner-content-area">
                     <div class="banner-content">
-                        <span>20UNH22U رولکس 1002 ، کد </span>
-                        <h1> اولکس ، بهترین راه برای خرید </h1>
+                        <h1> اسان ترین روش خرید انلاین را با ما تجربه کنید </h1>
                         <p>این یکی از بهترین روش های مناسب و مناسب برای خرید محصول با قیمت مناسب و مناسب است.</p>
-                        <a href="shop-details.html" class="default-btn btn-bg-one border-radius-5">خرید</a>
+
                     </div>
-                </div>
+                        <a href="{{route('index')}}" class="logo">
+                            <img src="{{asset('client/images/logos/logo-1.png')}}" alt="Logo">
+                        </a>
+                    </div>
+
             </div>
 
             <div class="col-lg-8">
@@ -219,7 +268,7 @@
                         </div>
 
                         <div class="add-btn">
-                            <a href="{{route('showProduct',$product)}}" class="add-cart-btn">خرید</a>
+                            <button class="btn-primary" type="button" onClick="addToCart({{$product->id}});"><span style="color: white;background-color: red;border-radius: 5px;padding: 5px">افزودن به سبد</span></button>
                         </div>
 
                         <ul class="products-action">

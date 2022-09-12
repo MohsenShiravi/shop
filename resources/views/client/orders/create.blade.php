@@ -48,20 +48,6 @@
                                             <h2>با وارد کردن اطلاعات سفارش خود را تکمیل کنید</h2>
                                             <form action="{{route('client.orders.store')}}" method="post">
                                                 @csrf
-                                                <div class="row">
-                                                    <div class="col-lg-12">
-                                                        <div class="form-group">
-                                                            <label>آدرس </label>
-                                                            <input type="text" class="form-control" name="address"  placeholder="آدرس خود را وارد نمایید">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="form-group">
-                                                            <label>شماره تماس</label>
-                                                            <input type="text" class="form-control" name="mobile" placeholder="ترجیحا شماره موبایل خود را وارد کنید">
-                                                        </div>
-                                                    </div>
-                                                </div>
                                                 <section class="cart-wraps-area ptb-100">
                                                     <div class="container">
                                                         <div class="row">
@@ -138,6 +124,20 @@
                                                                                 <td class="text-right"><span class="total-amount">{{\App\Models\Cart::totalAmount()}}</span></td>
                                                                             </tr>
                                                                         </table>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12">
+                                                                            <div class="form-group">
+                                                                                <label>آدرس </label>
+                                                                                <input type="text" class="form-control" name="address"  placeholder="آدرس خود را وارد نمایید">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-12">
+                                                                            <div class="form-group">
+                                                                                <label>شماره تماس</label>
+                                                                                <input type="text" class="form-control" name="mobile" placeholder="ترجیحا شماره موبایل خود را وارد کنید">
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
