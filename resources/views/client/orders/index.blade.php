@@ -29,11 +29,6 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="box">
-                <div class="box-header with-border">
-                    <h1 class="box-title">
-                        سفارشات در انتظار پرداخت
-                    </h1>
-                </div>
                 <div >
                     <div >
                         <table id="example5" class="table table-bordered table-striped" style="width:100%">

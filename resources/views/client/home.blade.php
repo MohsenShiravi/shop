@@ -120,7 +120,10 @@
                                 </ul>
                             </li>
                             @auth
-                                <li class="nav-item"><a style="color:white" href="{{route('client.likes.index')}}">لیست علاقه مندی (<span style="color: lightgoldenrodyellow" id="likes_count">{{auth()->user()->likes()->count()}}</span>)</a></li>
+                                <li class="nav-item">
+                                    <a style="color:white" href="{{route('client.likes.index')}}">لیست علاقه مندی (<span style="color: lightgoldenrodyellow" id="likes_count">{{auth()->user()->likes()->count()}}</span>)
+                                    </a>
+                                </li>
 
 
                             @php $user=auth()->user(); @endphp
@@ -128,6 +131,7 @@
                             @if($user->role->hasPermission('view-dashboard'))
                                 <li class="nav-item"><a  href="/panel">پنل مدیریت </a></li>
                             @endif
+
                             @endauth
                             <li class="nav-item"><a  href="{{route('cart.index')}}">سبد خرید
                                     <i class='bx bx-chevron-down'></i>
@@ -172,6 +176,21 @@
                                     </li>
                                 </ul>
                             </li>
+                            @auth()
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    {{auth()->user()->name}}
+                                    <i class='bx bx-chevron-down'></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item">
+                                        <a href="{{route('client.orders.index')}}" class="nav-link">
+                                            سفارشات من
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            @endauth
                             <li class="nav-item-btn ">
                                 <a href="{{route('login')}}" class="default-btn border-radius-5 btn-bg-one">وارد شوید</a>
                             </li>

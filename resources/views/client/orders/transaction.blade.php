@@ -19,7 +19,7 @@
 
                 <div class="col-lg-6">
                     <div class="inner-banner-img">
-                        <img src="{{asset('client/images/inner-banner/inner-banner10.png')}}" alt="Inner Banner">
+                        <img src="{{asset('client/images/checkout-img.png')}}" alt="Inner Banner">
                     </div>
                 </div>
             </div>

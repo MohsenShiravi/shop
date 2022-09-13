@@ -106,11 +106,27 @@
                                 </li>
                             </ul>
                         </li>
+                        @auth()
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    {{auth()->user()->name}}
+                                    <i class='bx bx-chevron-down'></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item">
+                                        <a href="{{route('client.orders.index')}}" class="nav-link">
+                                            سفارشات من
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endauth
                     </ul>
                     <a href="{{route('cart.index')}}"><span class="total-items">{{\App\Models\Cart::totalItems()}}</span> آیتم -
                                         <span class="total-amount">{{number_format(\App\Models\Cart::totalAmount())}}</span>
                         تومان</a>
                     </div>
+
                 @if(!auth()->user())
                     <div class="nav-btn">
                         <a href="{{route('login')}}" class="default-btn border-radius-5 btn-bg-one">ورود</a>
