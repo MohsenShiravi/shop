@@ -20,9 +20,6 @@ class HomeController extends Controller
 
     public function productDetails(Product $product)
     {
-
-
-
         return view('client.showProduct',['product'=>$product]);
      }
 }

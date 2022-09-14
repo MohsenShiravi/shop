@@ -71,6 +71,7 @@ class User extends Authenticatable
 
         return $this->likes()->attach($product);
     }
+
     public function order()
     {
         return $this->belongsTo(Order::class);

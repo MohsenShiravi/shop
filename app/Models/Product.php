@@ -5,12 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class Product extends Model
 {
     use HasFactory;
     protected $guarded=[];
-
+    protected $appends = [
+        'cost_with_discount',
+        'image_path'
+    ];
 
     public function category()
     {
@@ -71,5 +75,10 @@ class Product extends Model
     public function getIsLikedAttribute()
     {
         return $this->likes()->where('user_id', auth()->id())->exists();
+    }
+
+    public function getImagePathAttribute()
+    {
+        return Storage::url($this->file->path.'/'.$this->file->name);
     }
 }

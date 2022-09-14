@@ -76,7 +76,7 @@
 														<span class="plus-btn">
 															<i class='bx bx-plus'></i>
 														</span>
-														<button type="submit" data-toggle="tooltip" title="بروزرسانی" onclick="updateCart({{$product->id}})" class="btn btn-primary"><i class="fa fa-refresh"></i></button>
+														<button type="submit" data-toggle="tooltip" title="بروزرسانی" onclick="updateCart({{$product->id}})" class="btn btn-primary"><i class="bx bx-refresh"></i></button>
 
 													</div>
 												</td>
@@ -85,7 +85,7 @@
 												<td class="product-subtotal">
 
 													<a  class="remove">
-														<button type="button" data-toggle="tooltip" title="حذف" class="btn btn-danger" onClick="removeFromCart({{$product->id}})"><i class="fa fa-times-circle"></i></button>
+														<button type="button" data-toggle="tooltip" title="حذف" class="btn btn-danger" onClick="removeFromCart({{$product->id}})"><i class='bx bx-x-circle'></i></button>
 													</a>
 												</td>
 											</tr>

@@ -134,11 +134,12 @@
 
                             @endauth
                             <li class="nav-item"><a  href="{{route('cart.index')}}">سبد خرید
+                                    <i class="bx bx-cart"></i>
                                     <i class='bx bx-chevron-down'></i>
                                 </a>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu col-sm-8">
                                     <li>
-                                        <table id="menu-cart" class="table">
+                                        <table id="menu-cart" class="">
                                             <tbody id="cart-table-body">
                                             @foreach(\App\Models\Cart::getItems() as $item)
                                                 @php
@@ -146,10 +147,12 @@
                                                     $productQty = $item['quantity'];
                                                 @endphp
                                                 <tr class="cart-row-{{$product->id}}">
-                                                    <td class="text-left"><a href="product.html">{{$product->name}}</a></td>
-                                                    <td class="text-right">x {{$productQty}}</td>
-                                                    <td class="text-right">{{number_format($product->cost_with_discount)}}  تومان</td>
-                                                    <td class="text-center"><button class="btn btn-danger btn-xs remove" title="حذف" onClick="removeFromCart({{$product->id}})" type="button"><i class="fa fa-times"></i></button></td>
+                                                    <td  style="font-size:12px"><a href="product.html"><img width="100"  class="img-thumbnail" title="{{$product->name}}" alt="{{$product->name}}" src="{{$product->image_path}}"></a></td>
+
+                                                    <td  style="font-size:12px"><a style="font-size:12px" href="product.html">{{$product->name}}</a></td>
+                                                    <td  style="font-size:12px">x {{$productQty}}</td>
+                                                    <td  style="font-size:12px">{{number_format($product->cost_with_discount)}}  تومان</td>
+                                                    <td  style="font-size:12px"><button class="btn btn-danger btn-xs remove" title="حذف" onClick="removeFromCart({{$product->id}})" type="button"><i class='bx bx-x-circle'></i></button></td>
                                                 </tr>
                                             @endforeach
 
@@ -171,7 +174,7 @@
                                                 </tr>
                                                 </tbody>
                                             </table>
-                                            <p class="checkout"><a href="{{route('cart.index')}}" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> مشاهده سبد</a>&nbsp;&nbsp;&nbsp;<a href="{{route('client.orders.create')}}" class="btn btn-primary"><i class="fa fa-share"></i> ثبت سفارش</a></p>
+                                            <p class="checkout"><a href="{{route('cart.index')}}" class="default-btn btn-bg-three"><i class="bx bx-cart"></i> مشاهده سبد</a>&nbsp;&nbsp;&nbsp;<a href="{{route('client.orders.create')}}" class="default-btn btn-bg-three"><i class="bx bx-share"></i> ثبت سفارش</a></p>
                                         </div>
                                     </li>
                                 </ul>

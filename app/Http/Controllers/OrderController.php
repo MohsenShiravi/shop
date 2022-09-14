@@ -46,8 +46,7 @@ class OrderController extends Controller
                 'total_amount' => $productQty * $product->cost_with_discount
             ]);
         }
-
-
+        Cart::removeAll();
         return redirect()->route('client.orders.index');
     }
 
@@ -77,7 +76,6 @@ class OrderController extends Controller
             'payment_status' =>$request->get('payment_status'),
             'transaction_id'=>rand()
         ]);
-        Cart::removeAll();
         event(new OrderTransaction());
         return redirect()->route('client.orders.index');
     }
