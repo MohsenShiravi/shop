@@ -33,7 +33,7 @@
                                     <td>{{$product->name}}</td>
                                     <td>{{$product->cost}}</td>
                                     <td>{{$product->category->title}}</td>
-                                    <td><img src="{{Storage::url($product->file->path.'/'.$product->file->name)}}"></td>
+                                    <td><img width="100" height="50" src="{{Storage::url($product->file->path.'/'.$product->file->name)}}"></td>
                                     <td>
                                         @if(!$product->discount()->exists())
                                             <a href="{{route('products.discounts.create', $product)}}" class="btn btn-sm btn-success">ایجاد تخفیف</a>

@@ -96,7 +96,7 @@
                                                                                             <span class="plus-btn">
 															                                <i class='bx bx-plus'></i>
 													                                      	</span>
-                                                                                            <button type="submit" data-toggle="tooltip" title="بروزرسانی" onclick="updateCart({{$product->id}})" class="btn btn-primary"><i class="bx bx-refresh"></i></button>
+                                                                                            <a type="submit" data-toggle="tooltip" title="بروزرسانی" onclick="updateCart({{$product->id}})" ><i style="color:green " class="bx bx-refresh"></i></a>
 
                                                                                         </div>
                                                                                     </td>

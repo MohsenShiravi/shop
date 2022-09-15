@@ -79,12 +79,11 @@
                                                 $productQty = $item['quantity'];
                                             @endphp
                                             <tr class="cart-row-{{$product->id}}">
-                                                <td  style="font-size:12px"><a href="product.html"><img width="100"  class="img-thumbnail" title="{{$product->name}}" alt="{{$product->name}}" src="{{$product->image_path}}"></a></td>
-
-                                                <td  style="font-size:12px"><a style="font-size:12px" href="product.html">{{$product->name}}</a></td>
-                                                <td  style="font-size:12px">x {{$productQty}}</td>
+                                                <td  style="font-size:12px"><img width="100" height="100" class="img-thumbnail" title="{{$product->name}}" alt="{{$product->name}}" src="{{$product->image_path}}"></td>
+                                                <td  style="font-size:12px">{{$product->name}}</td>
+                                                <td  style="font-size:12px"><a>{{$productQty}}</a></td>
                                                 <td  style="font-size:12px">{{number_format($product->cost_with_discount)}}  تومان</td>
-                                                <td  style="font-size:12px"><button class="btn btn-danger btn-xs remove" title="حذف" onClick="removeFromCart({{$product->id}})" type="button"><i class='bx bx-x-circle'></i></button></td>
+                                                <td  style="font-size:12px"><a class="remove" title="حذف" onClick="removeFromCart({{$product->id}})" type="button"><i class='bx bx-x-circle'></i></a></td>
                                             </tr>
                                         @endforeach
 

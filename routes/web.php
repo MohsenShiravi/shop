@@ -76,7 +76,7 @@ Route::prefix('')->name('client.')->group(function () {
     Route::get('/orders/create', [OrderController::class, 'create'])->name('orders.create');
     Route::post('/orders/store', [OrderController::class, 'store'])->name('orders.store');
     Route::get('/orders/index', [OrderController::class, 'index'])->name('orders.index');
-    Route::get('/edit/{order}', [OrderController::class, 'edit'])->name('edit');
+    Route::get('/Bank portal/{order}', [OrderController::class, 'edit'])->name('edit');
     Route::post('/transaction/{order}', [OrderController::class, 'transaction'])->name('transaction');
 
 

@@ -56,12 +56,17 @@
                                 </div>
 
                                 <div class="add-btn">
-                                    <a  href="{{route('showProduct',$product)}}" class="add-cart-btn">خرید</a>
+                                    <button class="add-cart-btn" type="button" onClick="addToCart({{$product->id}});">خرید</button>
                                 </div>
 
                                 <ul class="products-action">
                                     <li>
                                         <a id="like-{{$product->id}}" onClick="like({{$product->id}});" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart @if($product->is_liked) like @endif'></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('showProduct',$product)}}" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
+                                            <i class='bx bx-show-alt'></i>
+                                        </a>
                                     </li>
 
                                 </ul>

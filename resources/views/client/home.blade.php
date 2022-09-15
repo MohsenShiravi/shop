@@ -147,12 +147,11 @@
                                                     $productQty = $item['quantity'];
                                                 @endphp
                                                 <tr class="cart-row-{{$product->id}}">
-                                                    <td  style="font-size:12px"><a href="product.html"><img width="100"  class="img-thumbnail" title="{{$product->name}}" alt="{{$product->name}}" src="{{$product->image_path}}"></a></td>
-
-                                                    <td  style="font-size:12px"><a style="font-size:12px" href="product.html">{{$product->name}}</a></td>
-                                                    <td  style="font-size:12px">x {{$productQty}}</td>
+                                                    <td  style="font-size:12px"><img width="100" height="100" class="img-thumbnail" title="{{$product->name}}" alt="{{$product->name}}" src="{{$product->image_path}}"></td>
+                                                    <td  style="font-size:12px">{{$product->name}}</td>
+                                                    <td  style="font-size:12px"><a>{{$productQty}}</a></td>
                                                     <td  style="font-size:12px">{{number_format($product->cost_with_discount)}}  تومان</td>
-                                                    <td  style="font-size:12px"><button class="btn btn-danger btn-xs remove" title="حذف" onClick="removeFromCart({{$product->id}})" type="button"><i class='bx bx-x-circle'></i></button></td>
+                                                    <td  style="font-size:12px"><a class="remove" title="حذف" onClick="removeFromCart({{$product->id}})" type="button"><i class='bx bx-x-circle'></i></a></td>
                                                 </tr>
                                             @endforeach
 
@@ -290,14 +289,18 @@
                         </div>
 
                         <div class="add-btn">
-                            <button class="btn-primary" type="button" onClick="addToCart({{$product->id}});"><span style="color: white;background-color: red;border-radius: 5px;padding: 5px">افزودن به سبد</span></button>
+                            <button class="add-cart-btn" type="button" onClick="addToCart({{$product->id}});">خرید</button>
                         </div>
 
                         <ul class="products-action">
                             <li>
                                 <a id="like-{{$product->id}}" onClick="like({{$product->id}});" data-tooltip="tooltip"  data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart @if($product->is_liked) like @endif'></i></a>
                             </li>
-
+                            <li>
+                                <a href="{{route('showProduct',$product)}}" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
+                                    <i class='bx bx-show-alt'></i>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -337,13 +340,13 @@
                                             @endif
                                             <ul class="product-card-action">
                                                 <li>
-                                                    <a href="{{route('showProduct',$product)}}" ><i class='bx bx-cart'></i></a>
+                                                    <a class="add-cart-btn" onClick="addToCart({{$product->id}});"  ><i class='bx bx-cart'></i></a>
                                                 </li>
                                                 <li>
                                                     <a id="like-{{$product->id}}" onClick="like({{$product->id}});"><i class='bx bx-heart @if($product->is_liked) like @endif'></i></a>
                                                 </li>
                                                 <li>
-                                                    <a href="#" data-toggle="modal" data-target="#productsQuickView">
+                                                    <a href="{{route('showProduct',$product)}}" data-toggle="modal" data-target="#productsQuickView">
                                                         <i class='bx bx-show-alt'></i>
                                                     </a>
                                                 </li>

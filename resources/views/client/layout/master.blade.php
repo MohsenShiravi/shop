@@ -414,12 +414,11 @@
 
                     $('#cart-table-body:last-child').append(
                         '<tr id="cart-row-' + product.id +'">'
-                        + '<td class="text-center"><a href="product.html"><img width="100"  class="img-thumbnail" title="'+ product.name +'" alt="' + product.name + '" src="' + product.image_path +'"></a></td>'
-
-                        + '<td class="text-left"><a href="product.html">' + product.name +'</a></td>'
-                        + '<td class="text-right">x' + productQty +'</td>'
-                        + '<td class="text-right">' + product.cost_with_discount + ' تومان</td>'
-                        + '<td class="text-center"><button class="btn btn-danger btn-xs remove" title="حذف" onClick="removeFromCart(' + product.id + ')" type="button"><i class="fa fa-times"></i></button></td>'
+                        + '<td class="text-center"><img width="100"  class="img-thumbnail" title="'+ product.name +'" alt="' + product.name + '" src="' + product.image_path +'"></td>'
+                        + '<td style="font-size:12px">' + product.name +'</td>'
+                        + '<td style="font-size:12px"><a>' + productQty +'</a></td>'
+                        + '<td style="font-size:12px">' + product.cost_with_discount + ' تومان</td>'
+                        + '<td style="font-size:12px"><a class=" remove" title="حذف" onClick="removeFromCart(' + product.id + ')" ><i class="bx bx-x-circle"></i></a></td>'
                         + '</tr>'
                     );
 

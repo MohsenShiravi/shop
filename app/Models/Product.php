@@ -13,7 +13,8 @@ class Product extends Model
     protected $guarded=[];
     protected $appends = [
         'cost_with_discount',
-        'image_path'
+        'image_path',
+
     ];
 
     public function category()
