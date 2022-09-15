@@ -14,8 +14,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products=Product::query()->with('category')->get();
-        return view('admin.products.index', ['products'=>$products]);
+        return view('admin.products.index');
     }
 
     public function create()

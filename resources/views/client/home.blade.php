@@ -53,12 +53,7 @@
                                 </div>
                             </div>
 
-                            <div class="option-item">
-                                <div class="cart-btn-area">
-                                    <a href="{{route('cart.index')}}" id="input-quantity" class="cart-btn"><i class='bx bx-cart'></i></a>
-                                    <span class="total-items">{{\App\Models\Cart::totalItems()}}</span>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -133,8 +128,10 @@
                             @endif
 
                             @endauth
-                            <li class="nav-item"><a  href="{{route('cart.index')}}">سبد خرید
-                                    <i class="bx bx-cart"></i>
+                            <li class="nav-item"> <a href="{{route('cart.index')}}"><span class="total-items">{{\App\Models\Cart::totalItems()}}</span> آیتم -
+                                    <span class="total-amount">{{number_format(\App\Models\Cart::totalAmount())}}</span>
+                                    تومان
+                                    <i class="bx bx-cart" STYLE="color: red"></i>
                                     <i class='bx bx-chevron-down'></i>
                                 </a>
                                 <ul class="dropdown-menu col-sm-8">
@@ -197,14 +194,7 @@
                                 <a href="{{route('login')}}" class="default-btn border-radius-5 btn-bg-one">وارد شوید</a>
                             </li>
                         </ul>
-                        <div class="other-option">
-                        <div class="option-item">
-                            <div class="cart-btn-area">
-                                <a href="{{route('cart.index')}}" id="input-quantity" class="cart-btn"><i style="color: white" class='bx bx-cart'></i></a>
-                                <span class="total-items">{{\App\Models\Cart::totalItems()}}</span>
-                            </div>
-                        </div>
-                        </div>
+
                         @if(!auth()->user())
                         <div class="nav-btn">
                             <a href="{{route('login')}}" class="default-btn border-radius-5 btn-bg-one">وارد شوید</a>
@@ -268,43 +258,43 @@
 
         <div id="Container" class="row">
             @foreach($products as $product)
-            <div class="col-lg-3 col-sm-6 mix smartphone">
-                <div class="arrival-product">
-                    <div class="arrival-img">
-                        <a href="{{route('showProduct',$product)}}">
-                            <img src="{{Storage::url($product->file->path.'/'.$product->file->name)}}" alt="{{$product->name}}" title="{{$product->name}}">
-                        </a>
-                        @if($product->has_discount)
-                        <div class="new-tag">
-                            <h3>تخفیف : {{$product->discount->value}}%</h3>
-                        </div>
-                        @endif
-                    </div>
-
-                    <div class="content">
-                        <h3><a href="{{route('showProduct',$product)}}">{{$product->name}}</a></h3>
-                        <span>دسته بندی : {{$product->category->title}}</span>
-                        <div class="price-tag">
-                            <h4>{{number_format($product->cost_with_discount)}} تومان @if($product->has_discount)<del>{{number_format($product->cost)}}</del> @endif </h4>
+                <div class="col-lg-3 col-sm-6 mix smartphone">
+                    <div class="arrival-product">
+                        <div class="arrival-img">
+                            <a href="{{route('showProduct',$product)}}">
+                                <img src="{{Storage::url($product->file->path.'/'.$product->file->name)}}" alt="{{$product->name}}" title="{{$product->name}}">
+                            </a>
+                            @if($product->has_discount)
+                                <div class="new-tag">
+                                    <h3>تخفیف : {{$product->discount_value}}%</h3>
+                                </div>
+                            @endif
                         </div>
 
-                        <div class="add-btn">
-                            <button class="add-cart-btn" type="button" onClick="addToCart({{$product->id}});">خرید</button>
-                        </div>
+                        <div class="content">
+                            <h3><a href="{{route('showProduct',$product)}}">{{$product->name}}</a></h3>
+                            <span>دسته بندی : {{$product->category->title}}</span>
+                            <div class="price-tag">
+                                <h4>{{number_format($product->cost_with_discount)}} تومان @if($product->has_discount)<del>{{number_format($product->cost)}}</del> @endif </h4>
+                            </div>
 
-                        <ul class="products-action">
-                            <li>
-                                <a id="like-{{$product->id}}" onClick="like({{$product->id}});" data-tooltip="tooltip"  data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart @if($product->is_liked) like @endif'></i></a>
-                            </li>
-                            <li>
-                                <a href="{{route('showProduct',$product)}}" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
-                                    <i class='bx bx-show-alt'></i>
-                                </a>
-                            </li>
-                        </ul>
+                            <div class="add-btn">
+                                <button class="add-cart-btn" type="button" onClick="addToCart({{$product->id}})">خرید</button>
+                            </div>
+                            <ul class="products-action">
+                                <li>
+                                    <a id="like-{{$product->id}}" onClick="like({{$product->id}});" data-tooltip="tooltip" data-placement="top" title="افزودن در علاقه‌مندی‌ها"><i class='bx bx-heart @if($product->is_liked) like @endif'></i></a>
+                                </li>
+                                <li>
+                                    <a href="{{route('showProduct',$product)}}" data-tooltip="tooltip" data-placement="top" title="نمایش سریع" data-toggle="modal" data-target="#productsQuickView">
+                                        <i class='bx bx-show-alt'></i>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
             @endforeach
         </div>
     </div>

@@ -56,7 +56,7 @@
                                 </div>
 
                                 <div class="add-btn">
-                                    <button class="add-cart-btn" type="button" onClick="addToCart({{$product->id}});">خرید</button>
+                                    <button class="add-cart-btn" type="button" onClick="addToCart({{$product->id}})">خرید</button>
                                 </div>
 
                                 <ul class="products-action">
