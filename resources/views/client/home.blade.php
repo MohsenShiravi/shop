@@ -116,7 +116,7 @@
                             </li>
                             @auth
                                 <li class="nav-item">
-                                    <a style="color:white" href="{{route('client.likes.index')}}">لیست علاقه مندی (<span style="color: lightgoldenrodyellow" id="likes_count">{{auth()->user()->likes()->count()}}</span>)
+                                    <a style="color:white" href="{{route('client.likes.index')}}">علاقه مندی ها (<span style="color: lightgoldenrodyellow" id="likes_count">{{auth()->user()->likes()->count()}}</span>)
                                     </a>
                                 </li>
 

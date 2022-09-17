@@ -36,17 +36,17 @@
                         <div class="col-sm-8">
                             <div class="box">
                                 <div class="box-header with-border">
-                                    <h1 class="box-title">
+                                    <h1 class="box-title m-5">
                                         فاکتور پرداخت
                                     </h1>
                                 </div>
-                                <div >
+                                <div CLASS="m-5">
                                     <div >
                                         <table id="example5" class="table table-bordered table-striped" style="width:100%">
                                             <thead>
                                             <tr>
                                                 <th>ردیف</th>
-                                                <th>کد محصول</th>
+                                                <th>نام محصول</th>
                                                 <th>قیمت تک محصول</th>
                                                 <th>تعداد</th>
                                                 <th>قیمت کل</th>
@@ -54,21 +54,28 @@
                                             </thead>
 
                                             @foreach($order->details as $orderDetail)
+                                                @php
+                                                $product=\App\Models\Product::query()->where('id',$orderDetail->product_id)->firstOrFail();
+                                                @endphp
                                                 <tr>
                                                     <td>{{ $loop->iteration}}</td>
-                                                    <td>{{$orderDetail->product_id}}</td>
+                                                    <td>{{$product->name}}</td>
                                                     <td>{{number_format($orderDetail->unit_amount)}}</td>
                                                     <td>{{$orderDetail->count}}</td>
                                                     <td>{{number_format($orderDetail->total_amount)}}</td>
                                                 </tr>
                                             @endforeach
                                         </table>
+                                        <h1 class="m-5" >مبلغ کل فاکتور : {{number_format($order->amount)}}</h1>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                        <h1>مبلغ کل فاکتور : {{number_format($order->amount)}}</h1>
+                    <div >
+
+                    </div>
                 </div>
                 <div class="form-control-file">
                     <form action="{{route('client.transaction', $order)}}" method="post">
@@ -81,7 +88,8 @@
                                 </div>!-->
                         <input type="hidden" name="payment_status" value="ok">
                         <div class="col-lg-12 col-md-12 p-20">
-                            <input type="submit" name="submit" value="پرداخت" class="default-btn btn-bg-three">
+                            <input type="submit" name="submit" value="پرداخت" class="btn btn-success m-5">
+                            <a href="{{route('client.orders.index')}}" type="submit"  class="btn btn-danger">انصراف </a>
                         </div>
                             </div>
                         </div>

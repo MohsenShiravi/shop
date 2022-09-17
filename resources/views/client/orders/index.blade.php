@@ -34,29 +34,32 @@
                         <table id="example5" class="table table-bordered table-striped" style="width:100%">
                             <thead>
                             <tr>
-                                <th>ردیف</th>
+                                <th>فاکتور</th>
                                 <th>نام</th>
                                 <th>ادرس تحویل</th>
                                 <th>موبایل</th>
-                                <th>مبلغ کل سفارش</th>
+                                <th>مبلغ فاکتور</th>
+                                <th>جزئیات</th>
                                 <th>کد رهگیری</th>
                                 <th>ورود به درگاه بانکی</th>
 
                             </tr>
                             </thead>
 
+
                             @foreach($orders as $order)
                                 <tr>
-                                        <td>{{ $loop->iteration}}</td>
+                                        <td>{{ $order->id}}</td>
                                         <td>{{$order->user->name}}</td>
                                         <td>{{$order->address}}</td>
                                         <td>{{$order->mobile}}</td>
 
                                         <td>{{number_format($order->amount)}}</td>
+                                        <td><a href="{{route('client.details', $order)}}">نمایش جزئیات</a></td>
                                         <td>@if(isset($order->transaction_id))<span style= "color: white;background-color: #0d6632; padding: 5px;border-radius: 5px">{{$order->transaction_id}}</span>@else<span style="color: white;background-color: red; padding: 5px;border-radius: 5px">پرداخت نشده </span> @endif</td>
                                         <td>
                                             @if(is_null($order->transaction_id))
-                                            <a href="{{route('client.edit', $order)}}" class="btn btn-sm btn-primary">پرداخت سفارش</a>@else پرداخت با موفقیت انجام شد
+                                            <a href="{{route('client.portal bank', $order)}}" class="btn btn-sm btn-primary">پرداخت سفارش</a>@else پرداخت با موفقیت انجام شد
                                             @endif
                                         </td>
                                     </tr>

@@ -22,6 +22,9 @@
                                         @if($parent->id == $category->category_id)
                                             selected
                                         @endif
+                                        @if($parent->id == $category->id)
+                                                hidden="{{$parent->title}}"
+                                        @endif
                                     value="{{$parent->id}}">{{$parent->title}}</option>
                                 @endforeach
                             </select>

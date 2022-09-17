@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\client\CartController;
 use App\Http\Controllers\client\HomeController;
 use App\Http\Controllers\client\LikeController;
+use App\Http\Controllers\client\ProfileController;
 use App\Http\Controllers\client\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
@@ -76,12 +77,9 @@ Route::prefix('')->name('client.')->group(function () {
     Route::get('/orders/create', [OrderController::class, 'create'])->name('orders.create');
     Route::post('/orders/store', [OrderController::class, 'store'])->name('orders.store');
     Route::get('/orders/index', [OrderController::class, 'index'])->name('orders.index');
-    Route::get('/Bank portal/{order}', [OrderController::class, 'edit'])->name('edit');
+    Route::get('/Bank portal/{order}', [OrderController::class, 'PortalBank'])->name('portal bank');
+    Route::get('/details/{order}', [OrderController::class, 'details'])->name('details');
     Route::post('/transaction/{order}', [OrderController::class, 'transaction'])->name('transaction');
-
-
-
-
 });
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
@@ -89,3 +87,6 @@ Route::post('/cart/{product}', [CartController::class, 'store'])->name('cart.sto
 Route::delete('/cart/{product}', [CartController::class, 'destroy'])->name('cart.destroy');
 
 Route::get('panel/orders',[listOrderController::class,'index'])->name('panel.orders');
+
+
+

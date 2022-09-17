@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\OrderTransaction;
 use App\Http\Requests\OrderRequest;
 use App\Models\Cart;
+use App\Models\Category;
 use App\Models\Offer;
 use App\Models\Order;
 use App\Models\Product;
@@ -58,23 +59,28 @@ class OrderController extends Controller
 
     }
 
-    public function edit(Order $order)
+    public function PortalBank(Order $order)
     {
         return view('client.orders.transaction',['order'=>$order]);
     }
 
+    public function details(Order $order)
+    {
+        return view('client.orders.details',['order'=>$order]);
+    }
+
     public function transaction(Request $request, Order $order)
     {
-        /*$offer=Offer::query()->where('code',$request->get('code'))->where('starts_at',"<" ,now())->where('starts_at', now())->where('expires_at',">" ,now())->get();
-        if ($offer){
+        /*$offer=Offer::query()->where('code',$request->get('code'))->where('starts_at',"<=" ,now())->where('starts_at', now())->where('expires_at',">=" ,now())->firstOrFail();
+        if (isset($offer)){
             $amount=$order->amount - $order->amount * $offer->value /100;
-            $order->update([
-                'amount'=>$amount
-            ]);
+        }else{
+            $amount=$order->amount;
         }*/
         $order->update([
             'payment_status' =>$request->get('payment_status'),
-            'transaction_id'=>rand()
+            'transaction_id'=>rand(),
+            //'amount'=>$amount
         ]);
         event(new OrderTransaction());
         return redirect()->route('client.orders.index');
