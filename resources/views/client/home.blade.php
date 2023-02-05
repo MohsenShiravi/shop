@@ -4,42 +4,12 @@
     <header class="top-header top-header-bg">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-7 col-md-7">
-                    <div class="top-header-form">
-                        <form>
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <select class="form-control">
-                                            <option>دسته‌بندی</option>
-                                            <option>الکترونیکی</option>
-                                            <option>کودک و نوزاد</option>
-                                            <option>کفش و لباس</option>
-                                            <option>سلامت و زیبایی</option>
-                                            <option>سرگرمی و هنر</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-8 pl-0">
-                                    <div class="form-group search-form">
-                                        <input type="search" class="form-control" placeholder="جستجو محصولات">
-                                        <button type="submit">
-                                            <i class="bx bx-search"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
                 <div class="col-lg-5 col-md-5">
                     <div class="top-header-right">
                         <div class="phone-btn">
                             <span><i class='bx bx-mobile-alt'></i><a href="tel:+501-529-1747">+501-529-1747</a></span>
                         </div>
-
+@include('client.layout.liveSearch')
                         <div class="other-option">
                             <div class="option-item">
                                 <div class="language-list">
@@ -121,11 +91,11 @@
                                 </li>
 
 
-                            @php $user=auth()->user(); @endphp
+{{--                            @php $user=auth()->user(); @endphp--}}
 
-                            @if($user->role->hasPermission('view-dashboard'))
+{{--                            @if($user->role->hasPermission('view-dashboard'))--}}
                                 <li class="nav-item"><a  href="/panel">پنل مدیریت </a></li>
-                            @endif
+{{--                            @endif--}}
 
                             @endauth
                             <li class="nav-item"> <a href="{{route('cart.index')}}"><span class="total-items">{{\App\Models\Cart::totalItems()}}</span> آیتم -
@@ -218,7 +188,7 @@
                 <div class="banner-content-area">
                     <div class="banner-content">
                         <h1> اسان ترین روش خرید انلاین را با ما تجربه کنید </h1>
-                        <p>این یکی از بهترین روش های مناسب و مناسب برای خرید محصول با قیمت مناسب و مناسب است.</p>
+                        <p>این یکی از بهترین روش های مناسب برای خرید محصول با تخفیف های متنوع است.</p>
 
                     </div>
                         <a href="{{route('index')}}" class="logo">
@@ -262,7 +232,7 @@
                     <div class="arrival-product">
                         <div class="arrival-img">
                             <a href="{{route('showProduct',$product)}}">
-                                <img src="{{Storage::url($product->file->path.'/'.$product->file->name)}}" alt="{{$product->name}}" title="{{$product->name}}">
+                                <img src="{{$product->image_path}}" alt="{{$product->name}}" title="{{$product->name}}">
                             </a>
                             @if($product->has_discount)
                                 <div class="new-tag">
@@ -321,7 +291,7 @@
                                     <div class="product-card">
                                         <div class="product-card-img">
                                             <a href="{{route('showProduct',$product)}}">
-                                                <img src="{{Storage::url($product->file->path.'/'.$product->file->name)}}" alt="{{$product->name}}" title="{{$product->name}}">
+                                                <img src="{{$product->image_path}}" alt="{{$product->name}}" title="{{$product->name}}">
                                             </a>
                                             @if($product->discount()->exists())
                                             <div class="product-card-tag">

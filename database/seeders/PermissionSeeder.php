@@ -18,24 +18,6 @@ class PermissionSeeder extends Seeder
         /**
          * categories permissions
          */
-        Permission::query()->insert([
-            [
-                'title' => 'read-category',
-                'label' => 'مشاهده دسته بندی'
-            ],
-            [
-                'title' => 'create-category',
-                'label' => 'ایجاد دسته بندی'
-            ],
-            [
-                'title' => 'update-category',
-                'label' => 'ویرایش دسته بندی'
-            ],
-            [
-                'title' => 'delete-category',
-                'label' => 'حذف دسته بندی'
-            ],
-        ]);
 
 
         /**

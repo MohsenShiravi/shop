@@ -61,7 +61,7 @@
                                                 @endphp
                                                 <ul class="checkout-product">
                                                     <li>
-                                                        <img src="{{Storage::url($product->file->path.'/'.$product->file->name)}}" alt="{{$product->name}}" title="{{$product->name}}">
+                                                        <img src="{{$product->image_path}}" alt="{{$product->name}}" title="{{$product->name}}">
                                                         <h3>{{$product->name}}</h3>
                                                         <span>{{number_format($orderDetail->unit_amount)}}</span><br>
                                                         <span>تعداد : {{$orderDetail->count}}</span>

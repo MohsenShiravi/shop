@@ -55,7 +55,7 @@
 											<tr class="cart-row-{{$product->id}}">
 												<td class="product-thumbnail">
 													<a href="{{route('showProduct',$product)}}">
-														<img src="{{Storage::url($product->file->path.'/'.$product->file->name)}}" alt="{{$product->name}}" title="{{$product->name}}">
+														<img src="{{$product->image_path}}" alt="{{$product->name}}" title="{{$product->name}}">
 													</a>
 												</td>
 

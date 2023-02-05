@@ -39,7 +39,7 @@
                         <div class="arrival-product">
                             <div class="arrival-img">
                                 <a href="{{route('showProduct',$product)}}">
-                                    <img src="{{Storage::url($product->file->path.'/'.$product->file->name)}}" alt="{{$product->name}}" title="{{$product->name}}">
+                                    <img src="{{$product->image_path}}" alt="{{$product->name}}" title="{{$product->name}}">
                                 </a>
                                 @if($product->has_discount)
                                     <div class="new-tag">

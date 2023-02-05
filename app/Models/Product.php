@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 
-class Product extends Model
+class Product extends Model implements Searchable
 {
     use HasFactory;
     protected $guarded=[];
@@ -16,6 +18,16 @@ class Product extends Model
         'image_path',
 
     ];
+
+    public function path(){
+        return $this->slug;
+    }
+
+    public function getSearchResult(): SearchResult
+    {       $url = $this->path();
+
+        return new SearchResult($this, $this->title, $url);
+    }
 
     public function category()
     {

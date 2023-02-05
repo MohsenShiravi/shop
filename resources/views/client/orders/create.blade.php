@@ -45,7 +45,6 @@
                                 <div class="col-lg-12 px-2">
                                     <div class="checkout-form">
                                         <div class="contact-form">
-                                            <h2>با وارد کردن اطلاعات سفارش خود را تکمیل کنید</h2>
                                             <form action="{{route('client.orders.store')}}" method="post">
                                                 @csrf
                                                 <section class="cart-wraps-area ptb-100">
@@ -75,7 +74,7 @@
                                                                                 <tr class="cart-row-{{$product->id}}">
                                                                                     <td class="product-thumbnail">
                                                                                         <a href="{{route('showProduct',$product)}}">
-                                                                                            <img src="{{Storage::url($product->file->path.'/'.$product->file->name)}}" alt="{{$product->name}}" title="{{$product->name}}">
+                                                                                            <img src="{{$product->image_path}}" alt="{{$product->name}}" title="{{$product->name}}">
                                                                                         </a>
                                                                                     </td>
 
@@ -125,14 +124,39 @@
                                                                             </tr>
                                                                         </table>
                                                                     </div>
+                                                                    <hr>
+                                                                    <h2>با وارد کردن اطلاعات سفارش خود را تکمیل کنید</h2>
+                                                                    <br>
                                                                     <div class="row">
-                                                                        <div class="col-lg-12">
+                                                                        <div class="col-lg-6">
+                                                                            <div class="form-group">
+                                                                                <label for="province_id">استان</label>
+                                                                                <select name="province_id" id="province-id" class="form-control">
+                                                                                    <option value="" disabled selected>استان را انتخاب کنید</option>
+                                                                                    @foreach($provinces as $province)
+                                                                                        <option value="{{$province->id}}" @if(old('province_id') == $province->id) selected @endif>{{$province->name}}</option>
+                                                                                    @endforeach
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-6">
+                                                                            <div class="form-group">
+                                                                                <label for="city_id">شهر</label>
+                                                                                <select name="city_id" id="city-id" class="form-control">
+                                                                                    <option value=""></option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                    <div class="row">
+                                                                        <div class="col-lg-6">
                                                                             <div class="form-group">
                                                                                 <label>آدرس </label>
                                                                                 <input type="text" class="form-control" name="address"  placeholder="آدرس خود را وارد نمایید">
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-lg-12">
+                                                                        <div class="col-lg-6">
                                                                             <div class="form-group">
                                                                                 <label>شماره تماس</label>
                                                                                 <input type="text" class="form-control" name="mobile" placeholder="ترجیحا شماره موبایل خود را وارد کنید">
@@ -172,5 +196,31 @@
         </div>
     </div>
     <!-- Checkout Area End -->
-
 @endsection
+@section('page-scripts')
+    <script>
+        $(document).ready(function () {
+            $('#province-id').on('change', function () {
+                var idProvince = this.value;
+                $("#city-id").html('');
+                $.ajax({
+                    url: "{{url('provinces/get-cities')}}",
+                    type: "POST",
+                    data: {
+                        province_id: idProvince,
+                        _token: '{{csrf_token()}}'
+                    },
+                    dataType: 'json',
+                    success: function (result) {
+                        $('#city-id').html('<option value=""> شهر را انتخاب کنید </option>');
+                        $.each(result.cities, function (key, value) {
+                            $("#city-id").append('<option value="' + value
+                                .id + '">' + value.name + '</option>');
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+@endsection
+

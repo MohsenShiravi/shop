@@ -17,6 +17,8 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->unsignedBigInteger('amount');
+            $table->foreignId('province_id')->nullable()->constrained('provinces','id');
+            $table->foreignId('city_id')->nullable()->constrained('cities','id');
             $table->text('address');
             $table->text('mobile');
             $table->string('payment_status')->default('unknown');

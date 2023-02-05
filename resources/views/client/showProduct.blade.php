@@ -32,7 +32,7 @@
         <div class="row">
             <div class="col-lg-6 col-md-12">
                 <div class="product-detls-image">
-                    <img src="{{Storage::url($product->file->path.'/'.$product->file->name)}}" alt="{{$product->name}}" title="{{$product->name}}">
+                    <img src="{{$product->image_path}}" alt="{{$product->name}}" title="{{$product->name}}">
                 </div>
             </div>
 

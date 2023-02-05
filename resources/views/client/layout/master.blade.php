@@ -32,6 +32,7 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{asset('client/images/favicon.png')}}')}}">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
     <title> پروژه فروشگاه انلاین | محسن شیروی </title>
 </head>
@@ -473,6 +474,10 @@
         })
 
     }
+
 </script>
+
+@yield('page-scripts')
+
 </body>
 </html>

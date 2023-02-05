@@ -10,11 +10,14 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\client\CartController;
 use App\Http\Controllers\client\HomeController;
 use App\Http\Controllers\client\LikeController;
+use App\Http\Controllers\client\LiveSearchController;
 use App\Http\Controllers\client\ProfileController;
 use App\Http\Controllers\client\RegisterController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MemberSearchController;
 use App\Http\Controllers\OrderController;
 
+use App\Http\Controllers\ProvinceController;
 use App\Http\Middleware\CheckPermission;
 use Illuminate\Support\Facades\Route;
 
@@ -88,5 +91,6 @@ Route::delete('/cart/{product}', [CartController::class, 'destroy'])->name('cart
 
 Route::get('panel/orders',[listOrderController::class,'index'])->name('panel.orders');
 
+Route::post('provinces/get-cities', [ProvinceController::class, 'getCities'])->name('provinces.get-cities');
 
 
