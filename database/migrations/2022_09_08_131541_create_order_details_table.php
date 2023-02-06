@@ -21,6 +21,7 @@ class CreateOrderDetailsTable extends Migration
             $table->unsignedInteger('count');
             $table->unsignedBigInteger('total_amount');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

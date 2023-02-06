@@ -23,6 +23,7 @@ class CreateOrdersTable extends Migration
             $table->text('mobile');
             $table->string('payment_status')->default('unknown');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

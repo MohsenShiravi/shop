@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Searchable\Searchable;
@@ -11,7 +12,7 @@ use Spatie\Searchable\SearchResult;
 
 class Product extends Model implements Searchable
 {
-    use HasFactory;
+    use HasFactory,SoftDeletes;
     protected $guarded=[];
     protected $appends = [
         'cost_with_discount',

@@ -5,6 +5,7 @@
     <!-- Required Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('client/css/bootstrap.rtl.min.css')}}">
@@ -364,6 +365,14 @@
 <script src="{{asset('client/js/mixitup.min.js')}}"></script>
 <!-- Custom JS -->
 <script src="{{asset('client/js/custom.js')}}"></script>
+
+<script src="/assets/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 rtl -->
+<script src="https://cdn.rtlcss.com/bootstrap/v4.2.1/js/bootstrap.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/assets/dist/js/adminlte.min.js"></script>
 <script>
     function like(productId){
 

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->timestamp('starts_at')->default(null);
             $table->timestamp('expires_at')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
